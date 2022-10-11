@@ -29,30 +29,37 @@ class _LoginPageState extends State<LoginPage> {
                     Text('Alarmed'),
                     Text('iniciar sesión'),
                     Container(
+                        padding: const EdgeInsets.all(8),
                         child: SizedBox(
-                          width: 250.0,
+                          width: 270.0,
                           height: 50.0,
                           child: Column(children: [
-                            Row(children: [
+                            Expanded(
+                                child: Row(children: [
                               Text('Usuario:'),
-                              TextField(
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  labelText: 'Password',
+                              Expanded(
+                                child: TextField(
+                                  obscureText: true,
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'Password',
+                                  ),
                                 ),
                               )
-                            ]),
-                            Row(children: [
-                              Text('Contraseña'),
-                              TextField(
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(),
-                                  labelText: 'Password',
+                            ])),
+                            Expanded(
+                                child: Row(children: [
+                              Text('Contraseña:'),
+                              Expanded(
+                                child: TextField(
+                                  obscureText: true,
+                                  decoration: InputDecoration(
+                                    border: OutlineInputBorder(),
+                                    labelText: 'Password',
+                                  ),
                                 ),
                               )
-                            ])
+                            ]))
                           ]),
                         ),
                         decoration: BoxDecoration(
