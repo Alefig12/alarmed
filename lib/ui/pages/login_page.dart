@@ -26,8 +26,12 @@ class _LoginPageState extends State<LoginPage> {
                 height: 300.0,
                 child: Column(
                   children: [
-                    Text('Alarmed'),
-                    Text('iniciar sesión'),
+                    Text('Alarmed',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 35, color: Colors.white)),
+                    Text('iniciar sesión',
+                        textAlign: TextAlign.left,
+                        style: TextStyle(color: Colors.white)),
                     Container(
                         padding: const EdgeInsets.all(8),
                         child: SizedBox(
@@ -36,20 +40,22 @@ class _LoginPageState extends State<LoginPage> {
                           child: Column(children: [
                             Expanded(
                                 child: Row(children: [
-                              Text('Usuario:'),
+                              Text('Usuario:',
+                                  style: TextStyle(color: Colors.white)),
                               Expanded(
                                 child: TextField(
                                   obscureText: true,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(),
-                                    labelText: 'Password',
+                                    labelText: 'User',
                                   ),
                                 ),
                               )
                             ])),
                             Expanded(
                                 child: Row(children: [
-                              Text('Contraseña:'),
+                              Text('Contraseña:',
+                                  style: TextStyle(color: Colors.white)),
                               Expanded(
                                 child: TextField(
                                   obscureText: true,
@@ -63,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                           ]),
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.blue,
+                          color: Color.fromARGB(255, 117, 123, 128),
                           borderRadius: BorderRadius.circular(16),
                         ))
                   ],
