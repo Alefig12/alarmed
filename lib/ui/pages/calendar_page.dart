@@ -22,14 +22,70 @@ class _CalendarPageState extends State<CalendarPage> {
         body: SafeArea(
             child: Center(
                 child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Align(alignment: Alignment.bottomLeft, child: Text('Buenos días')),
-            Align(
-                alignment: Alignment.bottomLeft,
-                child: Text('este es tu Horario')),
-            Align(alignment: Alignment.bottomRight, child: DropDownMenu()),
-            SizedBox(
-              height: 300,
+            Container(
+                padding: EdgeInsets.all(15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.wb_twilight,
+                          color: Colors.black,
+                          size: 50.0,
+                        ),
+                        Text(
+                          ' Buenos días!',
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 35),
+                        ),
+                      ],
+                    ),
+                    Icon(
+                      Icons.face,
+                      color: Colors.black,
+                      size: 50.0,
+                    ),
+                  ],
+                )),
+            Container(
+              padding: EdgeInsets.only(left: 30),
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'este es tu',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Horario',
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(right: 10),
+              child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: Container(
+                    padding: EdgeInsets.all(8),
+                    child: DropDownMenu(),
+                    decoration: BoxDecoration(
+                        color: Constant.mainCont,
+                        borderRadius: BorderRadius.circular(30)),
+                  )),
+            ),
+            Expanded(
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
@@ -181,6 +237,7 @@ class _CalendarPageState extends State<CalendarPage> {
                       padding: EdgeInsets.only(top: 10),
                       child: Row(children: [
                         Container(
+                            padding: EdgeInsets.all(10),
                             width: 80,
                             child: Column(
                               children: [
@@ -200,8 +257,18 @@ class _CalendarPageState extends State<CalendarPage> {
                         SizedBox(
                           width: 20,
                         ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
+                        itemCalendar(listPill: [
+                          Row(children: [
+                            Icon(
+                              Icons.vaccines,
+                              color: Colors.black,
+                            ),
+                            Text('puya')
+                          ]),
+                          Text('break'),
+                          Text('pastilla'),
+                          Text('pastilla'),
+                        ]),
                         SizedBox(
                           width: 20,
                         ),
@@ -230,14 +297,20 @@ class _CalendarPageState extends State<CalendarPage> {
                         SizedBox(
                           width: 20,
                         ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
+                        itemCalendar(listPill: [
+                          Text('pastilla'),
+                          Text('break'),
+                          Text('pastilla'),
+                          Text('pastilla'),
+                          Text('pastilla')
+                        ]),
                       ]),
                     ),
                     Container(
                       padding: EdgeInsets.only(top: 10),
                       child: Row(children: [
                         Container(
+                            padding: EdgeInsets.all(10),
                             width: 80,
                             child: Column(
                               children: [
@@ -257,8 +330,20 @@ class _CalendarPageState extends State<CalendarPage> {
                         SizedBox(
                           width: 20,
                         ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
+                        itemCalendar(listPill: [
+                          Text('pastilla'),
+                          Text('break'),
+                          Text('pastilla'),
+                          Text('pastilla')
+                        ]),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        itemCalendar(listPill: [
+                          Text('pastilla'),
+                          Text('break'),
+                          Text('pastilla')
+                        ]),
                         SizedBox(
                           width: 20,
                         ),
@@ -283,18 +368,19 @@ class _CalendarPageState extends State<CalendarPage> {
                           width: 20,
                         ),
                         itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
-                        SizedBox(
-                          width: 20,
+                          listPill: [
+                            Text('pastilla'),
+                            Text('break'),
+                            Text('pastilla')
+                          ],
                         ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
                       ]),
                     ),
                     Container(
                       padding: EdgeInsets.only(top: 10),
                       child: Row(children: [
                         Container(
+                            padding: EdgeInsets.all(10),
                             width: 80,
                             child: Column(
                               children: [
@@ -324,8 +410,12 @@ class _CalendarPageState extends State<CalendarPage> {
                         SizedBox(
                           width: 20,
                         ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
+                        itemCalendar(listPill: [
+                          Text('pastilla'),
+                          Text('break'),
+                          Text('pastilla'),
+                          Text('pastilla'),
+                        ]),
                         SizedBox(
                           width: 20,
                         ),
@@ -352,12 +442,13 @@ class _CalendarPageState extends State<CalendarPage> {
                 ],
               ),
             ),
+            Text('Bottom navigation bar')
           ],
         ))));
   }
 }
 
-const List<String> list = <String>['3', '5', 'All'];
+const List<String> list = <String>['3días', '5días', 'Todos'];
 
 class DropDownMenu extends StatefulWidget {
   const DropDownMenu({
@@ -374,7 +465,10 @@ class _DropDownMenuState extends State<DropDownMenu> {
   Widget build(BuildContext context) {
     return DropdownButton<String>(
       value: dropdownValue,
-      icon: const Icon(Icons.arrow_downward),
+      icon: const Icon(
+        Icons.expand_more,
+        color: Colors.white,
+      ),
       elevation: 16,
       onChanged: (String? value) {
         // This is called when the user selects an item.
@@ -385,7 +479,7 @@ class _DropDownMenuState extends State<DropDownMenu> {
       items: list.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
-          child: Text(value),
+          child: Text(value, style: TextStyle(fontWeight: FontWeight.bold)),
         );
       }).toList(),
     );
@@ -401,6 +495,8 @@ class itemCalendar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        padding: EdgeInsets.all(5),
+        alignment: Alignment.center,
         width: 80,
         child: Column(
           children: listPill,
