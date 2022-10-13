@@ -2,8 +2,9 @@
 
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-
 import 'package:flutter/material.dart';
+import 'package:alarmed/ui/assets/constant.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -20,9 +21,8 @@ class _LoginPageState extends State<LoginPage> {
         body: SafeArea(
           child: Center(
               child: Container(
-            // ignore: sort_child_properties_last
             child: SizedBox(
-                width: 10000.0,
+                width: 300.0,
                 height: 300.0,
                 child: Column(
                   children: [
@@ -38,43 +38,71 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     Container(
-                        padding: const EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(9),
                         child: SizedBox(
                           width: 270.0,
                           height: 50.0,
-                          child: Column(children: [
-                            Expanded(
-                                child: Row(children: [
-                              Text('Usuario:',
-                                  style: TextStyle(color: Colors.white)),
-                              Expanded(
-                                child: TextField(
-                                  obscureText: true,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    labelText: 'User',
-                                  ),
-                                ),
-                              )
-                            ])),
-                            Expanded(
-                                child: Row(children: [
-                              Text('Contraseña:',
-                                  style: TextStyle(color: Colors.white)),
-                              Expanded(
-                                child: TextField(
-                                  obscureText: true,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(),
-                                    labelText: 'Password',
-                                  ),
-                                ),
-                              )
-                            ]))
-                          ]),
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Text('Usuario:',
+                                          style:
+                                              TextStyle(color: Colors.white)),
+                                      SizedBox(
+                                        width: 200,
+                                        height: 20,
+                                        child: TextField(
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              borderSide: BorderSide(
+                                                width: 0,
+                                                style: BorderStyle.none,
+                                              ),
+                                            ),
+                                            fillColor: Constant.mainCont,
+                                            filled: true,
+                                          ),
+                                        ),
+                                      )
+                                    ]),
+                                Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Text('Contraseña:',
+                                          style:
+                                              TextStyle(color: Colors.white)),
+                                      SizedBox(
+                                        width: 180,
+                                        height: 20,
+                                        child: TextField(
+                                          obscureText: true,
+                                          decoration: InputDecoration(
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                              borderSide: BorderSide(
+                                                width: 0,
+                                                style: BorderStyle.none,
+                                              ),
+                                            ),
+                                            fillColor: Constant.mainCont,
+                                            filled: true,
+                                          ),
+                                        ),
+                                      )
+                                    ])
+                              ]),
                         ),
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 117, 123, 128),
+                          color: Constant.inCont,
                           borderRadius: BorderRadius.circular(16),
                         )),
                     Container(
@@ -88,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                               style: ButtonStyle(
                                   backgroundColor:
                                       MaterialStateProperty.all<Color>(
-                                          Color.fromARGB(255, 166, 166, 166)),
+                                          Constant.button),
                                   shape: MaterialStateProperty.all(
                                       RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(18),
@@ -106,7 +134,7 @@ class _LoginPageState extends State<LoginPage> {
                               style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(
-                                        Color.fromARGB(255, 166, 166, 166)),
+                                        Constant.button),
                                 shape: MaterialStateProperty.all(
                                     RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18),
@@ -121,11 +149,49 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ],
                       ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(top: 15),
+                      child: Text(
+                        "Vincular",
+                        style: TextStyle(color: Constant.title),
+                      ),
+                    ),
+                    Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: FaIcon(
+                              FontAwesomeIcons.google,
+                              color: Colors.grey,
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              shape: CircleBorder(),
+                              primary: Colors.white,
+                              fixedSize: Size(40, 40),
+                            ),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: Icon(
+                              FontAwesomeIcons.facebook,
+                              color: Colors.grey,
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              shape: CircleBorder(),
+                              primary: Colors.white,
+                              fixedSize: Size(40, 40),
+                            ),
+                          ),
+                        ],
+                      ),
                     )
                   ],
                 )),
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 84, 84, 84),
+              color: Constant.mainCont,
               borderRadius: BorderRadius.circular(25),
             ),
           )),
