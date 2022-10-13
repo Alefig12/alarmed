@@ -22,16 +22,21 @@ class _LoginPageState extends State<LoginPage> {
               child: Container(
             // ignore: sort_child_properties_last
             child: SizedBox(
-                width: 300.0,
+                width: 10000.0,
                 height: 300.0,
                 child: Column(
                   children: [
                     Text('Alarmed',
                         textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 35, color: Colors.white)),
-                    Text('iniciar sesión',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(color: Colors.white)),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(20, 5, 0, 5),
+                        child: Text('Iniciar sesión',
+                            style: TextStyle(color: Colors.white)),
+                      ),
+                    ),
                     Container(
                         padding: const EdgeInsets.all(8),
                         child: SizedBox(
@@ -71,7 +76,52 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: BoxDecoration(
                           color: Color.fromARGB(255, 117, 123, 128),
                           borderRadius: BorderRadius.circular(16),
-                        ))
+                        )),
+                    Container(
+                      padding: EdgeInsets.only(top: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          SizedBox(
+                            width: 100,
+                            child: TextButton(
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Color.fromARGB(255, 166, 166, 166)),
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18),
+                                  ))),
+                              onPressed: () {},
+                              child: const Text(
+                                "¿Olvidaste tu contraseña?",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 100,
+                            child: TextButton(
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Color.fromARGB(255, 166, 166, 166)),
+                                shape: MaterialStateProperty.all(
+                                    RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18),
+                                )),
+                              ),
+                              onPressed: () {},
+                              child: const Text(
+                                "Crear cuenta",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
                   ],
                 )),
             decoration: BoxDecoration(
