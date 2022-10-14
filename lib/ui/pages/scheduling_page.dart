@@ -57,7 +57,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
       body: SafeArea(
         child: Center(
           child: Container(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(10),
             child: Column(
               children: [
                 Expanded(
@@ -92,28 +92,37 @@ class _SchedulingPageState extends State<SchedulingPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                MainRoundedBox(
-                                  radius: 30,
-                                  width: 60,
-                                  height: 60,
-                                  color: Constant.inCont,
-                                  child: const Center(
-                                    child: Icon(
-                                      CustomIcons.pill,
-                                      color: Colors.white,
-                                      size: 40,
+                                Expanded(
+                                  flex: 1,
+                                  child: Center(
+                                    child: MainRoundedBox(
+                                      radius: 30,
+                                      width: 60,
+                                      height: 60,
+                                      color: Constant.inCont,
+                                      child: const Center(
+                                        child: Icon(
+                                          CustomIcons.pill,
+                                          color: Colors.white,
+                                          size: 40,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
-                                RoundTextInput(
-                                  height: 40,
-                                  width: 230,
-                                  color: Constant.inCont,
-                                  label: 'Nombre del medicamento',
-                                  hintStyle: TextStyle(
-                                    fontSize: 17,
-                                    color: Constant.button,
-                                    fontWeight: FontWeight.w600,
+                                SizedBox(width: 20),
+                                Expanded(
+                                  flex: 5,
+                                  child: RoundTextInput(
+                                    height: 40,
+                                    width: 230,
+                                    color: Constant.inCont,
+                                    label: 'Nombre del medicamento',
+                                    hintStyle: TextStyle(
+                                      fontSize: 17,
+                                      color: Constant.button,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -124,35 +133,55 @@ class _SchedulingPageState extends State<SchedulingPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: const [
-                                RoundTextButton(
-                                    width: 40,
-                                    height: 40,
-                                    color: Colors.white,
-                                    child: Text('')),
+                                Expanded(
+                                  child: Center(
+                                    child: RoundTextButton(
+                                        width: 40,
+                                        height: 40,
+                                        color: Colors.white,
+                                        child: Text('')),
+                                  ),
+                                ),
                                 SizedBox(width: 10),
-                                RoundTextButton(
-                                    width: 40,
-                                    height: 40,
-                                    color: Colors.white,
-                                    child: Text('')),
+                                Expanded(
+                                  child: Center(
+                                    child: RoundTextButton(
+                                        width: 40,
+                                        height: 40,
+                                        color: Colors.white,
+                                        child: Text('')),
+                                  ),
+                                ),
                                 SizedBox(width: 10),
-                                RoundTextButton(
-                                    width: 40,
-                                    height: 40,
-                                    color: Colors.white,
-                                    child: Text('')),
+                                Expanded(
+                                  child: Center(
+                                    child: RoundTextButton(
+                                        width: 40,
+                                        height: 40,
+                                        color: Colors.white,
+                                        child: Text('')),
+                                  ),
+                                ),
                                 SizedBox(width: 10),
-                                RoundTextButton(
-                                    width: 40,
-                                    height: 40,
-                                    color: Colors.white,
-                                    child: Text('')),
+                                Expanded(
+                                  child: Center(
+                                    child: RoundTextButton(
+                                        width: 40,
+                                        height: 40,
+                                        color: Colors.white,
+                                        child: Text('')),
+                                  ),
+                                ),
                                 SizedBox(width: 10),
-                                RoundTextButton(
-                                    width: 40,
-                                    height: 40,
-                                    color: Colors.white,
-                                    child: Text('')),
+                                Expanded(
+                                  child: Center(
+                                    child: RoundTextButton(
+                                        width: 40,
+                                        height: 40,
+                                        color: Colors.white,
+                                        child: Text('')),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -166,29 +195,33 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                     width: 150,
                                     height: double.infinity,
                                     color: Constant.inCont,
-                                    child: Center(
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: const [
-                                          SizedBox(
-                                            height: double.infinity,
-                                            child: Icon(
-                                              Icons.add_circle_outline,
-                                              size: 17,
-                                              color: Colors.white,
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: const [
+                                        Expanded(
+                                          flex: 1,
+                                          child: Icon(
+                                            Icons.add_circle_outline,
+                                            size: 15,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          flex: 5,
+                                          child: FittedBox(
+                                            fit: BoxFit.contain,
+                                            child: Text(
+                                              'Más opciones',
+                                              style: TextStyle(
+                                                letterSpacing: 10,
+                                                fontSize: 150,
+                                                color: Colors.white,
+                                              ),
                                             ),
                                           ),
-                                          Text(
-                                            'Más opciones',
-                                            textAlign: TextAlign.end,
-                                            style: TextStyle(
-                                              fontSize: 15,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     )),
                               ],
                             ),
@@ -212,11 +245,13 @@ class _SchedulingPageState extends State<SchedulingPage> {
                             height: double.infinity,
                             color: Constant.mainCont,
                             onPressed: _selectTime,
-                            child: Text(
-                              _time.format(context),
-                              style: const TextStyle(
-                                fontSize: 50,
-                                color: Colors.white,
+                            child: FittedBox(
+                              child: Text(
+                                _time.format(context),
+                                style: const TextStyle(
+                                  fontSize: 40,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ),
@@ -227,7 +262,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                 ),
                 SizedBox(height: 10),
                 Expanded(
-                  flex: 2,
+                  flex: 3,
                   child: MainRoundedBox(
                     width: double.infinity,
                     color: Constant.mainCont,
@@ -339,7 +374,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                 ),
                 SizedBox(height: 10),
                 Expanded(
-                  flex: 11,
+                  flex: 13,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -452,57 +487,62 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
                                     children: [
-                                      const Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          "Se repite",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 22,
+                                      const Expanded(
+                                        child: Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "Se repite",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 22,
+                                            ),
                                           ),
                                         ),
                                       ),
-                                      Row(
-                                        children: [
-                                          Expanded(
-                                            child: RoundTextButton(
-                                                radius: 15,
-                                                width: 100,
-                                                color: Constant.inCont,
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(0),
-                                                  child: NumberPicker(
-                                                    selectedTextStyle:
-                                                        const TextStyle(
-                                                            color: Colors.white,
-                                                            fontSize: 20),
-                                                    itemCount: 1,
-                                                    itemHeight: 30,
-                                                    minValue: 0,
-                                                    maxValue: 23,
-                                                    value: selectedNum,
-                                                    onChanged: (val) {
-                                                      setState(() {
-                                                        selectedNum = val;
-                                                      });
-                                                    },
-                                                  ),
-                                                )),
-                                          ),
-                                          SizedBox(width: 10),
-                                          Expanded(
-                                            child: const Align(
-                                              alignment: Alignment.center,
-                                              child: Text(
-                                                'Horas',
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 20),
-                                              ),
+                                      Expanded(
+                                        child: Row(
+                                          children: [
+                                            Expanded(
+                                              child: RoundTextButton(
+                                                  radius: 15,
+                                                  width: 100,
+                                                  color: Constant.inCont,
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(0),
+                                                    child: NumberPicker(
+                                                      selectedTextStyle:
+                                                          const TextStyle(
+                                                              color:
+                                                                  Colors.white,
+                                                              fontSize: 20),
+                                                      itemCount: 1,
+                                                      itemHeight: 30,
+                                                      minValue: 0,
+                                                      maxValue: 23,
+                                                      value: selectedNum,
+                                                      onChanged: (val) {
+                                                        setState(() {
+                                                          selectedNum = val;
+                                                        });
+                                                      },
+                                                    ),
+                                                  )),
                                             ),
-                                          )
-                                        ],
+                                            SizedBox(width: 10),
+                                            Expanded(
+                                              child: const Align(
+                                                alignment: Alignment.center,
+                                                child: Text(
+                                                  'Horas',
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 20),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
                                       )
                                     ],
                                   ),
@@ -560,11 +600,13 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                             const Expanded(
                                                 child: Align(
                                               alignment: Alignment.centerLeft,
-                                              child: Text(
-                                                "Mg",
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 20),
+                                              child: FittedBox(
+                                                child: Text(
+                                                  "Mg",
+                                                  style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 20),
+                                                ),
                                               ),
                                             )),
                                           ],
