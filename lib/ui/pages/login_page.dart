@@ -75,25 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                                       'Contraseña:',
                                       style: TextStyle(color: Colors.white),
                                     ),
-                                    SizedBox(
-                                      width: 180,
-                                      height: 20,
-                                      child: TextField(
-                                        obscureText: true,
-                                        decoration: InputDecoration(
-                                          border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            borderSide: BorderSide(
-                                              width: 0,
-                                              style: BorderStyle.none,
-                                            ),
-                                          ),
-                                          fillColor: Constant.mainCont,
-                                          filled: true,
-                                        ),
-                                      ),
-                                    )
+                                    RoundTextInput()
                                   ])
                             ]),
                       ),
@@ -189,5 +171,33 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
         ));
+  }
+}
+
+class RoundTextInput extends StatelessWidget {
+  const RoundTextInput({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 180,
+      height: 20,
+      child: TextField(
+        obscureText: true,
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide(
+              width: 0,
+              style: BorderStyle.none,
+            ),
+          ),
+          fillColor: Constant.mainCont,
+          filled: true,
+        ),
+      ),
+    );
   }
 }

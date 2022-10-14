@@ -38,7 +38,7 @@ class MainRoundedBox extends StatelessWidget {
 class RoundTextButton extends StatelessWidget {
   const RoundTextButton(
       {Key? key,
-      required this.text,
+      required this.child,
       required this.color,
       this.width,
       this.height,
@@ -47,7 +47,7 @@ class RoundTextButton extends StatelessWidget {
   final double? width;
   final double? height;
   final Color color;
-  final Text text;
+  final Widget child;
   final double? radius;
 
   @override
@@ -62,14 +62,59 @@ class RoundTextButton extends StatelessWidget {
 
         child: TextButton(
             style: ButtonStyle(
-              backgroundColor:
-                  MaterialStateProperty.all<Color>(Constant.button),
+              backgroundColor: MaterialStateProperty.all<Color>(color),
               shape: MaterialStateProperty.all(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(radius ?? 25),
               )),
             ),
             onPressed: () {},
-            child: text),
+            child: child),
+      ),
+    );
+  }
+}
+
+class RoundTextInput extends StatelessWidget {
+  const RoundTextInput({
+    Key? key,
+    required this.color,
+    this.width,
+    this.height,
+    this.radius,
+    this.isPassword,
+    this.label,
+    this.hintStyle,
+  }) : super(key: key);
+
+  final double? width;
+  final double? height;
+  final Color color;
+  final double? radius;
+  final bool? isPassword;
+  final String? label;
+  final TextStyle? hintStyle;
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: width ?? 100,
+      height: height ?? 20,
+      child: TextField(
+        textAlign: TextAlign.left,
+        obscureText: isPassword ?? false,
+        decoration: InputDecoration(
+          contentPadding: EdgeInsets.only(left: 10),
+          hintText: label ?? '',
+          hintStyle: hintStyle ?? const TextStyle(),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(radius ?? 20),
+            borderSide: const BorderSide(
+              width: 0,
+              style: BorderStyle.none,
+            ),
+          ),
+          fillColor: color,
+          filled: true,
+        ),
       ),
     );
   }
