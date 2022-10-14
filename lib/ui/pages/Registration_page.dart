@@ -17,15 +17,17 @@ class _RegistrationPageState extends State<RegistrationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         key: Key('RegistrationScaffold'),
         body: SafeArea(
           child: Center(
             child: Container(
-              padding: const EdgeInsets.all(1),
+              padding: EdgeInsets.all(15),
               child: Column(children: [
                 MainRoundedBox(
+                    padding: 8,
                     width: double.infinity,
-                    height: 346,
+                    height: 250,
                     color: Constant.mainCont,
                     child: Column(
                       children: [
@@ -34,7 +36,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             style:
                                 TextStyle(fontSize: 45, color: Constant.title)),
                         SizedBox(
-                          height: 40,
+                          height: 30,
                         ),
                         Container(
                             padding: const EdgeInsets.all(15),
@@ -42,18 +44,19 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 width: 350.0,
                                 height: 80.0,
                                 child: Column(children: [
-                                  Expanded(
+                                  Flexible(
                                       child: Row(children: [
                                     Text('Nombre:',
                                         style: TextStyle(
                                             color: Constant.title,
                                             fontSize: 20)),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
                                     Expanded(
-                                      child: TextField(
-                                        obscureText: true,
-                                        decoration: InputDecoration(
-                                          border: OutlineInputBorder(),
-                                        ),
+                                      child: RoundTextInput(
+                                        color: Colors.white,
+                                        radius: 5,
                                       ),
                                     )
                                   ])),
@@ -63,12 +66,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         style: TextStyle(
                                             color: Constant.title,
                                             fontSize: 20)),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
                                     Expanded(
-                                      child: TextField(
-                                        obscureText: true,
-                                        decoration: InputDecoration(
-                                          border: OutlineInputBorder(),
-                                        ),
+                                      child: RoundTextInput(
+                                        color: Colors.white,
+                                        radius: 5,
                                       ),
                                     )
                                   ])),
@@ -78,27 +82,40 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         style: TextStyle(
                                             color: Constant.title,
                                             fontSize: 20)),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
                                     Expanded(
-                                      child: TextField(
-                                        obscureText: true,
-                                        decoration: InputDecoration(
-                                          border: OutlineInputBorder(),
-                                        ),
+                                      child: RoundTextInput(
+                                        color: Colors.white,
+                                        radius: 5,
                                       ),
                                     )
                                   ])),
                                 ])),
                             decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 117, 123, 128),
+                              color: Constant.inCont,
                               borderRadius: BorderRadius.circular(16),
-                            )),
-                        SizedBox(
-                          height: 40,
-                        ),
+                            ))
+                      ],
+                    )),
+                SizedBox(
+                  height: 50,
+                ),
+                MainRoundedBox(
+                    padding: 8,
+                    width: double.infinity,
+                    height: 220,
+                    color: Constant.mainCont,
+                    child: Column(
+                      children: [
                         Text('Contacto de emergencia',
                             textAlign: TextAlign.center,
                             style:
                                 TextStyle(fontSize: 40, color: Constant.title)),
+                        SizedBox(
+                          height: 30,
+                        ),
                         Container(
                             padding: const EdgeInsets.all(15),
                             child: SizedBox(
@@ -111,12 +128,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         style: TextStyle(
                                             color: Constant.title,
                                             fontSize: 20)),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
                                     Expanded(
-                                      child: TextField(
-                                        obscureText: true,
-                                        decoration: InputDecoration(
-                                          border: OutlineInputBorder(),
-                                        ),
+                                      child: RoundTextInput(
+                                        color: Colors.white,
+                                        radius: 5,
                                       ),
                                     )
                                   ])),
@@ -126,12 +144,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         style: TextStyle(
                                             color: Constant.title,
                                             fontSize: 20)),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
                                     Expanded(
-                                      child: TextField(
-                                        obscureText: true,
-                                        decoration: InputDecoration(
-                                          border: OutlineInputBorder(),
-                                        ),
+                                      child: RoundTextInput(
+                                        color: Colors.white,
+                                        radius: 5,
                                       ),
                                     )
                                   ])),
@@ -139,14 +158,31 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             decoration: BoxDecoration(
                               color: Color.fromARGB(255, 117, 123, 128),
                               borderRadius: BorderRadius.circular(16),
-                            ))
+                            )),
                       ],
                     )),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: RoundTextButton(
+                      child: Row(children: [
+                        Text(
+                          'Siguiente',
+                          style: TextStyle(color: Constant.title),
+                        ),
+                        Icon(
+                          Icons.arrow_forward,
+                          color: Colors.white,
+                          size: 30.0,
+                        )
+                      ]),
+                      color: Constant.mainCont,
+                      width: 110,
+                      height: 50,
+                    ),
+                  ),
+                )
               ]),
-              decoration: BoxDecoration(
-                color: Constant.mainCont,
-                borderRadius: BorderRadius.circular(25),
-              ),
             ),
           ),
         ));
