@@ -45,13 +45,15 @@ class RoundTextButton extends StatelessWidget {
       required this.color,
       this.width,
       this.height,
-      this.radius})
+      this.radius,
+      this.onPressed})
       : super(key: key);
   final double? width;
   final double? height;
   final Color color;
   final Widget child;
   final double? radius;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +72,7 @@ class RoundTextButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(radius ?? 25),
               )),
             ),
-            onPressed: () {},
+            onPressed: onPressed ?? () {},
             child: child),
       ),
     );

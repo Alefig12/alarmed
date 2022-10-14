@@ -67,13 +67,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_time_picker_spinner:
-    dependency: "direct main"
-    description:
-      name: flutter_time_picker_spinner
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.0"
   font_awesome_flutter:
     dependency: "direct main"
     description:
@@ -81,6 +74,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "10.2.1"
+  infinite_listview:
+    dependency: transitive
+    description:
+      name: infinite_listview
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
+  intl:
+    dependency: "direct main"
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.17.0"
   lints:
     dependency: transitive
     description:
@@ -108,7 +115,18 @@ packages:
       name: meta
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.8.0"
+=======
+    version: "1.7.0"
+  numberpicker:
+    dependency: "direct main"
+    description:
+      name: numberpicker
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.1.1"
+>>>>>>> eb6a4c9e444aefb47d3e95eac14bf3aba6d81f9f
   path:
     dependency: transitive
     description:
