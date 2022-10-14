@@ -1,6 +1,5 @@
 import 'package:alarmed/ui/pages/Registration_page.dart';
 import 'package:alarmed/ui/pages/calendar_page.dart';
-import 'package:alarmed/ui/pages/medicine_alarm.dart';
 import 'package:alarmed/ui/pages/scheduling_page.dart';
 import 'package:flutter/material.dart';
 import 'pages/login_page.dart';
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SchedulingPage(),
+      home: const LoginPage(),
     );
   }
 }
