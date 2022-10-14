@@ -9,15 +9,18 @@ class MainRoundedBox extends StatelessWidget {
     this.width,
     this.height,
     this.radius,
+    this.padding,
   }) : super(key: key);
   final double? width;
   final double? height;
   final Color color;
   final Widget child;
   final double? radius;
+  final double? padding;
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.all(padding ?? 0),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(radius ?? 25),
