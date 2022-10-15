@@ -27,76 +27,103 @@ class _LocationPageState extends State<LocationPage> {
                       fontWeight: FontWeight.bold,
                       fontSize: 40,
                       color: Colors.black)),
-              Container(
-                margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                width: 400,
-                height: 400,
-                decoration: BoxDecoration(
-                    color: Constant.secondCont,
-                    borderRadius: BorderRadius.circular(20)),
+              Expanded(
+                child: Container(
+                  margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                  width: 400,
+                  decoration: BoxDecoration(
+                      color: Constant.secondCont,
+                      borderRadius: BorderRadius.circular(20)),
+                ),
               ),
-              Container(
-                padding: EdgeInsets.all(30),
-                child: Column(children: [
-                  Container(
-                    padding: EdgeInsets.only(bottom: 18),
-                    child: Text(
-                      'Farmacia mis cositas',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.all(30),
+                  child: Column(children: [
+                    Container(
+                      padding: EdgeInsets.only(bottom: 18),
+                      child: Text(
+                        'Farmacia mis cositas',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 28),
+                      ),
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Horario',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 22,
-                              color: Constant.mainCont)),
-                      Text('9:00-10:00',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 22,
-                              color: Constant.inCont))
-                    ],
-                  ),
-                  SizedBox(height: 15),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Dirección',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 22,
-                              color: Constant.mainCont)),
-                      Text('carr 545 / 23--q1',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 22,
-                              color: Constant.inCont))
-                    ],
-                  ),
-                  SizedBox(height: 15),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Teléfono',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 22,
-                              color: Constant.mainCont)),
-                      Text('10393785',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 22,
-                              color: Constant.inCont))
-                    ],
-                  )
-                ]),
-                decoration: BoxDecoration(
-                    color: Constant.secondCont,
-                    borderRadius: BorderRadius.circular(20)),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: Text('Horario',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 22,
+                                    color: Constant.mainCont)),
+                          ),
+                          Expanded(
+                            child: FittedBox(
+                              child: Text('9:00-10:00',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22,
+                                      color: Constant.inCont)),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: Text('Dirección',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 22,
+                                    color: Constant.mainCont)),
+                          ),
+                          Expanded(
+                            child: FittedBox(
+                              child: Text('carr 545/23--q1',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22,
+                                      color: Constant.inCont)),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 15),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: Text('Teléfono',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 22,
+                                    color: Constant.mainCont)),
+                          ),
+                          Expanded(
+                            child: FittedBox(
+                              child: Text('10393785',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22,
+                                      color: Constant.inCont)),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ]),
+                  decoration: BoxDecoration(
+                      color: Constant.secondCont,
+                      borderRadius: BorderRadius.circular(20)),
+                ),
               )
             ],
           ),
