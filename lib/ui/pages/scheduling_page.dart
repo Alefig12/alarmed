@@ -1,4 +1,5 @@
 import 'package:alarmed/custom_icons_icons.dart';
+import 'package:alarmed/ui/pages/save_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:alarmed/ui/widgets/roundedbox_widget.dart';
 import 'package:alarmed/ui/assets/constant.dart';
@@ -627,6 +628,17 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                 child: RoundTextButton(
                                   width: double.infinity,
                                   color: Constant.button,
+                                  onPressed: () => showDialog<String>(
+                                      context: context,
+                                      builder: (BuildContext context) => Dialog(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        25.0)),
+                                            child: const Padding(
+                                                padding: EdgeInsets.all(3.0),
+                                                child: SaveDialog()),
+                                          )),
                                   child: const Text(
                                     "Guardar",
                                     textAlign: TextAlign.center,

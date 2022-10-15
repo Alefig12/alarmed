@@ -4,6 +4,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:alarmed/ui/assets/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({
@@ -29,26 +30,48 @@ class _CalendarPageState extends State<CalendarPage> {
               child: Container(
                   padding: EdgeInsets.all(15),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.wb_twilight,
+                      Expanded(
+                        flex: 5,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              flex: 1,
+                              child: FittedBox(
+                                child: Icon(
+                                  FontAwesomeIcons.cloudSun,
+                                  color: Colors.black,
+                                  size: 50.0,
+                                ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 5,
+                              child: FittedBox(
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    ' Buenos días!',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 200),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Icon(
+                            FontAwesomeIcons.userAstronaut,
                             color: Colors.black,
                             size: 50.0,
                           ),
-                          Text(
-                            ' Buenos días!',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 35),
-                          ),
-                        ],
-                      ),
-                      Icon(
-                        Icons.face,
-                        color: Colors.black,
-                        size: 50.0,
+                        ),
                       ),
                     ],
                   )),
@@ -59,20 +82,28 @@ class _CalendarPageState extends State<CalendarPage> {
                 padding: EdgeInsets.only(left: 30),
                 child: Column(
                   children: [
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        'este es tu',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: FittedBox(
+                          child: Text(
+                            'este es tu',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
+                          ),
+                        ),
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Horario',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 30),
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: FittedBox(
+                          child: Text(
+                            'Horario',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 30),
+                          ),
+                        ),
                       ),
                     )
                   ],
@@ -260,7 +291,7 @@ class _CalendarPageState extends State<CalendarPage> {
                                       child: FittedBox(child: Text('1:00 am'))),
                                   Expanded(
                                     child: Icon(
-                                      Icons.wb_twilight,
+                                      FontAwesomeIcons.cloudSun,
                                       color: Colors.white,
                                       size: 30.0,
                                     ),
