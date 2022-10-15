@@ -1,0 +1,7 @@
+{
+    "workbench.tree.renderIndentGuides": "none",
+    "editor.guides.indentation": false,
+    "editor.guides.bracketPairs": "active",
+    "editor.guides.bracketPairsHorizontal": true,
+    "editor.guides.highlightActiveBracketPair": false
+}
