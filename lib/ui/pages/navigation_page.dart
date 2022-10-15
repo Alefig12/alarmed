@@ -9,6 +9,7 @@ import 'package:alarmed/ui/pages/scheduling_page.dart';
 import 'package:alarmed/ui/pages/alarms_page.dart';
 import 'package:alarmed/ui/pages/help_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'dart:math' as math;
 
 class NavigationPage extends StatefulWidget {
   const NavigationPage({Key? key}) : super(key: key);
@@ -141,11 +142,14 @@ class _NavigationPageState extends State<NavigationPage> {
                   width: 60,
                   height: 60,
                   color: Constant.inCont,
-                  child: const Center(
-                    child: Icon(
-                      CustomIcons.pill,
-                      color: Colors.white,
-                      size: 40,
+                  child: Center(
+                    child: Transform.rotate(
+                      angle: -math.pi / 1.65,
+                      child: Icon(
+                        CustomIcons.pill,
+                        color: Colors.white,
+                        size: 40,
+                      ),
                     ),
                   ),
                 ),

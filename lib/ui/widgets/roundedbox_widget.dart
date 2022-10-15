@@ -26,11 +26,11 @@ class MainRoundedBox extends StatelessWidget {
         borderRadius: BorderRadius.circular(radius ?? 25),
       ),
       child: SizedBox(
-        //Si width = null,pone 50. Si width != null , pone height
-        width: width ?? 50,
+        //Si width = null,pone 50. Si width != null , pone width
+        width: width,
 
         //Si height = null,pone 50. Si height != null , pone height
-        height: height ?? 50,
+        height: height,
 
         child: child,
       ),
@@ -60,10 +60,10 @@ class RoundTextButton extends StatelessWidget {
     return Container(
       child: SizedBox(
         //Si width = null,pone 50. Si width != null , pone height
-        width: width ?? 50,
+        width: width,
 
         //Si height = null,pone 50. Si height != null , pone height
-        height: height ?? 50,
+        height: height,
 
         child: TextButton(
             style: ButtonStyle(
