@@ -24,156 +24,172 @@ class _RegistrationPageState extends State<RegistrationPage> {
             child: Container(
               padding: EdgeInsets.all(15),
               child: Column(children: [
-                MainRoundedBox(
-                    padding: 8,
-                    width: double.infinity,
-                    height: 250,
-                    color: Constant.mainCont,
-                    child: Column(
-                      children: [
-                        Text('Información Personal',
-                            textAlign: TextAlign.center,
-                            style:
-                                TextStyle(fontSize: 45, color: Constant.title)),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Container(
-                            padding: const EdgeInsets.all(15),
-                            child: SizedBox(
-                                width: 350.0,
-                                height: 80.0,
-                                child: Column(children: [
-                                  Flexible(
-                                      child: Row(children: [
-                                    Text('Nombre:',
-                                        style: TextStyle(
-                                            color: Constant.title,
-                                            fontSize: 20)),
-                                    SizedBox(
-                                      width: 8,
-                                    ),
-                                    Expanded(
-                                      child: RoundTextInput(
-                                        color: Colors.white,
-                                        radius: 5,
-                                      ),
-                                    )
-                                  ])),
-                                  Expanded(
-                                      child: Row(children: [
-                                    Text('Edad:',
-                                        style: TextStyle(
-                                            color: Constant.title,
-                                            fontSize: 20)),
-                                    SizedBox(
-                                      width: 8,
-                                    ),
-                                    Expanded(
-                                      child: RoundTextInput(
-                                        color: Colors.white,
-                                        radius: 5,
-                                      ),
-                                    )
-                                  ])),
-                                  Expanded(
-                                      child: Row(children: [
-                                    Text('Enfermedades:',
-                                        style: TextStyle(
-                                            color: Constant.title,
-                                            fontSize: 20)),
-                                    SizedBox(
-                                      width: 8,
-                                    ),
-                                    Expanded(
-                                      child: RoundTextInput(
-                                        color: Colors.white,
-                                        radius: 5,
-                                      ),
-                                    )
-                                  ])),
-                                ])),
-                            decoration: BoxDecoration(
-                              color: Constant.inCont,
-                              borderRadius: BorderRadius.circular(16),
-                            ))
-                      ],
-                    )),
-                SizedBox(
-                  height: 50,
-                ),
-                MainRoundedBox(
-                    padding: 8,
-                    width: double.infinity,
-                    height: 220,
-                    color: Constant.mainCont,
-                    child: Column(
-                      children: [
-                        Text('Contacto de emergencia',
-                            textAlign: TextAlign.center,
-                            style:
-                                TextStyle(fontSize: 40, color: Constant.title)),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Container(
-                            padding: const EdgeInsets.all(15),
-                            child: SizedBox(
-                                width: 350.0,
-                                height: 60.0,
-                                child: Column(children: [
-                                  Expanded(
-                                      child: Row(children: [
-                                    Text('Nombre:',
-                                        style: TextStyle(
-                                            color: Constant.title,
-                                            fontSize: 20)),
-                                    SizedBox(
-                                      width: 8,
-                                    ),
-                                    Expanded(
-                                      child: RoundTextInput(
-                                        color: Colors.white,
-                                        radius: 5,
-                                      ),
-                                    )
-                                  ])),
-                                  Expanded(
-                                      child: Row(children: [
-                                    Text('Celular:',
-                                        style: TextStyle(
-                                            color: Constant.title,
-                                            fontSize: 20)),
-                                    SizedBox(
-                                      width: 8,
-                                    ),
-                                    Expanded(
-                                      child: RoundTextInput(
-                                        color: Colors.white,
-                                        radius: 5,
-                                      ),
-                                    )
-                                  ])),
-                                ])),
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 117, 123, 128),
-                              borderRadius: BorderRadius.circular(16),
-                            )),
-                      ],
-                    )),
                 Expanded(
+                  flex: 6,
+                  child: MainRoundedBox(
+                      padding: 8,
+                      width: double.infinity,
+                      height: 250,
+                      color: Constant.mainCont,
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: FittedBox(
+                              child: Text('Información \nPersonal',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 45, color: Constant.title)),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                                padding: const EdgeInsets.all(15),
+                                child: SizedBox(
+                                    width: double.infinity,
+                                    child: Column(children: [
+                                      Row(children: [
+                                        Text('Nombre:',
+                                            style: TextStyle(
+                                                color: Constant.title,
+                                                fontSize: 20)),
+                                        SizedBox(
+                                          width: 8,
+                                        ),
+                                        Expanded(
+                                          child: RoundTextInput(
+                                            color: Colors.white,
+                                            radius: 5,
+                                          ),
+                                        )
+                                      ]),
+                                      Expanded(
+                                          child: Row(children: [
+                                        Text('Edad:',
+                                            style: TextStyle(
+                                                color: Constant.title,
+                                                fontSize: 20)),
+                                        SizedBox(
+                                          width: 8,
+                                        ),
+                                        Expanded(
+                                          child: RoundTextInput(
+                                            color: Colors.white,
+                                            radius: 5,
+                                          ),
+                                        )
+                                      ])),
+                                      Expanded(
+                                          child: Row(children: [
+                                        Text('Enfermedades:',
+                                            style: TextStyle(
+                                                color: Constant.title,
+                                                fontSize: 20)),
+                                        SizedBox(
+                                          width: 8,
+                                        ),
+                                        Expanded(
+                                          child: RoundTextInput(
+                                            color: Colors.white,
+                                            radius: 5,
+                                          ),
+                                        )
+                                      ])),
+                                    ])),
+                                decoration: BoxDecoration(
+                                  color: Constant.inCont,
+                                  borderRadius: BorderRadius.circular(16),
+                                )),
+                          )
+                        ],
+                      )),
+                ),
+                SizedBox(height: 20),
+                Expanded(
+                  flex: 6,
+                  child: MainRoundedBox(
+                      padding: 8,
+                      width: double.infinity,
+                      height: 220,
+                      color: Constant.mainCont,
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: FittedBox(
+                              child: Text('Contacto de \nemergencia',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 40, color: Constant.title)),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                                padding: const EdgeInsets.all(15),
+                                child: SizedBox(
+                                    width: 350.0,
+                                    height: 60.0,
+                                    child: Column(children: [
+                                      Expanded(
+                                          child: Row(children: [
+                                        Text('Nombre:',
+                                            style: TextStyle(
+                                                color: Constant.title,
+                                                fontSize: 20)),
+                                        SizedBox(
+                                          width: 8,
+                                        ),
+                                        Expanded(
+                                          child: RoundTextInput(
+                                            color: Colors.white,
+                                            radius: 5,
+                                          ),
+                                        )
+                                      ])),
+                                      Expanded(
+                                          child: Row(children: [
+                                        Text('Celular:',
+                                            style: TextStyle(
+                                                color: Constant.title,
+                                                fontSize: 20)),
+                                        SizedBox(
+                                          width: 8,
+                                        ),
+                                        Expanded(
+                                          child: RoundTextInput(
+                                            color: Colors.white,
+                                            radius: 5,
+                                          ),
+                                        )
+                                      ])),
+                                    ])),
+                                decoration: BoxDecoration(
+                                  color: Constant.mainCont,
+                                  borderRadius: BorderRadius.circular(16),
+                                )),
+                          ),
+                        ],
+                      )),
+                ),
+                SizedBox(height: 10),
+                Expanded(
+                  flex: 1,
                   child: Align(
                     alignment: Alignment.bottomRight,
                     child: RoundTextButton(
                       child: Row(children: [
-                        Text(
-                          'Siguiente',
-                          style: TextStyle(color: Constant.title),
+                        Expanded(
+                          flex: 3,
+                          child: Text(
+                            'Siguiente',
+                            style: TextStyle(color: Constant.title),
+                          ),
                         ),
-                        Icon(
-                          Icons.arrow_forward,
-                          color: Colors.white,
-                          size: 30.0,
+                        Expanded(
+                          flex: 1,
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                            size: 30.0,
+                          ),
                         )
                       ]),
                       color: Constant.mainCont,

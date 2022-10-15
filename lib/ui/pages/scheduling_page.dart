@@ -4,6 +4,7 @@ import 'package:alarmed/ui/widgets/roundedbox_widget.dart';
 import 'package:alarmed/ui/assets/constant.dart';
 import 'package:intl/intl.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'dart:math' as math;
 
 class SchedulingPage extends StatefulWidget {
   const SchedulingPage({Key? key}) : super(key: key);
@@ -96,15 +97,18 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                   flex: 1,
                                   child: Center(
                                     child: MainRoundedBox(
-                                      radius: 30,
-                                      width: 60,
-                                      height: 60,
+                                      radius: 40,
+                                      width: 50,
+                                      height: 50,
                                       color: Constant.inCont,
-                                      child: const Center(
-                                        child: Icon(
-                                          CustomIcons.pill,
-                                          color: Colors.white,
-                                          size: 40,
+                                      child: Center(
+                                        child: Transform.rotate(
+                                          angle: -math.pi / 1.65,
+                                          child: const Icon(
+                                            CustomIcons.pill,
+                                            color: Colors.white,
+                                            size: 40,
+                                          ),
                                         ),
                                       ),
                                     ),

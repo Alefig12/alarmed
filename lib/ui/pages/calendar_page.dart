@@ -24,425 +24,453 @@ class _CalendarPageState extends State<CalendarPage> {
                 child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-                padding: EdgeInsets.all(15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.wb_twilight,
-                          color: Colors.black,
-                          size: 50.0,
-                        ),
-                        Text(
-                          ' Buenos días!',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 35),
-                        ),
-                      ],
-                    ),
-                    Icon(
-                      Icons.face,
-                      color: Colors.black,
-                      size: 50.0,
-                    ),
-                  ],
-                )),
-            Container(
-              padding: EdgeInsets.only(left: 30),
-              child: Column(
-                children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      'este es tu',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Horario',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.only(right: 10),
-              child: Align(
-                  alignment: Alignment.bottomRight,
-                  child: Container(
-                    padding: EdgeInsets.all(8),
-                    child: DropDownMenu(),
-                    decoration: BoxDecoration(
-                        color: Constant.mainCont,
-                        borderRadius: BorderRadius.circular(30)),
+            Expanded(
+              flex: 4,
+              child: Container(
+                  padding: EdgeInsets.all(15),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.wb_twilight,
+                            color: Colors.black,
+                            size: 50.0,
+                          ),
+                          Text(
+                            ' Buenos días!',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 35),
+                          ),
+                        ],
+                      ),
+                      Icon(
+                        Icons.face,
+                        color: Colors.black,
+                        size: 50.0,
+                      ),
+                    ],
                   )),
             ),
             Expanded(
+              flex: 4,
+              child: Container(
+                padding: EdgeInsets.only(left: 30),
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Text(
+                        'este es tu',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Horario',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 30),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 3,
+              child: Container(
+                padding: EdgeInsets.only(right: 10),
+                child: Align(
+                    alignment: Alignment.bottomRight,
+                    child: Container(
+                      padding: EdgeInsets.all(8),
+                      child: DropDownMenu(),
+                      decoration: BoxDecoration(
+                          color: Constant.mainCont,
+                          borderRadius: BorderRadius.circular(30)),
+                    )),
+              ),
+            ),
+            Expanded(
+              flex: 20,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: <Widget>[
+                children: [
                   Column(children: [
-                    Container(
-                        padding: EdgeInsets.all(10),
-                        child: Row(
-                          children: [
-                            Container(
-                                width: 80,
-                                height: 45,
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Text('Hora',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold)),
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Constant.mainCont,
-                                  borderRadius: BorderRadius.circular(20),
-                                )),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Container(
-                                width: 80,
-                                height: 45,
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Text('Lunes',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold)),
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Constant.secondCont,
-                                  borderRadius: BorderRadius.circular(20),
-                                )),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Container(
-                                width: 80,
-                                height: 45,
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Text('Martes',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold)),
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Constant.secondCont,
-                                  borderRadius: BorderRadius.circular(20),
-                                )),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Container(
-                                width: 80,
-                                height: 45,
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Text('Miércoles',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold)),
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Constant.secondCont,
-                                  borderRadius: BorderRadius.circular(20),
-                                )),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Container(
-                                width: 80,
-                                height: 45,
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Text('Jueves',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold)),
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Constant.secondCont,
-                                  borderRadius: BorderRadius.circular(20),
-                                )),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Container(
-                                width: 80,
-                                height: 45,
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Container(
-                                    child: Text('Viernes',
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                          padding: EdgeInsets.all(10),
+                          child: Row(
+                            children: [
+                              Container(
+                                  width: 80,
+                                  height: 45,
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text('Hora',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold)),
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Constant.mainCont,
+                                    borderRadius: BorderRadius.circular(20),
+                                  )),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Container(
+                                  width: 80,
+                                  height: 45,
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text('Lunes',
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.bold)),
                                   ),
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Constant.secondCont,
-                                  borderRadius: BorderRadius.circular(20),
-                                )),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Container(
-                                width: 80,
-                                height: 45,
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Text('Sábado',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold)),
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Constant.secondCont,
-                                  borderRadius: BorderRadius.circular(20),
-                                )),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            Container(
-                                width: 80,
-                                height: 45,
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Container(
-                                    child: Text('Domingo',
+                                  decoration: BoxDecoration(
+                                    color: Constant.secondCont,
+                                    borderRadius: BorderRadius.circular(20),
+                                  )),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Container(
+                                  width: 80,
+                                  height: 45,
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text('Martes',
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontWeight: FontWeight.bold)),
                                   ),
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Constant.secondCont,
-                                  borderRadius: BorderRadius.circular(20),
-                                )),
-                          ],
-                        )),
-                    Container(
-                      padding: EdgeInsets.only(top: 10),
-                      child: Row(children: [
-                        Container(
-                            padding: EdgeInsets.all(10),
-                            width: 80,
-                            child: Column(
-                              children: [
-                                Text('1:00 am'),
-                                Icon(
-                                  Icons.wb_twilight,
-                                  color: Colors.white,
-                                  size: 30.0,
-                                ),
-                                Text('12:00 pm')
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                              color: Constant.mainCont,
-                              borderRadius: BorderRadius.circular(12),
-                            )),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(listPill: [
-                          Row(children: [
-                            Icon(
-                              Icons.vaccines,
-                              color: Colors.black,
-                            ),
-                            Text('puya')
-                          ]),
-                          Text('break'),
-                          Text('pastilla'),
-                          Text('pastilla'),
-                        ]),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(listPill: [
-                          Text('pastilla'),
-                          Text('break'),
-                          Text('pastilla'),
-                          Text('pastilla'),
-                          Text('pastilla')
-                        ]),
-                      ]),
+                                  decoration: BoxDecoration(
+                                    color: Constant.secondCont,
+                                    borderRadius: BorderRadius.circular(20),
+                                  )),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Container(
+                                  width: 80,
+                                  height: 45,
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text('Miércoles',
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold)),
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Constant.secondCont,
+                                    borderRadius: BorderRadius.circular(20),
+                                  )),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Container(
+                                  width: 80,
+                                  height: 45,
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text('Jueves',
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold)),
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Constant.secondCont,
+                                    borderRadius: BorderRadius.circular(20),
+                                  )),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Container(
+                                  width: 80,
+                                  height: 45,
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      child: Text('Viernes',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold)),
+                                    ),
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Constant.secondCont,
+                                    borderRadius: BorderRadius.circular(20),
+                                  )),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Container(
+                                  width: 80,
+                                  height: 45,
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text('Sábado',
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold)),
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Constant.secondCont,
+                                    borderRadius: BorderRadius.circular(20),
+                                  )),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Container(
+                                  width: 80,
+                                  height: 45,
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      child: Text('Domingo',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold)),
+                                    ),
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Constant.secondCont,
+                                    borderRadius: BorderRadius.circular(20),
+                                  )),
+                            ],
+                          )),
                     ),
-                    Container(
-                      padding: EdgeInsets.only(top: 10),
-                      child: Row(children: [
-                        Container(
-                            padding: EdgeInsets.all(10),
-                            width: 80,
-                            child: Column(
-                              children: [
-                                Text('1:00 pm'),
-                                Icon(
-                                  Icons.light_mode,
-                                  color: Colors.white,
-                                  size: 30.0,
-                                ),
-                                Text('6:00 pm')
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                              color: Constant.mainCont,
-                              borderRadius: BorderRadius.circular(12),
-                            )),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(listPill: [
-                          Text('pastilla'),
-                          Text('break'),
-                          Text('pastilla'),
-                          Text('pastilla')
+                    Expanded(
+                      flex: 5,
+                      child: Container(
+                        padding: EdgeInsets.only(top: 10),
+                        child: Row(children: [
+                          Container(
+                              padding: EdgeInsets.all(10),
+                              width: 80,
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                      child: FittedBox(child: Text('1:00 am'))),
+                                  Expanded(
+                                    child: Icon(
+                                      Icons.wb_twilight,
+                                      color: Colors.white,
+                                      size: 30.0,
+                                    ),
+                                  ),
+                                  Expanded(
+                                      child: FittedBox(child: Text('12:00 pm')))
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                color: Constant.mainCont,
+                                borderRadius: BorderRadius.circular(12),
+                              )),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(listPill: [
+                            Row(children: [
+                              Icon(
+                                Icons.vaccines,
+                                color: Colors.black,
+                              ),
+                              Text('puya')
+                            ]),
+                            Text('break'),
+                            Text('pastilla'),
+                          ]),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(
+                              listPill: [Text('pastilla'), Text('break')]),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(
+                              listPill: [Text('pastilla'), Text('break')]),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(
+                              listPill: [Text('pastilla'), Text('break')]),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(
+                              listPill: [Text('pastilla'), Text('break')]),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(
+                              listPill: [Text('pastilla'), Text('break')]),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(listPill: [
+                            Text('pastilla'),
+                            Text('break'),
+                            Text('pastilla'),
+                            Text('pastilla'),
+                            Text('pastilla')
+                          ]),
                         ]),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(listPill: [
-                          Text('pastilla'),
-                          Text('break'),
-                          Text('pastilla')
-                        ]),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(
-                          listPill: [
+                      ),
+                    ),
+                    Expanded(
+                      flex: 5,
+                      child: Container(
+                        padding: EdgeInsets.only(top: 10),
+                        child: Row(children: [
+                          Container(
+                              padding: EdgeInsets.all(10),
+                              width: 80,
+                              child: Column(
+                                children: [
+                                  Text('1:00 pm'),
+                                  Icon(
+                                    Icons.light_mode,
+                                    color: Colors.white,
+                                    size: 30.0,
+                                  ),
+                                  Text('6:00 pm')
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                color: Constant.mainCont,
+                                borderRadius: BorderRadius.circular(12),
+                              )),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(listPill: [
+                            Text('pastilla'),
+                            Text('break'),
+                            Text('pastilla'),
+                            Text('pastilla')
+                          ]),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(listPill: [
                             Text('pastilla'),
                             Text('break'),
                             Text('pastilla')
-                          ],
-                        ),
-                      ]),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(top: 10),
-                      child: Row(children: [
-                        Container(
-                            padding: EdgeInsets.all(10),
-                            width: 80,
-                            child: Column(
-                              children: [
-                                Text('7:00 am'),
-                                Icon(
-                                  Icons.nightlight_round,
-                                  color: Colors.white,
-                                  size: 30.0,
-                                ),
-                                Text('12:00 am')
-                              ],
-                            ),
-                            decoration: BoxDecoration(
-                              color: Constant.mainCont,
-                              borderRadius: BorderRadius.circular(12),
-                            )),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(listPill: [
-                          Text('pastilla'),
-                          Text('break'),
-                          Text('pastilla'),
-                          Text('pastilla'),
+                          ]),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(
+                              listPill: [Text('pastilla'), Text('break')]),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(
+                              listPill: [Text('pastilla'), Text('break')]),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(
+                              listPill: [Text('pastilla'), Text('break')]),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(
+                              listPill: [Text('pastilla'), Text('break')]),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(
+                            listPill: [
+                              Text('pastilla'),
+                              Text('break'),
+                              Text('pastilla')
+                            ],
+                          ),
                         ]),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        itemCalendar(
-                            listPill: [Text('pastilla'), Text('break')]),
-                      ]),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 5,
+                      child: Container(
+                        padding: EdgeInsets.only(top: 10),
+                        child: Row(children: [
+                          Container(
+                              padding: EdgeInsets.all(10),
+                              width: 80,
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                      child: FittedBox(child: Text('7:00 am'))),
+                                  Expanded(
+                                    child: Icon(
+                                      Icons.nightlight_round,
+                                      color: Colors.white,
+                                      size: 30.0,
+                                    ),
+                                  ),
+                                  Expanded(
+                                      child: FittedBox(child: Text('12:00 am')))
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                color: Constant.mainCont,
+                                borderRadius: BorderRadius.circular(12),
+                              )),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(
+                              listPill: [Text('pastilla'), Text('break')]),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(
+                              listPill: [Text('pastilla'), Text('break')]),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(listPill: [
+                            Text('pastilla'),
+                            Text('break'),
+                            Text('pastilla'),
+                            Text('pastilla'),
+                          ]),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(
+                              listPill: [Text('pastilla'), Text('break')]),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(
+                              listPill: [Text('pastilla'), Text('break')]),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(
+                              listPill: [Text('pastilla'), Text('break')]),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          itemCalendar(
+                              listPill: [Text('pastilla'), Text('break')]),
+                        ]),
+                      ),
                     )
                   ])
                 ],
               ),
             ),
-            Text('Bottom navigation bar')
           ],
         ))));
   }
@@ -498,9 +526,11 @@ class itemCalendar extends StatelessWidget {
         padding: EdgeInsets.all(5),
         alignment: Alignment.center,
         width: 80,
-        child: Column(
-          children: listPill,
-        ),
+        child: ListView(children: [
+          Column(
+            children: listPill,
+          ),
+        ]),
         decoration: BoxDecoration(
           color: Constant.secondCont,
           borderRadius: BorderRadius.circular(12),
