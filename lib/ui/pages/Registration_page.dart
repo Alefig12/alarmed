@@ -5,6 +5,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:alarmed/ui/assets/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({Key? key}) : super(key: key);
@@ -20,13 +21,74 @@ class _RegistrationPageState extends State<RegistrationPage> {
         resizeToAvoidBottomInset: false,
         key: Key('RegistrationScaffold'),
         body: SafeArea(
-          child: Center(
-            child: Container(
-              padding: EdgeInsets.all(15),
-              child: Column(children: [
-                Expanded(
-                  flex: 6,
-                  child: MainRoundedBox(
+          child: SingleChildScrollView(
+            child: Center(
+              child: Container(
+                padding: EdgeInsets.all(15),
+                child: Column(children: [
+                  MainRoundedBox(
+                    child: Column(
+                      children: [
+                        Text('Cuenta',
+                            textAlign: TextAlign.center,
+                            style:
+                                TextStyle(fontSize: 30, color: Colors.white)),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: MainRoundedBox(
+                            padding: 10,
+                            radius: 10,
+                            color: Constant.inCont,
+                            child: Column(children: [
+                              Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Expanded(
+                                      flex: 1,
+                                      child: Text('Usuario:',
+                                          style:
+                                              TextStyle(color: Colors.white)),
+                                    ),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
+                                    Expanded(
+                                        flex: 4,
+                                        child: RoundTextInput(
+                                            color: Constant.mainCont)),
+                                  ]),
+                              SizedBox(
+                                height: 8,
+                              ),
+                              Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Expanded(
+                                      flex: 2,
+                                      child: Text(
+                                        'Contraseña:',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
+                                    Expanded(
+                                        flex: 4,
+                                        child: RoundTextInput(
+                                            color: Constant.mainCont))
+                                  ])
+                            ]),
+                          ),
+                        ),
+                      ],
+                    ),
+                    color: Constant.mainCont,
+                  ),
+                  SizedBox(height: 10),
+                  MainRoundedBox(
                       padding: 8,
                       width: double.infinity,
                       height: 250,
@@ -43,7 +105,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           ),
                           Expanded(
                             child: Container(
-                                padding: const EdgeInsets.all(15),
+                                padding: const EdgeInsets.all(10),
                                 child: SizedBox(
                                     width: double.infinity,
                                     child: Column(children: [
@@ -57,9 +119,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         ),
                                         Expanded(
                                           child: RoundTextInput(
-                                            color: Colors.white,
-                                            radius: 5,
-                                          ),
+                                              color: Constant.mainCont),
                                         )
                                       ]),
                                       Expanded(
@@ -73,9 +133,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         ),
                                         Expanded(
                                           child: RoundTextInput(
-                                            color: Colors.white,
-                                            radius: 5,
-                                          ),
+                                              color: Constant.mainCont),
                                         )
                                       ])),
                                       Expanded(
@@ -89,9 +147,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         ),
                                         Expanded(
                                           child: RoundTextInput(
-                                            color: Colors.white,
-                                            radius: 5,
-                                          ),
+                                              color: Constant.mainCont),
                                         )
                                       ])),
                                     ])),
@@ -102,12 +158,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           )
                         ],
                       )),
-                ),
-                SizedBox(height: 20),
-                Expanded(
-                  flex: 6,
-                  child: MainRoundedBox(
-                      padding: 8,
+                  SizedBox(height: 10),
+                  MainRoundedBox(
+                      padding: 6,
                       width: double.infinity,
                       height: 220,
                       color: Constant.mainCont,
@@ -118,7 +171,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               child: Text('Contacto de \nemergencia',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      fontSize: 40, color: Constant.title)),
+                                      fontSize: 40,
+                                      color: Constant.title,
+                                      height: 1.5)),
                             ),
                           ),
                           Expanded(
@@ -139,9 +194,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         ),
                                         Expanded(
                                           child: RoundTextInput(
-                                            color: Colors.white,
-                                            radius: 5,
-                                          ),
+                                              color: Constant.inCont),
                                         )
                                       ])),
                                       Expanded(
@@ -155,9 +208,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         ),
                                         Expanded(
                                           child: RoundTextInput(
-                                            color: Colors.white,
-                                            radius: 5,
-                                          ),
+                                              color: Constant.inCont),
                                         )
                                       ])),
                                     ])),
@@ -168,11 +219,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           ),
                         ],
                       )),
-                ),
-                SizedBox(height: 10),
-                Expanded(
-                  flex: 1,
-                  child: Align(
+                  SizedBox(height: 10),
+                  Align(
                     alignment: Alignment.bottomRight,
                     child: RoundTextButton(
                       child: Row(children: [
@@ -180,7 +228,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           flex: 3,
                           child: Text(
                             'Siguiente',
-                            style: TextStyle(color: Constant.title),
+                            style: TextStyle(
+                                color: Constant.title,
+                                fontWeight: FontWeight.w400),
                           ),
                         ),
                         Expanded(
@@ -196,9 +246,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       width: 110,
                       height: 50,
                     ),
-                  ),
-                )
-              ]),
+                  )
+                ]),
+              ),
             ),
           ),
         ));
