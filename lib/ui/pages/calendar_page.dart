@@ -1,10 +1,15 @@
 // ignore_for_file: sort_child_properties_last, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:alarmed/ui/controllers/alarm_controller.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:alarmed/ui/assets/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+
+import '../../domain/entities/alarm.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({
@@ -16,8 +21,18 @@ class CalendarPage extends StatefulWidget {
 }
 
 class _CalendarPageState extends State<CalendarPage> {
+  List weekDays = [
+    'lunes',
+    'martes',
+    'miércoles',
+    'jueves',
+    'viernes',
+    'sábado',
+    'domingo',
+  ];
   @override
   Widget build(BuildContext context) {
+    AlarmController alarmController = Get.find();
     return Scaffold(
         key: Key('CalendarScaffold'),
         body: SafeArea(
@@ -282,6 +297,7 @@ class _CalendarPageState extends State<CalendarPage> {
                       child: Container(
                         padding: EdgeInsets.only(top: 10),
                         child: Row(children: [
+                          SizedBox(width: 17),
                           Container(
                               padding: EdgeInsets.all(10),
                               width: 80,
@@ -307,52 +323,43 @@ class _CalendarPageState extends State<CalendarPage> {
                           SizedBox(
                             width: 20,
                           ),
-                          itemCalendar(listPill: [
-                            Row(children: [
-                              Icon(
-                                Icons.vaccines,
-                                color: Colors.black,
+                          Row(
+                            children: List.generate(
+                              weekDays.length,
+                              (index) => Row(
+                                children: [
+                                  itemCalendar(
+                                    listPill: () {
+                                      List<Widget> texts = [];
+
+                                      String day = '';
+                                      for (var i
+                                          in alarmController.morningList) {
+                                        day = DateFormat.EEEE('es-ES')
+                                            .format(i.getDate());
+                                        print(day.toLowerCase());
+                                        print('---');
+                                        print(weekDays[index].toLowerCase());
+                                        print('-_-_-_-_');
+
+                                        if (day.toLowerCase() ==
+                                            weekDays[index].toLowerCase()) {
+                                          print('sienre');
+                                          texts.add(Text(i.getPillName()));
+                                        }
+                                      }
+
+                                      print(texts);
+                                      return texts;
+                                    }(),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  )
+                                ],
                               ),
-                              Text('puya')
-                            ]),
-                            Text('break'),
-                            Text('pastilla'),
-                          ]),
-                          SizedBox(
-                            width: 20,
+                            ),
                           ),
-                          itemCalendar(
-                              listPill: [Text('pastilla'), Text('break')]),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          itemCalendar(
-                              listPill: [Text('pastilla'), Text('break')]),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          itemCalendar(
-                              listPill: [Text('pastilla'), Text('break')]),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          itemCalendar(
-                              listPill: [Text('pastilla'), Text('break')]),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          itemCalendar(
-                              listPill: [Text('pastilla'), Text('break')]),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          itemCalendar(listPill: [
-                            Text('pastilla'),
-                            Text('break'),
-                            Text('pastilla'),
-                            Text('pastilla'),
-                            Text('pastilla')
-                          ]),
                         ]),
                       ),
                     ),
@@ -361,6 +368,7 @@ class _CalendarPageState extends State<CalendarPage> {
                       child: Container(
                         padding: EdgeInsets.only(top: 10),
                         child: Row(children: [
+                          SizedBox(width: 17),
                           Container(
                               padding: EdgeInsets.all(10),
                               width: 80,
@@ -382,49 +390,42 @@ class _CalendarPageState extends State<CalendarPage> {
                           SizedBox(
                             width: 20,
                           ),
-                          itemCalendar(listPill: [
-                            Text('pastilla'),
-                            Text('break'),
-                            Text('pastilla'),
-                            Text('pastilla')
-                          ]),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          itemCalendar(listPill: [
-                            Text('pastilla'),
-                            Text('break'),
-                            Text('pastilla')
-                          ]),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          itemCalendar(
-                              listPill: [Text('pastilla'), Text('break')]),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          itemCalendar(
-                              listPill: [Text('pastilla'), Text('break')]),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          itemCalendar(
-                              listPill: [Text('pastilla'), Text('break')]),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          itemCalendar(
-                              listPill: [Text('pastilla'), Text('break')]),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          itemCalendar(
-                            listPill: [
-                              Text('pastilla'),
-                              Text('break'),
-                              Text('pastilla')
-                            ],
+                          Row(
+                            children: List.generate(
+                              weekDays.length,
+                              (index) => Row(
+                                children: [
+                                  itemCalendar(
+                                    listPill: () {
+                                      List<Widget> texts = [];
+
+                                      String day = '';
+                                      for (var i
+                                          in alarmController.afternoonList) {
+                                        day = DateFormat.EEEE('es-ES')
+                                            .format(i.getDate());
+                                        print(day.toLowerCase());
+                                        print('---');
+                                        print(weekDays[index].toLowerCase());
+                                        print('-_-_-_-_');
+
+                                        if (day.toLowerCase() ==
+                                            weekDays[index].toLowerCase()) {
+                                          print('sienre');
+                                          texts.add(Text(i.getPillName()));
+                                        }
+                                      }
+
+                                      print(texts);
+                                      return texts;
+                                    }(),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  )
+                                ],
+                              ),
+                            ),
                           ),
                         ]),
                       ),
@@ -434,6 +435,7 @@ class _CalendarPageState extends State<CalendarPage> {
                       child: Container(
                         padding: EdgeInsets.only(top: 10),
                         child: Row(children: [
+                          SizedBox(width: 17),
                           Container(
                               padding: EdgeInsets.all(10),
                               width: 80,
@@ -459,42 +461,42 @@ class _CalendarPageState extends State<CalendarPage> {
                           SizedBox(
                             width: 20,
                           ),
-                          itemCalendar(
-                              listPill: [Text('pastilla'), Text('break')]),
-                          SizedBox(
-                            width: 20,
+                          Row(
+                            children: List.generate(
+                              weekDays.length,
+                              (index) => Row(
+                                children: [
+                                  itemCalendar(
+                                    listPill: () {
+                                      List<Widget> texts = [];
+
+                                      String day = '';
+                                      for (var i in alarmController.nightList) {
+                                        day = DateFormat.EEEE('es-ES')
+                                            .format(i.getDate());
+                                        print(day.toLowerCase());
+                                        print('---');
+                                        print(weekDays[index].toLowerCase());
+                                        print('-_-_-_-_');
+
+                                        if (day.toLowerCase() ==
+                                            weekDays[index].toLowerCase()) {
+                                          print('sienre');
+                                          texts.add(Text(i.getPillName()));
+                                        }
+                                      }
+
+                                      print(texts);
+                                      return texts;
+                                    }(),
+                                  ),
+                                  SizedBox(
+                                    width: 20,
+                                  )
+                                ],
+                              ),
+                            ),
                           ),
-                          itemCalendar(
-                              listPill: [Text('pastilla'), Text('break')]),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          itemCalendar(listPill: [
-                            Text('pastilla'),
-                            Text('break'),
-                            Text('pastilla'),
-                            Text('pastilla'),
-                          ]),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          itemCalendar(
-                              listPill: [Text('pastilla'), Text('break')]),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          itemCalendar(
-                              listPill: [Text('pastilla'), Text('break')]),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          itemCalendar(
-                              listPill: [Text('pastilla'), Text('break')]),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          itemCalendar(
-                              listPill: [Text('pastilla'), Text('break')]),
                         ]),
                       ),
                     )

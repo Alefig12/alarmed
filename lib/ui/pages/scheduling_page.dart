@@ -1,4 +1,5 @@
 import 'package:alarmed/custom_icons_icons.dart';
+import 'package:alarmed/ui/controllers/alarm_controller.dart';
 import 'package:alarmed/ui/pages/save_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:alarmed/ui/widgets/roundedbox_widget.dart';
@@ -6,6 +7,7 @@ import 'package:alarmed/ui/assets/constant.dart';
 import 'package:intl/intl.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'dart:math' as math;
+import 'package:get/get.dart';
 
 class SchedulingPage extends StatefulWidget {
   const SchedulingPage({Key? key}) : super(key: key);
@@ -29,21 +31,29 @@ class _SchedulingPageState extends State<SchedulingPage> {
     }
   }
 
-  DateTime _date = DateTime.now();
+  DateTime _sDate = DateTime.now();
   String sDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
+  DateTime _eDate = DateTime.now();
+  String eDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
+  List<bool> daysIndex = [false, false, false, false, false, false, false];
 
-  void _selectDate() async {
+  void _selectDate(bool startEnd) async {
     final DateTime? newDate = await showDatePicker(
       context: context,
-      initialDate: _date,
+      initialDate: startEnd ? _sDate : _eDate,
       firstDate: DateTime.now(),
       lastDate: DateTime(2032, 7),
       helpText: 'Selecciona una fecha',
     );
     if (newDate != null) {
       setState(() {
-        _date = newDate;
-        sDate = DateFormat('yyyy-MM-dd').format(newDate);
+        if (startEnd) {
+          _sDate = newDate;
+          sDate = DateFormat('yyyy-MM-dd').format(newDate);
+        } else {
+          _eDate = newDate;
+          eDate = DateFormat('yyyy-MM-dd').format(newDate);
+        }
       });
     }
   }
@@ -51,8 +61,15 @@ class _SchedulingPageState extends State<SchedulingPage> {
   bool isChecked = false;
   int selectedNum = 0;
 
+  final pillNameTextController = TextEditingController();
+  final quantityTextController = TextEditingController();
+  final doseTextController = TextEditingController();
+  Color enabled = Constant.button;
+  Color disabled = Constant.inCont;
+
   @override
   Widget build(BuildContext context) {
+    AlarmController alarmController = Get.find<AlarmController>();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       key: const Key('SchedulingScaffold'),
@@ -119,6 +136,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                 Expanded(
                                   flex: 5,
                                   child: RoundTextInput(
+                                    textController: pillNameTextController,
                                     height: 40,
                                     width: 230,
                                     color: Constant.inCont,
@@ -137,13 +155,16 @@ class _SchedulingPageState extends State<SchedulingPage> {
                             flex: 4,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
-                              children: const [
+                              children: [
                                 Expanded(
                                   child: Center(
                                     child: RoundTextButton(
                                         width: 40,
                                         height: 40,
                                         color: Colors.white,
+                                        onPressed: () {
+                                          alarmController.sortAlarms();
+                                        },
                                         child: Text('')),
                                   ),
                                 ),
@@ -277,8 +298,13 @@ class _SchedulingPageState extends State<SchedulingPage> {
                         children: [
                           Expanded(
                             child: RoundTextButton(
-                              color: Constant.button,
                               radius: 30,
+                              color: daysIndex[0] ? enabled : disabled,
+                              onPressed: () {
+                                setState(() {
+                                  daysIndex[0] = !daysIndex[0];
+                                });
+                              },
                               child: const Text(
                                 'D',
                                 style: TextStyle(
@@ -291,8 +317,13 @@ class _SchedulingPageState extends State<SchedulingPage> {
                           SizedBox(width: 10),
                           Expanded(
                             child: RoundTextButton(
-                              color: Constant.button,
                               radius: 30,
+                              color: daysIndex[1] ? enabled : disabled,
+                              onPressed: () {
+                                setState(() {
+                                  daysIndex[1] = !daysIndex[1];
+                                });
+                              },
                               child: const Text(
                                 'L',
                                 style: TextStyle(
@@ -305,8 +336,13 @@ class _SchedulingPageState extends State<SchedulingPage> {
                           SizedBox(width: 10),
                           Expanded(
                             child: RoundTextButton(
-                              color: Constant.button,
                               radius: 30,
+                              color: daysIndex[2] ? enabled : disabled,
+                              onPressed: () {
+                                setState(() {
+                                  daysIndex[2] = !daysIndex[2];
+                                });
+                              },
                               child: const Text(
                                 'M',
                                 style: TextStyle(
@@ -319,8 +355,13 @@ class _SchedulingPageState extends State<SchedulingPage> {
                           SizedBox(width: 10),
                           Expanded(
                             child: RoundTextButton(
-                              color: Constant.button,
                               radius: 30,
+                              color: daysIndex[3] ? enabled : disabled,
+                              onPressed: () {
+                                setState(() {
+                                  daysIndex[3] = !daysIndex[3];
+                                });
+                              },
                               child: const Text(
                                 'M',
                                 style: TextStyle(
@@ -333,8 +374,13 @@ class _SchedulingPageState extends State<SchedulingPage> {
                           SizedBox(width: 10),
                           Expanded(
                             child: RoundTextButton(
-                              color: Constant.button,
                               radius: 30,
+                              color: daysIndex[4] ? enabled : disabled,
+                              onPressed: () {
+                                setState(() {
+                                  daysIndex[4] = !daysIndex[4];
+                                });
+                              },
                               child: const Text(
                                 'J',
                                 style: TextStyle(
@@ -347,8 +393,13 @@ class _SchedulingPageState extends State<SchedulingPage> {
                           SizedBox(width: 10),
                           Expanded(
                             child: RoundTextButton(
-                              color: Constant.button,
                               radius: 30,
+                              color: daysIndex[5] ? enabled : disabled,
+                              onPressed: () {
+                                setState(() {
+                                  daysIndex[5] = !daysIndex[5];
+                                });
+                              },
                               child: const Text(
                                 'V',
                                 style: TextStyle(
@@ -361,8 +412,13 @@ class _SchedulingPageState extends State<SchedulingPage> {
                           SizedBox(width: 10),
                           Expanded(
                             child: RoundTextButton(
-                              color: Constant.button,
                               radius: 30,
+                              color: daysIndex[6] ? enabled : disabled,
+                              onPressed: () {
+                                setState(() {
+                                  daysIndex[6] = !daysIndex[6];
+                                });
+                              },
                               child: const Text(
                                 'S',
                                 style: TextStyle(
@@ -412,10 +468,12 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                         width: double.infinity,
                                         radius: 12,
                                         color: Constant.inCont,
-                                        onPressed: _selectDate,
+                                        onPressed: () {
+                                          _selectDate(true);
+                                        },
                                         child: Text(
                                           sDate,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             color: Colors.white,
                                             fontSize: 20,
                                           ),
@@ -444,11 +502,14 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                         width: double.infinity,
                                         radius: 12,
                                         color: Constant.inCont,
-                                        onPressed:
-                                            isChecked ? null : _selectDate,
+                                        onPressed: isChecked
+                                            ? null
+                                            : () {
+                                                _selectDate(false);
+                                              },
                                         child: Text(
-                                          sDate,
-                                          style: TextStyle(
+                                          eDate,
+                                          style: const TextStyle(
                                             color: Colors.white,
                                             fontSize: 20,
                                           ),
@@ -535,8 +596,8 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                                   )),
                                             ),
                                             SizedBox(width: 10),
-                                            Expanded(
-                                              child: const Align(
+                                            const Expanded(
+                                              child: Align(
                                                 alignment: Alignment.center,
                                                 child: Text(
                                                   'Horas',
@@ -591,8 +652,12 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                                   ),
                                                 )),
                                             Expanded(
-                                                child: RoundTextInput(
-                                                    color: Constant.inCont)),
+                                              child: RoundTextInput(
+                                                textController:
+                                                    quantityTextController,
+                                                color: Constant.inCont,
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -600,8 +665,12 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                         child: Row(
                                           children: [
                                             Expanded(
-                                                child: RoundTextInput(
-                                                    color: Constant.inCont)),
+                                              child: RoundTextInput(
+                                                textController:
+                                                    doseTextController,
+                                                color: Constant.inCont,
+                                              ),
+                                            ),
                                             const Expanded(
                                                 child: Align(
                                               alignment: Alignment.centerLeft,
@@ -628,17 +697,49 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                 child: RoundTextButton(
                                   width: double.infinity,
                                   color: Constant.button,
-                                  onPressed: () => showDialog<String>(
-                                      context: context,
-                                      builder: (BuildContext context) => Dialog(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        25.0)),
-                                            child: const Padding(
-                                                padding: EdgeInsets.all(3.0),
-                                                child: SaveDialog()),
-                                          )),
+                                  onPressed: () {
+                                    var i = 0;
+                                    var weekDays = [];
+                                    for (var e in daysIndex) {
+                                      if (e) {
+                                        weekDays.add(i);
+                                      }
+                                      i++;
+                                    }
+                                    var pillName = pillNameTextController.text;
+                                    var days = weekDays;
+                                    var timeDT = DateFormat.jm()
+                                        .parse(_time.format(context));
+
+                                    String timeS =
+                                        DateFormat("HH:mm").format(timeDT);
+                                    DateTime startDateTime =
+                                        new DateFormat("yyyy-MM-dd hh:mm")
+                                            .parse('$sDate $timeS');
+
+                                    DateTime endDateTime =
+                                        new DateFormat("yyyy-MM-dd")
+                                            .parse('$eDate ');
+
+                                    int repeat = selectedNum;
+                                    int quantity =
+                                        int.parse(quantityTextController.text);
+
+                                    int dose =
+                                        int.parse(doseTextController.text);
+
+                                    alarmController.addAlarm(
+                                        pillName,
+                                        weekDays,
+                                        startDateTime,
+                                        endDateTime,
+                                        repeat,
+                                        quantity,
+                                        dose,
+                                        null,
+                                        null);
+                                    print(alarmController.alarmList);
+                                  },
                                   child: const Text(
                                     "Guardar",
                                     textAlign: TextAlign.center,
