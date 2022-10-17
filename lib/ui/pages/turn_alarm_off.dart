@@ -3,63 +3,91 @@
 import 'package:alarmed/ui/Widgets/roundedbox_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:alarmed/ui/assets/constant.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/get.dart';
+import 'package:flutter_shake_animated/flutter_shake_animated.dart';
 
 import "dart:math" as math;
 
-import '../../custom_icons_icons.dart';
-import '../controllers/alarm_controller.dart';
-
 class TurnAlarmOff extends StatelessWidget {
-  const TurnAlarmOff({Key? key, required this.pillName, required this.iconPill})
+  TurnAlarmOff(
+      {Key? key,
+      required this.pillName,
+      required this.iconPill,
+      this.autoPlay = false,
+      this.duration})
       : super(key: key);
+
   final String pillName;
-  final Icon iconPill;
+  final IconData iconPill;
+  final ShakeConstant shakeConstant = ShakeDefaultConstant1();
+  final bool autoPlay;
+  final Duration? duration;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         key: Key('TurnOffScaffold'),
-        body: SafeArea(
-            child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                children: [
-                  MainRoundedBox(
-                    radius: 35,
-                    width: 70,
-                    height: 70,
-                    color: Constant.inCont,
-                    child: Center(
-                      child: Transform.rotate(
-                          angle: -math.pi / 1.65, child: iconPill),
+        body: Container(
+          decoration: BoxDecoration(color: Constant.mainCont),
+          child: SafeArea(
+              child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ShakeWidget(
+                  duration: duration,
+                  shakeConstant: shakeConstant,
+                  autoPlay: true,
+                  enableWebMouseHover: true,
+                  child: Column(
+                    children: [
+                      MainRoundedBox(
+                        radius: 45,
+                        width: 90,
+                        height: 90,
+                        color: Constant.inCont,
+                        child: Center(
+                          child: Icon(
+                            iconPill,
+                            color: Colors.white,
+                            size: 60,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Text('¡Hora de tomar la Pastilla!',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Constant.secondCont)),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        pillName,
+                        // ignore: prefer_const_constructors
+                        style: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                            color: Constant.title),
+                      ),
+                    ],
+                  ),
+                ),
+                RoundTextButton(
+                    width: 150,
+                    child: Text(
+                      'Apagar',
+                      style: TextStyle(
+                          color: Constant.mainCont,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20),
                     ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    pillName,
-                    // ignore: prefer_const_constructors
-                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-              Text('Hora de tomar tu pastilla'),
-              RoundTextButton(
-                  child: Text(
-                    'Apagar',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 20),
-                  ),
-                  color: Constant.mainCont)
-            ],
-          ),
-        )));
+                    color: Color.fromARGB(255, 230, 190, 12))
+              ],
+            ),
+          )),
+        ));
   }
 }
