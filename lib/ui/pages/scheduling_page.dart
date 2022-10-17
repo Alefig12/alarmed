@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:alarmed/custom_icons_icons.dart';
+import 'package:alarmed/services/local_notification_service.dart';
 import 'package:alarmed/ui/controllers/alarm_controller.dart';
 import 'package:alarmed/ui/pages/save_dialog.dart';
+import 'package:alarmed/ui/pages/turn_alarm_off.dart';
 import 'package:flutter/material.dart';
 import 'package:alarmed/ui/widgets/roundedbox_widget.dart';
 import 'package:alarmed/ui/assets/constant.dart';
@@ -66,6 +70,17 @@ class _SchedulingPageState extends State<SchedulingPage> {
   final doseTextController = TextEditingController();
   Color enabled = Constant.button;
   Color disabled = Constant.inCont;
+
+  late final LocalNotificationService service;
+
+  @override
+  void initState() {
+    service = LocalNotificationService();
+    service.initialize();
+    listenToNotification();
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -175,6 +190,16 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                         width: 40,
                                         height: 40,
                                         color: Colors.white,
+                                        onPressed: () async {
+                                          await service
+                                              .showScheduledNotificationPayload(
+                                                  id: 0,
+                                                  title: "ABEBIIA",
+                                                  body: "HIBEBIS",
+                                                  date: DateTime(2022, 10, 17,
+                                                      7, 35, 0, 0),
+                                                  payload: 'payload');
+                                        },
                                         child: Text('')),
                                   ),
                                 ),
@@ -698,46 +723,30 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                   width: double.infinity,
                                   color: Constant.button,
                                   onPressed: () {
-                                    var i = 0;
-                                    var weekDays = [];
-                                    for (var e in daysIndex) {
-                                      if (e) {
-                                        weekDays.add(i);
-                                      }
-                                      i++;
-                                    }
-                                    var pillName = pillNameTextController.text;
-                                    var days = weekDays;
-                                    var timeDT = DateFormat.jm()
-                                        .parse(_time.format(context));
+                                    showDialog<String>(
+                                        context: context,
+                                        builder: (BuildContext context) =>
+                                            Dialog(
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          25.0)),
+                                              child: Padding(
+                                                  padding: EdgeInsets.all(3.0),
+                                                  child: SaveDialog(
+                                                    onContinueClick: () =>
+                                                        generateAlarm(
+                                                            daysIndex,
+                                                            pillNameTextController,
+                                                            _time,
+                                                            sDate,
+                                                            eDate,
+                                                            selectedNum,
+                                                            quantityTextController,
+                                                            doseTextController),
+                                                  )),
+                                            ));
 
-                                    String timeS =
-                                        DateFormat("HH:mm").format(timeDT);
-                                    DateTime startDateTime =
-                                        new DateFormat("yyyy-MM-dd hh:mm")
-                                            .parse('$sDate $timeS');
-
-                                    DateTime endDateTime =
-                                        new DateFormat("yyyy-MM-dd")
-                                            .parse('$eDate ');
-
-                                    int repeat = selectedNum;
-                                    int quantity =
-                                        int.parse(quantityTextController.text);
-
-                                    int dose =
-                                        int.parse(doseTextController.text);
-
-                                    alarmController.addAlarm(
-                                        pillName,
-                                        weekDays,
-                                        startDateTime,
-                                        endDateTime,
-                                        repeat,
-                                        quantity,
-                                        dose,
-                                        null,
-                                        null);
                                     print(alarmController.alarmList);
                                   },
                                   child: const Text(
@@ -762,5 +771,76 @@ class _SchedulingPageState extends State<SchedulingPage> {
         ),
       ),
     );
+  }
+
+  void generateAlarm(
+      List<bool> daysIndex,
+      TextEditingController pillNameTextController,
+      TimeOfDay time,
+      String sDate,
+      String eDate,
+      int selectedNum,
+      TextEditingController quantityTextController,
+      TextEditingController doseTextController) async {
+    AlarmController alarmController = Get.find();
+    var i = 0;
+    var weekDays = [];
+    for (var e in daysIndex) {
+      if (e) {
+        weekDays.add(i);
+      }
+      i++;
+    }
+    var pillName = pillNameTextController.text;
+    var days = weekDays;
+    var timeDT = DateFormat.jm().parse(_time.format(context));
+
+    String timeS = DateFormat("HH:mm").format(timeDT);
+    DateTime startDateTime =
+        new DateFormat("yyyy-MM-dd hh:mm").parse('$sDate $timeS');
+
+    DateTime endDateTime = new DateFormat("yyyy-MM-dd").parse('$eDate ');
+
+    int repeat = selectedNum;
+    int quantity = int.parse(quantityTextController.text);
+    int id = UniqueKey().hashCode;
+    print(id);
+    int dose = int.parse(doseTextController.text);
+    print('aloo');
+    alarmController.addAlarm(id, pillName, weekDays, startDateTime, endDateTime,
+        repeat, quantity, dose, null, null);
+
+    await service.deleteAllScheduledAlarms();
+
+    for (var e in alarmController.alarmList) {
+      var map = {"id": e.id, "pillName": e.pillName};
+      String mapString = jsonEncode(map);
+
+      await service.showScheduledNotificationPayload(
+          id: e.id,
+          title: "ALARMED",
+          body: "Es hora de tu pastilla!",
+          date: e.startDateTime,
+          payload: mapString);
+    }
+  }
+
+  void listenToNotification() =>
+      service.onNotificationClick.stream.listen(onNotificationListener);
+
+  void onNotificationListener(String? payload) {
+    if (payload != null && payload.isNotEmpty) {
+      print(payload);
+      var mapObject = jsonDecode(payload);
+
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => TurnAlarmOff(
+                    pillName: mapObject["pillName"],
+                    iconPill: CustomIcons.pill,
+                    idAlarm: mapObject["id"],
+                  )));
+    }
   }
 }

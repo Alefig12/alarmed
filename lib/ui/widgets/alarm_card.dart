@@ -126,13 +126,16 @@ class AlarmCard extends StatelessWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: RoundTextButton(
-                    color: Colors.white,
-                    child: Text(
-                      "GUARDAR",
-                      style: TextStyle(
-                          color: Constant.mainCont,
-                          fontWeight: FontWeight.bold),
-                    )),
+                  color: Colors.white,
+                  child: Text(
+                    "ELIMINAR",
+                    style: TextStyle(
+                        color: Constant.mainCont, fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () {
+                    alarmController.deleteAlarm(id);
+                  },
+                ),
               )
             ],
           )),
