@@ -169,8 +169,8 @@ class AlarmController extends GetxController {
         startDateTime.year,
         startDateTime.month,
         startDateTime.day,
-        startDateTime.hour,
-        startDateTime.minute + repeat,
+        startDateTime.hour + repeat,
+        startDateTime.minute,
         startDateTime.second);
 
     DateTime endTime = DateTime(
@@ -190,8 +190,8 @@ class AlarmController extends GetxController {
         volume: volume ?? 1,
       ));
 
-      newDate = DateTime(newDate.year, newDate.month, newDate.day, newDate.hour,
-          newDate.minute + repeat, newDate.second);
+      newDate = DateTime(newDate.year, newDate.month, newDate.day,
+          newDate.hour + repeat, newDate.minute, newDate.second);
     }
   }
 
