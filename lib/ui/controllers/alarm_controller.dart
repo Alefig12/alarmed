@@ -70,7 +70,7 @@ class AlarmController extends GetxController {
   void sortAlarms() {
     var sortedAlarmList = [];
 
-    DateTime monday = mostRecentWeekday(DateTime(2022, 10, 17, 1, 1), 1);
+    DateTime monday = mostRecentWeekday(DateTime.now(), 1);
     DateTime sunday =
         DateTime(monday.year, monday.month, monday.day + 6, 23, 59, 59);
 
@@ -87,7 +87,7 @@ class AlarmController extends GetxController {
     for (var e in sortedAlarmList) {
       print(e.startDateTime);
       // sortedAlarmList Tiene las alarmas ordenadas por fecha y solo las alarmas de la semana actual.
-      // OJO, hay que cambiar el _alarmList[1] del monday por DateTime.now();
+
       //Para hacer: ordenar en pantalla de conf alarm
     }
 
@@ -116,6 +116,7 @@ class AlarmController extends GetxController {
 
   void deleteAlarm(int id) {
     _alarmList.removeWhere((item) => item.id == id);
+    sortAlarms();
   }
 
   void setVolume(value, id) {

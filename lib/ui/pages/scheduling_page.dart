@@ -177,9 +177,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                         width: 40,
                                         height: 40,
                                         color: Colors.white,
-                                        onPressed: () {
-                                          alarmController.sortAlarms();
-                                        },
+                                        onPressed: () {},
                                         child: Text('')),
                                   ),
                                 ),
@@ -194,10 +192,10 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                           await service
                                               .showScheduledNotificationPayload(
                                                   id: 0,
-                                                  title: "ABEBIIA",
-                                                  body: "HIBEBIS",
-                                                  date: DateTime(2022, 10, 17,
-                                                      7, 35, 0, 0),
+                                                  title: "TEST NOTIF",
+                                                  body: "Test Notif",
+                                                  date: DateTime.now().add(
+                                                      Duration(seconds: 3)),
                                                   payload: 'payload');
                                         },
                                         child: Text('')),
@@ -823,6 +821,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
           date: e.startDateTime,
           payload: mapString);
     }
+    alarmController.sortAlarms();
   }
 
   void listenToNotification() =>
