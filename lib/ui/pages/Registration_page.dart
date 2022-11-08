@@ -1,11 +1,14 @@
 // ignore_for_file: sort_child_properties_last, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:alarmed/ui/controllers/authentication_controller.dart';
+import 'package:alarmed/ui/pages/login_page.dart';
 import 'package:alarmed/ui/widgets/roundedbox_widget.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:alarmed/ui/assets/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({Key? key}) : super(key: key);
@@ -15,6 +18,18 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
+  String? errorMesage = '';
+
+  final AuthenticationController authenticationController = Get.find();
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  void signUp() async {
+    await authenticationController.signup(
+        _emailController.text, _passwordController.text);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
