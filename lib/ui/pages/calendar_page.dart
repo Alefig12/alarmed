@@ -304,7 +304,8 @@ class _CalendarPageState extends State<CalendarPage> {
                               child: Column(
                                 children: [
                                   Expanded(
-                                      child: FittedBox(child: Text('1:00 am'))),
+                                      child:
+                                          FittedBox(child: Text('12:00 am'))),
                                   Expanded(
                                     child: Icon(
                                       FontAwesomeIcons.cloudSun,
@@ -374,13 +375,18 @@ class _CalendarPageState extends State<CalendarPage> {
                               width: 80,
                               child: Column(
                                 children: [
-                                  Text('1:00 pm'),
-                                  Icon(
-                                    Icons.light_mode,
-                                    color: Colors.white,
-                                    size: 30.0,
+                                  Expanded(
+                                      child:
+                                          FittedBox(child: Text('12:00 pm'))),
+                                  Expanded(
+                                    child: Icon(
+                                      Icons.light_mode,
+                                      color: Colors.white,
+                                      size: 30.0,
+                                    ),
                                   ),
-                                  Text('6:00 pm')
+                                  Expanded(
+                                      child: FittedBox(child: Text('6:00 pm')))
                                 ],
                               ),
                               decoration: BoxDecoration(
@@ -442,7 +448,7 @@ class _CalendarPageState extends State<CalendarPage> {
                               child: Column(
                                 children: [
                                   Expanded(
-                                      child: FittedBox(child: Text('7:00 am'))),
+                                      child: FittedBox(child: Text('6:00 pm'))),
                                   Expanded(
                                     child: Icon(
                                       Icons.nightlight_round,

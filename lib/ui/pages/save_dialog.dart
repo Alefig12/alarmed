@@ -3,7 +3,8 @@ import 'package:alarmed/ui/widgets/roundedbox_widget.dart';
 import 'package:flutter/material.dart';
 
 class SaveDialog extends StatelessWidget {
-  const SaveDialog({Key? key}) : super(key: key);
+  const SaveDialog({Key? key, required this.onContinueClick}) : super(key: key);
+  final Function() onContinueClick;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +41,9 @@ class SaveDialog extends StatelessWidget {
                   children: [
                     RoundTextButton(
                         color: Constant.mainCont,
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
                         child: const FittedBox(
                           child: Text(
                             "Cancelar",
@@ -48,6 +52,10 @@ class SaveDialog extends StatelessWidget {
                         )),
                     RoundTextButton(
                         color: Colors.white,
+                        onPressed: () {
+                          onContinueClick();
+                          Navigator.of(context).pop();
+                        },
                         child: FittedBox(
                           child: Text(
                             "Guardar",
