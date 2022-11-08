@@ -9,6 +9,7 @@ import 'package:alarmed/ui/assets/constant.dart';
 import 'package:alarmed/ui/pages/navigation_page.dart';
 import 'package:flutter/material.dart';
 import 'pages/Registration_page.dart';
+import 'pages/User_Password_page.dart';
 import 'pages/login_page.dart';
 import 'package:get/get.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           fontFamily: 'LincolnRoad',
           scaffoldBackgroundColor: Constant.secondCont3),
-      home: RegistrationPage(),
+      home: UserPasswordPage(),
     );
   }
 }
