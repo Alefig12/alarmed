@@ -1,9 +1,12 @@
 // ignore_for_file: sort_child_properties_last, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:alarmed/ui/Widgets/roundedbox_widget.dart';
+import 'package:alarmed/ui/controllers/authentication_controller.dart';
+import 'package:alarmed/ui/pages/Registration_page.dart';
 import 'package:flutter/material.dart';
 import 'package:alarmed/ui/assets/constant.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -13,6 +16,18 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  String? errorMesage = '';
+
+  final AuthenticationController authenticationController = Get.find();
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  void login() async {
+    await authenticationController.login(
+        _emailController.text, _passwordController.text);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                                   Expanded(
                                       flex: 4,
                                       child: RoundTextInput(
+                                          textController: _emailController,
                                           color: Constant.mainCont)),
                                 ]),
                             SizedBox(
@@ -67,6 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                   Expanded(
                                       child: RoundTextInput(
+                                          textController: _passwordController,
                                           color: Constant.mainCont))
                                 ])
                           ]),
@@ -82,12 +99,17 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           color: Constant.mainCont),
                       RoundTextButton(
-                          width: 200,
-                          radius: 10,
-                          child: Text('Iniciar sesión',
-                              style: TextStyle(color: Constant.title)),
-                          color: Constant.inCont),
+                        width: 200,
+                        radius: 10,
+                        child: Text('Iniciar sesión',
+                            style: TextStyle(color: Constant.title)),
+                        color: Constant.inCont,
+                        onPressed: login,
+                      ),
                       RoundTextButton(
+                          onPressed: () {
+                            Get.to(RegistrationPage());
+                          },
                           child: Text('Crear Cuenta',
                               style: TextStyle(
                                   color: Constant.title,
