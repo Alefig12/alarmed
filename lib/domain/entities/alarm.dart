@@ -1,9 +1,12 @@
+import 'package:meta/meta.dart';
+import 'dart:convert';
+
 class Alarm {
   int id;
   String pillName;
   List days;
   DateTime startDateTime;
-  DateTime? endDateTime;
+  DateTime endDateTime;
   int repeat;
   int quantity;
   int dose;
@@ -15,7 +18,7 @@ class Alarm {
       required this.pillName,
       required this.days,
       required this.startDateTime,
-      this.endDateTime,
+      required this.endDateTime,
       required this.repeat,
       required this.quantity,
       required this.dose,

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:alarmed/domain/entities/alarm.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -69,7 +70,7 @@ class AlarmController extends GetxController {
   void sortAlarms() {
     var sortedAlarmList = [];
 
-    DateTime monday = mostRecentWeekday(_alarmList[0].startDateTime, 1);
+    DateTime monday = mostRecentWeekday(DateTime.now(), 1);
     DateTime sunday =
         DateTime(monday.year, monday.month, monday.day + 6, 23, 59, 59);
 
@@ -86,7 +87,7 @@ class AlarmController extends GetxController {
     for (var e in sortedAlarmList) {
       print(e.startDateTime);
       // sortedAlarmList Tiene las alarmas ordenadas por fecha y solo las alarmas de la semana actual.
-      // OJO, hay que cambiar el _alarmList[1] del monday por DateTime.now();
+
       //Para hacer: ordenar en pantalla de conf alarm
     }
 
@@ -113,6 +114,11 @@ class AlarmController extends GetxController {
     print(days);
   }
 
+  void deleteAlarm(int id) {
+    _alarmList.removeWhere((item) => item.id == id);
+    sortAlarms();
+  }
+
   void setVolume(value, id) {
     for (var e in _alarmList) {
       if (e.id == id) {
@@ -136,10 +142,11 @@ class AlarmController extends GetxController {
   get alarmList => _alarmList;
 
   void addAlarm(
+    int id,
     String pillName,
     List days,
     DateTime startDateTime,
-    DateTime? endDateTime,
+    DateTime endDateTime,
     int repeat,
     int quantity,
     int dose,
@@ -147,7 +154,7 @@ class AlarmController extends GetxController {
     double? volume,
   ) {
     _alarmList.add(Alarm(
-      id: Random().nextInt(30000),
+      id: id,
       pillName: pillName,
       days: days,
       startDateTime: startDateTime,
@@ -158,6 +165,35 @@ class AlarmController extends GetxController {
       tone: tone ?? 'Default',
       volume: volume ?? 1,
     ));
+
+    DateTime newDate = DateTime(
+        startDateTime.year,
+        startDateTime.month,
+        startDateTime.day,
+        startDateTime.hour + repeat,
+        startDateTime.minute,
+        startDateTime.second);
+
+    DateTime endTime = DateTime(
+        endDateTime.year, endDateTime.month, endDateTime.day, 23, 59, 59);
+    while (newDate.isBefore(endTime) && repeat != 0) {
+      id = UniqueKey().hashCode;
+      _alarmList.add(Alarm(
+        id: id,
+        pillName: pillName,
+        days: days,
+        startDateTime: newDate,
+        endDateTime: endDateTime,
+        repeat: repeat,
+        quantity: quantity,
+        dose: dose,
+        tone: tone ?? 'Default',
+        volume: volume ?? 1,
+      ));
+
+      newDate = DateTime(newDate.year, newDate.month, newDate.day,
+          newDate.hour + repeat, newDate.minute, newDate.second);
+    }
   }
 
   get afternoonList => _afternoonList;
