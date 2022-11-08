@@ -101,60 +101,51 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   )),
               SizedBox(height: 10),
               MainRoundedBox(
-                  padding: 6,
+                  padding: 8,
                   width: double.infinity,
-                  height: 220,
+                  height: 250,
                   color: Constant.mainCont,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Expanded(
                         child: FittedBox(
                           child: Text('Contacto de \nemergencia',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: 40,
-                                  color: Constant.title,
-                                  height: 1.5)),
+                                  fontSize: 40, color: Constant.title)),
                         ),
                       ),
                       Expanded(
                         child: Container(
-                            padding: const EdgeInsets.all(15),
+                            padding: const EdgeInsets.all(1),
+                            width: double.infinity,
                             child: SizedBox(
-                                width: 350.0,
-                                height: 60.0,
+                                width: double.infinity,
                                 child: Column(children: [
+                                  Text('Nombre:',
+                                      style: TextStyle(
+                                          color: Constant.title, fontSize: 20)),
+                                  SizedBox(
+                                    width: 20,
+                                  ),
                                   Expanded(
-                                      child: Row(children: [
-                                    Text('Nombre:',
-                                        style: TextStyle(
-                                            color: Constant.title,
-                                            fontSize: 20)),
-                                    SizedBox(
-                                      width: 8,
-                                    ),
-                                    Expanded(
-                                      child: RoundTextInput(
-                                          color: Constant.inCont),
-                                    )
-                                  ])),
+                                    child: RoundTextInput(
+                                        color: Constant.mainCont),
+                                  ),
+                                  Text('Celular:',
+                                      style: TextStyle(
+                                          color: Constant.title, fontSize: 20)),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
                                   Expanded(
-                                      child: Row(children: [
-                                    Text('Celular:',
-                                        style: TextStyle(
-                                            color: Constant.title,
-                                            fontSize: 20)),
-                                    SizedBox(
-                                      width: 8,
-                                    ),
-                                    Expanded(
-                                      child: RoundTextInput(
-                                          color: Constant.inCont),
-                                    )
-                                  ])),
+                                    child: RoundTextInput(
+                                        color: Constant.mainCont),
+                                  )
                                 ])),
                             decoration: BoxDecoration(
-                              color: Constant.mainCont,
+                              color: Constant.inCont,
                               borderRadius: BorderRadius.circular(16),
                             )),
                       ),
