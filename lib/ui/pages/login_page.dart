@@ -36,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: MainRoundedBox(
                           padding: 10,
                           radius: 10,
-                          color: Constant.inCont,
+                          color: Constant.secondCont3,
                           child: Column(children: [
                             Row(
                                 mainAxisAlignment:
@@ -86,7 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                           radius: 10,
                           child: Text('Iniciar sesión',
                               style: TextStyle(color: Constant.title)),
-                          color: Constant.inCont),
+                          color: Constant.mainCont2),
                       RoundTextButton(
                           child: Text('Crear Cuenta',
                               style: TextStyle(

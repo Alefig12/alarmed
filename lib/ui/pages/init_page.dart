@@ -73,15 +73,11 @@ class _InitPageState extends State<InitPage> {
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold)),
                                 ],
-                              ),
-                              Text('Para poder continuar debes aceptar',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold))
+                              )
                             ]),
                         width: 280,
                         height: 120,
-                        color: Constant.inCont,
+                        color: Constant.secondCont4,
                         radius: 20,
                         padding: 10)),
                 Expanded(
@@ -152,7 +148,7 @@ class _CheckTermsState extends State<CheckTerms> {
       if (states.any(interactiveStates.contains)) {
         return Colors.blue;
       }
-      return Colors.black;
+      return Constant.mainCont2;
     }
 
     return Checkbox(

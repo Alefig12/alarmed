@@ -5,8 +5,10 @@ import 'package:alarmed/ui/pages/Registration_page.dart';
 import 'package:alarmed/ui/pages/calendar_page.dart';
 import 'package:alarmed/ui/pages/scheduling_page.dart';
 import 'package:alarmed/ui/pages/alarms_page.dart';
+import 'package:alarmed/ui/assets/constant.dart';
 import 'package:alarmed/ui/pages/navigation_page.dart';
 import 'package:flutter/material.dart';
+import 'pages/Registration_page.dart';
 import 'pages/login_page.dart';
 import 'package:get/get.dart';
 
@@ -19,8 +21,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Alarmed',
-      theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Poppins'),
-      home: NavigationPage(),
+      theme: ThemeData(
+          primarySwatch: Colors.blue,
+          fontFamily: 'LincolnRoad',
+          scaffoldBackgroundColor: Constant.secondCont3),
+      home: RegistrationPage(),
     );
   }
 }

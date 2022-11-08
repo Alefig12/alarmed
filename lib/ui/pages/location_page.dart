@@ -26,7 +26,7 @@ class _LocationPageState extends State<LocationPage> {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 40,
-                      color: Colors.black)),
+                      color: Constant.title)),
               Expanded(
                 child: Container(
                   margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
@@ -45,7 +45,9 @@ class _LocationPageState extends State<LocationPage> {
                       child: Text(
                         'Farmacia mis cositas',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 28),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 28,
+                            color: Constant.title),
                       ),
                     ),
                     Expanded(
@@ -55,17 +57,13 @@ class _LocationPageState extends State<LocationPage> {
                           Expanded(
                             child: Text('Horario',
                                 style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 22,
-                                    color: Constant.mainCont)),
+                                    fontSize: 22, color: Constant.title)),
                           ),
                           Expanded(
                             child: FittedBox(
                               child: Text('9:00-10:00',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 22,
-                                      color: Constant.inCont)),
+                                      fontSize: 22, color: Constant.title)),
                             ),
                           )
                         ],
@@ -79,17 +77,13 @@ class _LocationPageState extends State<LocationPage> {
                           Expanded(
                             child: Text('Dirección',
                                 style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 22,
-                                    color: Constant.mainCont)),
+                                    fontSize: 22, color: Constant.title)),
                           ),
                           Expanded(
                             child: FittedBox(
                               child: Text('carr 545/23--q1',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 22,
-                                      color: Constant.inCont)),
+                                      fontSize: 22, color: Constant.title)),
                             ),
                           )
                         ],
@@ -103,17 +97,13 @@ class _LocationPageState extends State<LocationPage> {
                           Expanded(
                             child: Text('Teléfono',
                                 style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 22,
-                                    color: Constant.mainCont)),
+                                    fontSize: 22, color: Constant.title)),
                           ),
                           Expanded(
                             child: FittedBox(
                               child: Text('10393785',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 22,
-                                      color: Constant.inCont)),
+                                      fontSize: 22, color: Constant.title)),
                             ),
                           )
                         ],

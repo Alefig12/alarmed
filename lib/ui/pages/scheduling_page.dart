@@ -64,8 +64,8 @@ class _SchedulingPageState extends State<SchedulingPage> {
   final pillNameTextController = TextEditingController();
   final quantityTextController = TextEditingController();
   final doseTextController = TextEditingController();
-  Color enabled = Constant.button;
-  Color disabled = Constant.inCont;
+  Color enabled = Constant.mainCont2;
+  Color disabled = Constant.secondCont4;
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +83,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                   flex: 2,
                   child: MainRoundedBox(
                       width: double.infinity,
-                      color: Constant.button,
+                      color: Constant.secondCont3,
                       child: Center(
                         child: Text(
                           "Programa tus medicinas!",
@@ -101,7 +101,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                   flex: 7,
                   child: MainRoundedBox(
                     width: double.infinity,
-                    color: Constant.mainCont,
+                    color: Constant.secondCont4,
                     child: Padding(
                       padding: EdgeInsets.all(10),
                       child: Column(
@@ -118,7 +118,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                       radius: 40,
                                       width: 50,
                                       height: 50,
-                                      color: Constant.inCont,
+                                      color: Constant.mainCont2,
                                       child: Center(
                                         child: Transform.rotate(
                                           angle: -math.pi / 1.65,
@@ -139,11 +139,11 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                     textController: pillNameTextController,
                                     height: 40,
                                     width: 230,
-                                    color: Constant.inCont,
+                                    color: Constant.secondCont3,
                                     label: 'Nombre del medicamento',
                                     hintStyle: TextStyle(
                                       fontSize: 17,
-                                      color: Constant.button,
+                                      color: Constant.mainCont,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),
@@ -262,22 +262,20 @@ class _SchedulingPageState extends State<SchedulingPage> {
                   flex: 3,
                   child: MainRoundedBox(
                     width: double.infinity,
-                    color: Constant.mainCont,
+                    color: Constant.secondCont4,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Expanded(
                           child: RoundTextButton(
                             height: double.infinity,
-                            color: Constant.mainCont,
+                            color: Constant.secondCont4,
                             onPressed: _selectTime,
                             child: FittedBox(
                               child: Text(
                                 _time.format(context),
-                                style: const TextStyle(
-                                  fontSize: 40,
-                                  color: Colors.white,
-                                ),
+                                style: TextStyle(
+                                    fontSize: 40, color: Constant.mainCont),
                               ),
                             ),
                           ),
@@ -442,9 +440,9 @@ class _SchedulingPageState extends State<SchedulingPage> {
                       Expanded(
                         child: MainRoundedBox(
                           height: double.infinity,
-                          color: Constant.mainCont,
+                          color: Constant.secondCont4,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(
+                            padding: EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 15),
                             child: Column(
                               children: [
@@ -452,14 +450,14 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                   flex: 4,
                                   child: Column(
                                     children: [
-                                      const Align(
+                                      Align(
                                         alignment: Alignment.centerLeft,
                                         child: Padding(
                                           padding: EdgeInsets.only(left: 8),
                                           child: Text(
                                             "Inicia el",
                                             style: TextStyle(
-                                                color: Colors.white,
+                                                color: Constant.mainCont,
                                                 fontSize: 20),
                                           ),
                                         ),
@@ -467,14 +465,14 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                       RoundTextButton(
                                         width: double.infinity,
                                         radius: 12,
-                                        color: Constant.inCont,
+                                        color: Constant.secondCont3,
                                         onPressed: () {
                                           _selectDate(true);
                                         },
                                         child: Text(
                                           sDate,
-                                          style: const TextStyle(
-                                            color: Colors.white,
+                                          style: TextStyle(
+                                            color: Constant.title,
                                             fontSize: 20,
                                           ),
                                         ),
@@ -486,14 +484,14 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                   flex: 4,
                                   child: Column(
                                     children: [
-                                      const Align(
+                                      Align(
                                         alignment: Alignment.centerLeft,
                                         child: Padding(
                                           padding: EdgeInsets.only(left: 8),
                                           child: Text(
                                             "Finaliza el",
                                             style: TextStyle(
-                                                color: Colors.white,
+                                                color: Constant.mainCont,
                                                 fontSize: 20),
                                           ),
                                         ),
@@ -501,7 +499,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                       RoundTextButton(
                                         width: double.infinity,
                                         radius: 12,
-                                        color: Constant.inCont,
+                                        color: Constant.secondCont3,
                                         onPressed: isChecked
                                             ? null
                                             : () {
@@ -548,18 +546,18 @@ class _SchedulingPageState extends State<SchedulingPage> {
                               flex: 2,
                               child: MainRoundedBox(
                                 width: double.infinity,
-                                color: Constant.mainCont,
+                                color: Constant.secondCont4,
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
                                     children: [
-                                      const Expanded(
+                                      Expanded(
                                         child: Align(
                                           alignment: Alignment.centerLeft,
                                           child: Text(
                                             "Se repite",
                                             style: TextStyle(
-                                              color: Colors.white,
+                                              color: Constant.mainCont,
                                               fontSize: 22,
                                             ),
                                           ),
@@ -572,15 +570,14 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                               child: RoundTextButton(
                                                   radius: 15,
                                                   width: 100,
-                                                  color: Constant.inCont,
+                                                  color: Constant.secondCont3,
                                                   child: Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(0),
+                                                    padding: EdgeInsets.all(0),
                                                     child: NumberPicker(
                                                       selectedTextStyle:
-                                                          const TextStyle(
-                                                              color:
-                                                                  Colors.white,
+                                                          TextStyle(
+                                                              color: Constant
+                                                                  .mainCont,
                                                               fontSize: 20),
                                                       itemCount: 1,
                                                       itemHeight: 30,
@@ -596,13 +593,13 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                                   )),
                                             ),
                                             SizedBox(width: 10),
-                                            const Expanded(
+                                            Expanded(
                                               child: Align(
                                                 alignment: Alignment.center,
                                                 child: Text(
                                                   'Horas',
                                                   style: TextStyle(
-                                                      color: Colors.white,
+                                                      color: Constant.mainCont,
                                                       fontSize: 20),
                                                 ),
                                               ),
@@ -696,7 +693,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                 flex: 1,
                                 child: RoundTextButton(
                                   width: double.infinity,
-                                  color: Constant.button,
+                                  color: Constant.mainCont2,
                                   onPressed: () {
                                     var i = 0;
                                     var weekDays = [];
@@ -744,7 +741,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                     "Guardar",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      color: Color.fromARGB(255, 84, 84, 84),
+                                      color: Color.fromARGB(255, 255, 255, 255),
                                       fontSize: 25,
                                       fontWeight: FontWeight.w500,
                                     ),
