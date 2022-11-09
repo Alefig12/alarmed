@@ -46,6 +46,7 @@ class RoundTextButton extends StatelessWidget {
       this.width,
       this.height,
       this.radius,
+      this.elevation,
       this.onPressed})
       : super(key: key);
   final double? width;
@@ -53,6 +54,7 @@ class RoundTextButton extends StatelessWidget {
   final Color color;
   final Widget child;
   final double? radius;
+  final double? elevation;
   final void Function()? onPressed;
 
   @override
@@ -68,6 +70,9 @@ class RoundTextButton extends StatelessWidget {
         child: TextButton(
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all<Color>(color),
+              elevation:
+                  MaterialStateProperty.all(elevation ?? 0), //Defines Elevation
+              shadowColor: MaterialStateProperty.all(Colors.black),
               shape: MaterialStateProperty.all(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(radius ?? 25),
               )),
