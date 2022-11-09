@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:alarmed/custom_icons_icons.dart';
 import 'package:alarmed/services/local_notification_service.dart';
 import 'package:alarmed/ui/controllers/alarm_controller.dart';
+import 'package:alarmed/ui/controllers/authentication_controller.dart';
 import 'package:alarmed/ui/pages/save_dialog.dart';
 import 'package:alarmed/ui/pages/turn_alarm_off.dart';
 import 'package:flutter/material.dart';
@@ -85,6 +86,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
   @override
   Widget build(BuildContext context) {
     AlarmController alarmController = Get.find<AlarmController>();
+    AuthenticationController authenticationController = Get.find();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       key: const Key('SchedulingScaffold'),
@@ -177,7 +179,9 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                         width: 40,
                                         height: 40,
                                         color: Colors.white,
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          authenticationController.logout();
+                                        },
                                         child: Text('')),
                                   ),
                                 ),
