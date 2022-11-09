@@ -91,11 +91,11 @@ class _NavigationPageState extends State<NavigationPage> {
                   radius: 30,
                   width: 60,
                   height: 60,
-                  color: Constant.inCont,
-                  child: const Center(
+                  color: Constant.secondCont4,
+                  child: Center(
                     child: Icon(
                       FontAwesomeIcons.question,
-                      color: Colors.white,
+                      color: Constant.secondCont,
                       size: 40,
                     ),
                   ),
@@ -108,11 +108,11 @@ class _NavigationPageState extends State<NavigationPage> {
                   radius: 30,
                   width: 60,
                   height: 60,
-                  color: Constant.inCont,
-                  child: const Center(
+                  color: Constant.secondCont4,
+                  child: Center(
                     child: Icon(
                       FontAwesomeIcons.plus,
-                      color: Colors.white,
+                      color: Constant.secondCont,
                       size: 40,
                     ),
                   ),
@@ -125,11 +125,11 @@ class _NavigationPageState extends State<NavigationPage> {
                   radius: 30,
                   width: 60,
                   height: 60,
-                  color: Constant.inCont,
-                  child: const Center(
+                  color: Constant.secondCont4,
+                  child: Center(
                     child: Icon(
                       FontAwesomeIcons.clock,
-                      color: Colors.white,
+                      color: Constant.secondCont,
                       size: 40,
                     ),
                   ),
@@ -142,13 +142,13 @@ class _NavigationPageState extends State<NavigationPage> {
                   radius: 30,
                   width: 60,
                   height: 60,
-                  color: Constant.inCont,
+                  color: Constant.secondCont4,
                   child: Center(
                     child: Transform.rotate(
                       angle: -math.pi / 1.65,
                       child: Icon(
                         CustomIcons.pill,
-                        color: Colors.white,
+                        color: Constant.secondCont,
                         size: 40,
                       ),
                     ),
@@ -162,11 +162,11 @@ class _NavigationPageState extends State<NavigationPage> {
                   radius: 30,
                   width: 60,
                   height: 60,
-                  color: Constant.inCont,
-                  child: const Center(
+                  color: Constant.secondCont4,
+                  child: Center(
                     child: Icon(
                       FontAwesomeIcons.calendar,
-                      color: Colors.white,
+                      color: Constant.secondCont,
                       size: 40,
                     ),
                   ),
