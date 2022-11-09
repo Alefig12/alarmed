@@ -51,7 +51,7 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
                   children: [
                     Text(
                       'Alarmed',
-                      style: TextStyle(fontSize: 30, color: Constant.title),
+                      style: TextStyle(fontSize: 40, color: Constant.title),
                     ),
                     SizedBox(height: 10),
                     MainRoundedBox(
@@ -139,6 +139,7 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
                                     color: Constant.mainCont2,
                                     width: 35,
                                     height: 35,
+                                    elevation: 10,
                                   )
                                 ],
                               ),
@@ -191,6 +192,7 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
                                     color: Constant.mainCont2,
                                     width: 35,
                                     height: 35,
+                                    elevation: 10,
                                   )
                                 ],
                               ),
@@ -229,6 +231,7 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
                       color: Constant.mainCont2,
                       width: 520,
                       height: 70,
+                      elevation: 10,
                     )
                   ]),
             ),
