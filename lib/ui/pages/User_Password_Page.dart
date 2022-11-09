@@ -76,6 +76,7 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
                             ),
                             Expanded(
                               child: RoundTextInput(
+                                textController: _emailController,
                                 color: Constant.secondCont3,
                                 width: double.infinity,
                               ),
@@ -98,10 +99,12 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
                       children: [
                         Expanded(
                           flex: 2,
-                          child: Text('Elige tu \ncontraseña',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 50, color: Constant.title)),
+                          child: FittedBox(
+                            child: Text('Elige tu \ncontraseña',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 50, color: Constant.title)),
+                          ),
                         ),
                         Expanded(
                           flex: 3,
@@ -114,6 +117,7 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
                                     fontWeight: FontWeight.w100)),
                             Expanded(
                               child: RoundTextInput(
+                                textController: _passwordController,
                                 color: Constant.secondCont3,
                                 width: double.infinity,
                               ),
@@ -154,6 +158,10 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
               Align(
                 alignment: Alignment.center,
                 child: RoundTextButton(
+                  onPressed: () {
+                    signUp();
+                    Get.off(() => LoginPage());
+                  },
                   child: Row(children: [
                     Expanded(
                       flex: 3,
