@@ -24,6 +24,13 @@ class MainRoundedBox extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(radius ?? 25),
+        boxShadow: [
+          BoxShadow(
+            color: Color.fromARGB(68, 33, 29, 42),
+            blurRadius: 5,
+            offset: Offset(0, 0), // Shadow position
+          ),
+        ],
       ),
       child: SizedBox(
         //Si width = null,pone 50. Si width != null , pone width

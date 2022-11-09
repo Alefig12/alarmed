@@ -26,6 +26,7 @@ class TurnAlarmOff extends StatelessWidget {
   final ShakeConstant shakeConstant = ShakeDefaultConstant1();
   final bool autoPlay;
   final Duration? duration;
+  bool dayTime = true; //si es de dia es true, sino es false
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,8 @@ class TurnAlarmOff extends StatelessWidget {
     return Scaffold(
         key: Key('TurnOffScaffold'),
         body: Container(
-          decoration: BoxDecoration(color: Constant.mainCont),
+          decoration: BoxDecoration(
+              color: dayTime ? Constant.secondCont4 : Constant.mainCont),
           child: SafeArea(
               child: Center(
             child: Column(
@@ -46,55 +48,76 @@ class TurnAlarmOff extends StatelessWidget {
                   enableWebMouseHover: true,
                   child: Column(
                     children: [
+                      Text('¡Es hora de tomar \ntus pastillas!',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold,
+                              color: dayTime
+                                  ? Constant.mainCont
+                                  : Constant.title)),
+                      SizedBox(
+                        height: 23,
+                      ),
                       MainRoundedBox(
-                        radius: 45,
-                        width: 90,
-                        height: 90,
-                        color: Constant.inCont,
+                        radius: 75,
+                        width: 150,
+                        height: 150,
+                        color: Constant.thirdGreen,
                         child: Center(
                           child: Icon(
                             iconPill,
                             color: Colors.white,
-                            size: 60,
+                            size: 90,
                           ),
                         ),
                       ),
                       SizedBox(
                         height: 30,
                       ),
-                      Text('¡Hora de tomar la Pastilla!',
+                      Container(
+                        width: 250,
+                        child: Text(
+                          pillName,
+                          textAlign: TextAlign.center,
+                          // ignore: prefer_const_constructors
                           style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Constant.secondCont)),
+                              fontSize: 30,
+                              fontFamily: 'Poppings',
+                              color:
+                                  dayTime ? Constant.mainCont : Constant.title),
+                        ),
+                      ),
                       SizedBox(
-                        height: 20,
+                        height: 30,
                       ),
                       Text(
-                        pillName,
+                        '2:30 PM',
                         // ignore: prefer_const_constructors
                         style: TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                            color: Constant.title),
+                            fontSize: 30,
+                            fontFamily: 'Poppings',
+                            color: Constant.mainCont),
                       ),
                     ],
                   ),
                 ),
                 RoundTextButton(
-                    width: 150,
-                    onPressed: () {
-                      Navigator.of(context, rootNavigator: true).pop();
-                      alarmController.deleteAlarm(idAlarm);
-                    },
-                    child: Text(
-                      'Apagar',
-                      style: TextStyle(
-                          color: Constant.mainCont,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20),
-                    ),
-                    color: Color.fromARGB(255, 230, 190, 12))
+                  width: 200,
+                  onPressed: () {
+                    Navigator.of(context, rootNavigator: true).pop();
+                    alarmController.deleteAlarm(idAlarm);
+                  },
+                  child: Text(
+                    '¡Listo!',
+                    style: TextStyle(
+                        color: Constant.title,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 32),
+                  ),
+                  color: Constant.mainCont2,
+                  elevation: 8,
+                )
               ],
             ),
           )),
