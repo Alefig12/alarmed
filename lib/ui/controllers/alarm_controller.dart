@@ -1,3 +1,4 @@
+import 'package:alarmed/ui/controllers/user_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:alarmed/domain/entities/alarm.dart';
@@ -14,6 +15,8 @@ class AlarmController extends GetxController {
 
   get morningList => _morningList;
   final _nightList = [].obs;
+
+  UserController userController = Get.find();
 
   DateTime mostRecentWeekday(DateTime date, int weekday) =>
       DateTime(date.year, date.month, date.day - (date.weekday - weekday) % 7);
@@ -87,7 +90,7 @@ class AlarmController extends GetxController {
     for (var e in sortedAlarmList) {
       print(e.startDateTime);
       // sortedAlarmList Tiene las alarmas ordenadas por fecha y solo las alarmas de la semana actual.
-
+      // _alarmList Tiene TODAS las alarmas sin ordenar.
       //Para hacer: ordenar en pantalla de conf alarm
     }
 
@@ -153,7 +156,7 @@ class AlarmController extends GetxController {
     String? tone,
     double? volume,
   ) {
-    _alarmList.add(Alarm(
+    Alarm alarm = Alarm(
       id: id,
       pillName: pillName,
       days: days,
@@ -164,7 +167,9 @@ class AlarmController extends GetxController {
       dose: dose,
       tone: tone ?? 'Default',
       volume: volume ?? 1,
-    ));
+    );
+    _alarmList.add(alarm);
+    userController.addAlarmToLoggedUser(alarm);
 
     DateTime newDate = DateTime(
         startDateTime.year,
@@ -176,9 +181,10 @@ class AlarmController extends GetxController {
 
     DateTime endTime = DateTime(
         endDateTime.year, endDateTime.month, endDateTime.day, 23, 59, 59);
+
     while (newDate.isBefore(endTime) && repeat != 0) {
       id = UniqueKey().hashCode;
-      _alarmList.add(Alarm(
+      alarm = Alarm(
         id: id,
         pillName: pillName,
         days: days,
@@ -189,7 +195,8 @@ class AlarmController extends GetxController {
         dose: dose,
         tone: tone ?? 'Default',
         volume: volume ?? 1,
-      ));
+      );
+      _alarmList.add(alarm);
 
       newDate = DateTime(newDate.year, newDate.month, newDate.day,
           newDate.hour + repeat, newDate.minute, newDate.second);
