@@ -24,6 +24,10 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+
+  bool _isPassword = true;
 
   void signUp() async {
     await authenticationController.signup(
@@ -33,154 +37,208 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
       key: Key('RegistrationScaffold'),
       body: SafeArea(
         child: Center(
           child: Container(
             padding: EdgeInsets.all(15),
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Text(
-                'Alarmed',
-                style: TextStyle(fontSize: 30, color: Constant.title),
-              ),
-              SizedBox(height: 10),
-              Expanded(
-                flex: 5,
-                child: MainRoundedBox(
-                    padding: 15,
-                    width: double.infinity,
-                    height: 250,
-                    color: Constant.mainCont,
-                    child: Column(
-                      children: [
-                        Expanded(
-                          child: FittedBox(
-                            child: Text('Elige tu nombre \nde usuario',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 25, color: Constant.title)),
-                          ),
-                        ),
-                        Expanded(
-                          child: Column(children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text('Podrás cambiarlo después:',
+            child: SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Alarmed',
+                      style: TextStyle(fontSize: 30, color: Constant.title),
+                    ),
+                    SizedBox(height: 10),
+                    MainRoundedBox(
+                        padding: 15,
+                        width: double.infinity,
+                        height: 150,
+                        color: Constant.mainCont,
+                        child: Column(
+                          children: [
+                            FittedBox(
+                              child: Text('Elige tu nombre \nde usuario',
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      color: Constant.title,
-                                      fontSize: 18,
-                                      fontFamily: 'Poppins',
-                                      fontWeight: FontWeight.w100)),
+                                      fontSize: 25, color: Constant.title)),
                             ),
-                            Expanded(
-                              child: RoundTextInput(
+                            Column(children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text('Podrás cambiarlo después:',
+                                    style: TextStyle(
+                                        color: Constant.title,
+                                        fontSize: 18,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w100)),
+                              ),
+                              RoundTextInput(
                                 textController: _emailController,
                                 color: Constant.secondCont3,
                                 width: double.infinity,
+                                height: 35,
                               ),
+                            ])
+                          ],
+                        )),
+                    SizedBox(height: 10),
+                    MainRoundedBox(
+                        padding: 15,
+                        width: double.infinity,
+                        height: 320,
+                        color: Constant.mainCont,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            FittedBox(
+                              child: Text('Elige tu \ncontraseña',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 50, color: Constant.title)),
                             ),
-                          ]),
-                        )
-                      ],
-                    )),
-              ),
-              SizedBox(height: 10),
-              Expanded(
-                flex: 9,
-                child: MainRoundedBox(
-                    padding: 15,
-                    width: double.infinity,
-                    height: 250,
-                    color: Constant.mainCont,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                            Column(children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text('Introduce tu contraseña:',
+                                    style: TextStyle(
+                                        color: Constant.title,
+                                        fontSize: 18,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w100)),
+                              ),
+                              Row(
+                                children: [
+                                  RoundTextInput(
+                                    textController: _passwordController,
+                                    color: Constant.secondCont3,
+                                    width: 280,
+                                    height: 35,
+                                    isPassword: _isPassword,
+                                  ),
+                                  SizedBox(
+                                    width: 12,
+                                  ),
+                                  RoundTextButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        _isPassword = !_isPassword;
+                                      });
+                                    },
+                                    child: Expanded(
+                                      child: Align(
+                                          alignment: Alignment.center,
+                                          child: Icon(
+                                            _isPassword
+                                                ? Icons.visibility
+                                                : Icons.visibility_off,
+                                            color: Colors.white,
+                                            size: 20.0,
+                                          )),
+                                    ),
+                                    color: Constant.mainCont2,
+                                    width: 35,
+                                    height: 35,
+                                  )
+                                ],
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text('password feedback',
+                                    style: TextStyle(
+                                        color: Constant.title,
+                                        fontSize: 12,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w100)),
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text('Confirma tu contraseña:',
+                                    style: TextStyle(
+                                        color: Constant.title,
+                                        fontSize: 18,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w100)),
+                              ),
+                              Row(
+                                children: [
+                                  RoundTextInput(
+                                    textController: _confirmPasswordController,
+                                    color: Constant.secondCont3,
+                                    width: 280,
+                                    height: 35,
+                                    isPassword: _isPassword,
+                                  ),
+                                  SizedBox(
+                                    width: 12,
+                                  ),
+                                  RoundTextButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        _isPassword = !_isPassword;
+                                      });
+                                    },
+                                    child: Expanded(
+                                      child: Align(
+                                          alignment: Alignment.center,
+                                          child: Icon(
+                                            _isPassword
+                                                ? Icons.visibility
+                                                : Icons.visibility_off,
+                                            color: Colors.white,
+                                            size: 20.0,
+                                          )),
+                                    ),
+                                    color: Constant.mainCont2,
+                                    width: 35,
+                                    height: 35,
+                                  )
+                                ],
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text('password feedback',
+                                    style: TextStyle(
+                                        color: Constant.title,
+                                        fontSize: 12,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w100)),
+                              ),
+                            ])
+                          ],
+                        )),
+                    SizedBox(height: 10),
+                    RoundTextButton(
+                      onPressed: () {
+                        signUp();
+                        Get.off(() => LoginPage());
+                      },
+                      child: Row(children: [
                         Expanded(
-                          flex: 2,
-                          child: FittedBox(
-                            child: Text('Elige tu \ncontraseña',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 50, color: Constant.title)),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              'Siguiente',
+                              style: TextStyle(
+                                  color: Constant.title,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 40),
+                            ),
                           ),
                         ),
-                        Expanded(
-                          flex: 3,
-                          child: Column(children: [
-                            Text('Introduce tu contraseña:',
-                                style: TextStyle(
-                                    color: Constant.title,
-                                    fontSize: 18,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w100)),
-                            Expanded(
-                              child: RoundTextInput(
-                                textController: _passwordController,
-                                color: Constant.secondCont3,
-                                width: double.infinity,
-                              ),
-                            ),
-                            Text('password feedback',
-                                style: TextStyle(
-                                    color: Constant.title,
-                                    fontSize: 12,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w100)),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Text('Confirma tu contraseña:',
-                                style: TextStyle(
-                                    color: Constant.title,
-                                    fontSize: 18,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w100)),
-                            Expanded(
-                              child: RoundTextInput(
-                                color: Constant.secondCont3,
-                                width: double.infinity,
-                              ),
-                            ),
-                            Text('password feedback',
-                                style: TextStyle(
-                                    color: Constant.title,
-                                    fontSize: 12,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w100)),
-                          ]),
-                        )
-                      ],
-                    )),
-              ),
-              SizedBox(height: 10),
-              Align(
-                alignment: Alignment.center,
-                child: RoundTextButton(
-                  onPressed: () {
-                    signUp();
-                    Get.off(() => LoginPage());
-                  },
-                  child: Row(children: [
-                    Expanded(
-                      flex: 3,
-                      child: Text(
-                        'Siguiente',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Constant.title,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 40),
-                      ),
-                    ),
+                      ]),
+                      color: Constant.mainCont2,
+                      width: 520,
+                      height: 70,
+                    )
                   ]),
-                  color: Constant.mainCont2,
-                  width: 520,
-                  height: 70,
-                ),
-              )
-            ]),
+            ),
           ),
         ),
       ),
