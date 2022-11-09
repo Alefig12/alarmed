@@ -28,35 +28,33 @@ class _HelpPageState extends State<HelpPage> {
                   alignment: Alignment.bottomLeft,
                   child: Text(' AYUDA',
                       style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.black,
+                          fontSize: 40,
+                          color: Constant.title,
                           fontWeight: FontWeight.w600))),
               Align(
                 alignment: Alignment.topLeft,
                 child: MainRoundedBox(
                     // ignore: prefer_const_literals_to_create_immutables
                     child: Row(children: [
-                      Expanded(
-                        child: FittedBox(
-                          child: Padding(
-                            padding: const EdgeInsets.all(5),
-                            child: Text(
-                              'Preguntas Frecuentes',
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: Constant.title,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                      FittedBox(
+                        child: Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: Text(
+                            'Preguntas Frecuentes',
+                            style: TextStyle(
+                                fontSize: 15,
+                                color: Constant.title,
+                                fontFamily: 'Poppings'),
                           ),
                         ),
                       )
                     ]),
                     color: Constant.mainCont2,
-                    width: double.infinity,
+                    width: 180,
                     height: 50),
               ),
               SizedBox(
-                height: 10,
+                height: 25,
               ),
               MainRoundedBox(
                 color: Constant.secondCont,
@@ -67,20 +65,29 @@ class _HelpPageState extends State<HelpPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     // ignore: prefer_const_literals_to_create_immutables
                     children: [
-                      Text('¿Donde ver farmacias cercanas?',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Constant.title)),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('¿Donde ver farmacias cercanas?',
+                            style: TextStyle(
+                                fontFamily: 'Poppings',
+                                color: Constant.title,
+                                fontSize: 25)),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Text(
-                          'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
-                          style: TextStyle(color: Constant.title))
+                          'Sed ut perspiciatis unde omnis istee ipsa uasi archim i quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
+                          style: TextStyle(
+                              color: Constant.title,
+                              fontFamily: 'Poppings',
+                              fontSize: 20))
                     ],
                   ),
                 ]),
               ),
               SizedBox(
-                height: 10,
+                height: 25,
               ),
               MainRoundedBox(
                 color: Constant.secondCont4,
@@ -91,14 +98,23 @@ class _HelpPageState extends State<HelpPage> {
                     mainAxisSize: MainAxisSize.min,
                     // ignore: prefer_const_literals_to_create_immutables
                     children: [
-                      Text('¿Donde se puede cambiar mi nombre de usuario?',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Constant.secondCont2)),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text('¿Donde ver farmacias cercanas?',
+                            style: TextStyle(
+                                fontFamily: 'Poppings',
+                                color: Constant.secondCont2,
+                                fontSize: 25)),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Text(
-                          'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
-                          style: TextStyle(color: Constant.secondCont2))
+                          'Sed ut perspiciatis unde omnis istee ipsa uasi archim i quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
+                          style: TextStyle(
+                              color: Constant.secondCont2,
+                              fontFamily: 'Poppings',
+                              fontSize: 20))
                     ],
                   )
                 ]),
