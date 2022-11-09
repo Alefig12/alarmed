@@ -12,6 +12,7 @@ import 'pages/Registration_page.dart';
 import 'pages/User_Password_page.dart';
 import 'pages/login_page.dart';
 import 'package:get/get.dart';
+import 'package:alarmed/ui/pages/firebase_central.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           fontFamily: 'LincolnRoad',
           scaffoldBackgroundColor: Constant.secondCont3),
-      home: UserPasswordPage(),
+      home: FirebaseCentral(),
     );
   }
 }

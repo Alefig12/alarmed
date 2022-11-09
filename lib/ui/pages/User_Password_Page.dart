@@ -1,6 +1,7 @@
 // ignore_for_file: sort_child_properties_last, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:alarmed/ui/controllers/authentication_controller.dart';
+import 'package:alarmed/ui/pages/firebase_central.dart';
 import 'package:alarmed/ui/pages/login_page.dart';
 import 'package:alarmed/ui/widgets/roundedbox_widget.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -128,16 +129,12 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
                                         _isPassword = !_isPassword;
                                       });
                                     },
-                                    child: Expanded(
-                                      child: Align(
-                                          alignment: Alignment.center,
-                                          child: Icon(
-                                            _isPassword
-                                                ? Icons.visibility
-                                                : Icons.visibility_off,
-                                            color: Colors.white,
-                                            size: 20.0,
-                                          )),
+                                    child: Icon(
+                                      _isPassword
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                      color: Colors.white,
+                                      size: 20.0,
                                     ),
                                     color: Constant.mainCont2,
                                     width: 35,
@@ -184,16 +181,12 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
                                         _isPassword = !_isPassword;
                                       });
                                     },
-                                    child: Expanded(
-                                      child: Align(
-                                          alignment: Alignment.center,
-                                          child: Icon(
-                                            _isPassword
-                                                ? Icons.visibility
-                                                : Icons.visibility_off,
-                                            color: Colors.white,
-                                            size: 20.0,
-                                          )),
+                                    child: Icon(
+                                      _isPassword
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                      color: Colors.white,
+                                      size: 20.0,
                                     ),
                                     color: Constant.mainCont2,
                                     width: 35,
@@ -217,7 +210,7 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
                     RoundTextButton(
                       onPressed: () {
                         signUp();
-                        Get.off(() => LoginPage());
+                        Get.offAll(() => FirebaseCentral());
                       },
                       child: Row(children: [
                         Expanded(
