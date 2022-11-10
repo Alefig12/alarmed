@@ -9,9 +9,9 @@ import 'package:get/get.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  Get.put(UserController());
   Get.put(AlarmController());
   Get.put(AuthenticationController());
-  Get.put(UserController());
 
   runApp(const MyApp());
 }
