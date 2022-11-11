@@ -55,7 +55,22 @@ class _AlarmPageState extends State<AlarmPage> {
                         ),
                       const SizedBox(
                         height: 20,
-                      )
+                      ),
+                      Align(
+                          alignment: Alignment.bottomRight,
+                          child: RawMaterialButton(
+                            clipBehavior: Clip.none,
+                            onPressed: () {},
+                            elevation: 0.5,
+                            fillColor: Constant.thirdRed,
+                            child: Icon(
+                              Icons.add_circle_outline,
+                              size: 55.0,
+                              color: Constant.title,
+                            ),
+                            padding: EdgeInsets.all(15.0),
+                            shape: CircleBorder(),
+                          )),
                     ]),
               )),
         )));
