@@ -32,131 +32,136 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         key: Key('LoginScaffold'),
+        resizeToAvoidBottomInset: true,
         body: SafeArea(
             child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: MainRoundedBox(
-                  padding: 10,
-                  child: Column(
-                    children: [
-                      Text('Alarmed',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 35, color: Colors.white)),
-                      Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: MainRoundedBox(
-                          padding: 10,
-                          radius: 10,
-                          color: Constant.secondCont3,
-                          child: Column(children: [
-                            Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Expanded(
-                                    flex: 1,
-                                    child: Text('Usuario:',
-                                        style: TextStyle(color: Colors.white)),
-                                  ),
-                                  Expanded(
-                                      flex: 4,
-                                      child: RoundTextInput(
-                                          textController: _emailController,
-                                          color: Constant.mainCont)),
-                                ]),
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      'Contraseña:',
-                                      style: TextStyle(color: Colors.white),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: MainRoundedBox(
+                    padding: 10,
+                    child: Column(
+                      children: [
+                        Text('Alarmed',
+                            textAlign: TextAlign.center,
+                            style:
+                                TextStyle(fontSize: 35, color: Colors.white)),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: MainRoundedBox(
+                            padding: 10,
+                            radius: 10,
+                            color: Constant.secondCont3,
+                            child: Column(children: [
+                              Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Expanded(
+                                      flex: 1,
+                                      child: Text('Usuario:',
+                                          style:
+                                              TextStyle(color: Colors.white)),
                                     ),
-                                  ),
-                                  Expanded(
-                                      child: RoundTextInput(
-                                          textController: _passwordController,
-                                          color: Constant.mainCont))
-                                ])
-                          ]),
+                                    Expanded(
+                                        flex: 4,
+                                        child: RoundTextInput(
+                                            textController: _emailController,
+                                            color: Constant.mainCont)),
+                                  ]),
+                              SizedBox(
+                                height: 8,
+                              ),
+                              Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        'Contraseña:',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                    Expanded(
+                                        child: RoundTextInput(
+                                            textController: _passwordController,
+                                            color: Constant.mainCont))
+                                  ])
+                            ]),
+                          ),
                         ),
-                      ),
-                      RoundTextButton(
-                          child: Align(
-                            alignment: Alignment.bottomLeft,
-                            child: Text(
-                              '¿Olvidaste tu contraseña?',
-                              style: TextStyle(color: Constant.title),
+                        RoundTextButton(
+                            child: Align(
+                              alignment: Alignment.bottomLeft,
+                              child: Text(
+                                '¿Olvidaste tu contraseña?',
+                                style: TextStyle(color: Constant.title),
+                              ),
                             ),
-                          ),
-                          color: Constant.mainCont),
-                      RoundTextButton(
-                        width: 200,
-                        radius: 10,
-                        child: Text('Iniciar sesión',
-                            style: TextStyle(color: Constant.title)),
-                        color: Constant.mainCont2,
-                        onPressed: login,
-                      ),
-                      RoundTextButton(
-                          onPressed: () {
-                            Get.to(RegistrationPage());
-                          },
-                          child: Text('Crear Cuenta',
-                              style: TextStyle(
-                                  color: Constant.title,
-                                  decoration: TextDecoration.underline)),
-                          color: Constant.mainCont),
-                      Container(
-                        padding: EdgeInsets.only(top: 15),
-                        child: Text(
-                          "Vincular",
-                          style: TextStyle(color: Constant.title),
+                            color: Constant.mainCont),
+                        RoundTextButton(
+                          width: 200,
+                          radius: 10,
+                          child: Text('Iniciar sesión',
+                              style: TextStyle(color: Constant.title)),
+                          color: Constant.mainCont2,
+                          onPressed: login,
                         ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {},
-                            child: FaIcon(
-                              FontAwesomeIcons.google,
-                              color: Colors.grey,
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              shape: CircleBorder(),
-                              primary: Colors.white,
-                              fixedSize: Size(40, 40),
-                            ),
+                        RoundTextButton(
+                            onPressed: () {
+                              Get.to(RegistrationPage());
+                            },
+                            child: Text('Crear Cuenta',
+                                style: TextStyle(
+                                    color: Constant.title,
+                                    decoration: TextDecoration.underline)),
+                            color: Constant.mainCont),
+                        Container(
+                          padding: EdgeInsets.only(top: 15),
+                          child: Text(
+                            "Vincular",
+                            style: TextStyle(color: Constant.title),
                           ),
-                          ElevatedButton(
-                            onPressed: () {},
-                            child: Icon(
-                              FontAwesomeIcons.facebook,
-                              color: Colors.grey,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {},
+                              child: FaIcon(
+                                FontAwesomeIcons.google,
+                                color: Colors.grey,
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                shape: CircleBorder(),
+                                primary: Colors.white,
+                                fixedSize: Size(40, 40),
+                              ),
                             ),
-                            style: ElevatedButton.styleFrom(
-                              shape: CircleBorder(),
-                              primary: Colors.white,
-                              fixedSize: Size(40, 40),
+                            ElevatedButton(
+                              onPressed: () {},
+                              child: Icon(
+                                FontAwesomeIcons.facebook,
+                                color: Colors.grey,
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                shape: CircleBorder(),
+                                primary: Colors.white,
+                                fixedSize: Size(40, 40),
+                              ),
                             ),
-                          ),
-                        ],
-                      )
-                    ],
+                          ],
+                        )
+                      ],
+                    ),
+                    color: Constant.mainCont,
                   ),
-                  color: Constant.mainCont,
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         )));
   }
