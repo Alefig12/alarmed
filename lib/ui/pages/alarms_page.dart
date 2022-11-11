@@ -3,6 +3,7 @@
 
 import 'package:alarmed/ui/Widgets/alarm_card.dart';
 import 'package:alarmed/ui/controllers/alarm_controller.dart';
+import 'package:alarmed/ui/pages/scheduling_page.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:alarmed/ui/assets/constant.dart';
@@ -23,6 +24,17 @@ class _AlarmPageState extends State<AlarmPage> {
     AlarmController alarmController = Get.find();
     return Scaffold(
         key: const Key('AlarmScaffold'),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Constant.mainCont2,
+          child: Icon(
+            Icons.add_circle_outline,
+            size: 55.0,
+            color: Constant.title,
+          ),
+          onPressed: () {
+            Get.to(SchedulingPage());
+          },
+        ),
         body: SafeArea(
             child: SingleChildScrollView(
           child: Container(
@@ -56,21 +68,6 @@ class _AlarmPageState extends State<AlarmPage> {
                       const SizedBox(
                         height: 20,
                       ),
-                      Align(
-                          alignment: Alignment.bottomRight,
-                          child: RawMaterialButton(
-                            clipBehavior: Clip.none,
-                            onPressed: () {},
-                            elevation: 0.5,
-                            fillColor: Constant.thirdRed,
-                            child: Icon(
-                              Icons.add_circle_outline,
-                              size: 55.0,
-                              color: Constant.title,
-                            ),
-                            padding: EdgeInsets.all(15.0),
-                            shape: CircleBorder(),
-                          )),
                     ]),
               )),
         )));
