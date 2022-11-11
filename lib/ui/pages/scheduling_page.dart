@@ -2,12 +2,12 @@ import 'dart:convert';
 
 import 'package:alarmed/custom_icons_icons.dart';
 import 'package:alarmed/services/local_notification_service.dart';
+import 'package:alarmed/ui/Widgets/roundedbox_widget.dart';
 import 'package:alarmed/ui/controllers/alarm_controller.dart';
 import 'package:alarmed/ui/controllers/authentication_controller.dart';
 import 'package:alarmed/ui/pages/save_dialog.dart';
 import 'package:alarmed/ui/pages/turn_alarm_off.dart';
 import 'package:flutter/material.dart';
-import 'package:alarmed/ui/widgets/roundedbox_widget.dart';
 import 'package:alarmed/ui/assets/constant.dart';
 import 'package:intl/intl.dart';
 import 'package:numberpicker/numberpicker.dart';
@@ -23,6 +23,7 @@ class SchedulingPage extends StatefulWidget {
 
 class _SchedulingPageState extends State<SchedulingPage> {
   TimeOfDay _time = const TimeOfDay(hour: 7, minute: 15);
+  double _value = 20;
 
   void _selectTime() async {
     final TimeOfDay? newTime = await showTimePicker(
@@ -103,11 +104,11 @@ class _SchedulingPageState extends State<SchedulingPage> {
                       color: Constant.secondCont3,
                       child: Center(
                         child: Text(
-                          "Programa tus medicinas!",
+                          "Programa tus medicinas !",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: Constant.title,
-                            fontSize: 20,
+                            fontSize: 25,
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -132,153 +133,99 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                   flex: 1,
                                   child: Center(
                                     child: MainRoundedBox(
-                                      radius: 40,
-                                      width: 50,
-                                      height: 50,
-                                      color: Constant.mainCont2,
+                                      radius: 50,
+                                      width: 90,
+                                      height: 90,
+                                      color: Colors.white,
                                       child: Center(
                                         child: Transform.rotate(
                                           angle: -math.pi / 1.65,
-                                          child: const Icon(
+                                          child: Icon(
                                             CustomIcons.pill,
-                                            color: Colors.white,
-                                            size: 40,
+                                            color: Constant.mainCont2,
+                                            size: 60,
                                           ),
                                         ),
                                       ),
                                     ),
                                   ),
                                 ),
-                                SizedBox(width: 20),
-                                Expanded(
-                                  flex: 5,
-                                  child: RoundTextInput(
-                                    textController: pillNameTextController,
-                                    height: 40,
-                                    width: 230,
-                                    color: Constant.secondCont3,
-                                    label: 'Nombre del medicamento',
-                                    hintStyle: TextStyle(
-                                      fontSize: 17,
-                                      color: Constant.mainCont,
-                                      fontWeight: FontWeight.w600,
+                                SizedBox(width: 5),
+                                Column(
+                                  children: [
+                                    Expanded(
+                                      flex: 2,
+                                      child: RoundTextInput(
+                                        textController: pillNameTextController,
+                                        height: 40,
+                                        width: 230,
+                                        color: Constant.secondCont3,
+                                        label: 'Nombre del medicamento',
+                                        hintStyle: TextStyle(
+                                          fontSize: 17,
+                                          color: Constant.mainCont,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Expanded(
-                            flex: 4,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Expanded(
-                                  child: Center(
-                                    child: RoundTextButton(
-                                        width: 40,
-                                        height: 40,
-                                        color: Colors.white,
-                                        onPressed: () {
-                                          authenticationController.logout();
-                                        },
-                                        child: Text('')),
-                                  ),
-                                ),
-                                SizedBox(width: 10),
-                                Expanded(
-                                  child: Center(
-                                    child: RoundTextButton(
-                                        width: 40,
-                                        height: 40,
-                                        color: Colors.white,
-                                        onPressed: () async {
-                                          await service
-                                              .showScheduledNotificationPayload(
-                                                  id: 0,
-                                                  title: "TEST NOTIF",
-                                                  body: "Test Notif",
-                                                  date: DateTime.now().add(
-                                                      Duration(seconds: 3)),
-                                                  payload: 'payload');
-                                        },
-                                        child: Text('')),
-                                  ),
-                                ),
-                                SizedBox(width: 10),
-                                Expanded(
-                                  child: Center(
-                                    child: RoundTextButton(
-                                        width: 40,
-                                        height: 40,
-                                        color: Colors.white,
-                                        child: Text('')),
-                                  ),
-                                ),
-                                SizedBox(width: 10),
-                                Expanded(
-                                  child: Center(
-                                    child: RoundTextButton(
-                                        width: 40,
-                                        height: 40,
-                                        color: Colors.white,
-                                        child: Text('')),
-                                  ),
-                                ),
-                                SizedBox(width: 10),
-                                Expanded(
-                                  child: Center(
-                                    child: RoundTextButton(
-                                        width: 40,
-                                        height: 40,
-                                        color: Colors.white,
-                                        child: Text('')),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          Expanded(
-                            flex: 3,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                RoundTextButton(
-                                    width: 150,
-                                    height: double.infinity,
-                                    color: Constant.inCont,
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: const [
-                                        Expanded(
-                                          flex: 1,
-                                          child: Icon(
-                                            Icons.add_circle_outline,
-                                            size: 15,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                        Expanded(
-                                          flex: 5,
-                                          child: FittedBox(
-                                            fit: BoxFit.contain,
-                                            child: Text(
-                                              'Más opciones',
-                                              style: TextStyle(
-                                                letterSpacing: 10,
-                                                fontSize: 150,
-                                                color: Colors.white,
-                                              ),
+                                    Expanded(
+                                        flex: 2,
+                                        child: Row(
+                                          children: [
+                                            Column(
+                                              children: [
+                                                Expanded(
+                                                  flex: 3,
+                                                  child: Text(
+                                                    'Cantidad',
+                                                    style: TextStyle(
+                                                        color:
+                                                            Constant.mainCont,
+                                                        fontSize: 20),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  flex: 2,
+                                                  child: RoundTextInput(
+                                                    textController:
+                                                        quantityTextController,
+                                                    color: Constant.secondCont3,
+                                                  ),
+                                                )
+                                              ],
                                             ),
-                                          ),
-                                        ),
-                                      ],
-                                    )),
+                                            SizedBox(
+                                              width: 15,
+                                            ),
+                                            Column(
+                                              children: [
+                                                Expanded(
+                                                  flex: 3,
+                                                  child: Text(
+                                                    'Dosis',
+                                                    style: TextStyle(
+                                                        color:
+                                                            Constant.mainCont,
+                                                        fontSize: 20),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  flex: 2,
+                                                  child: RoundTextInput(
+                                                    textController:
+                                                        doseTextController,
+                                                    color: Constant.secondCont3,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ))
+                                  ],
+                                ),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -286,7 +233,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                 ),
                 SizedBox(height: 10),
                 Expanded(
-                  flex: 3,
+                  flex: 4,
                   child: MainRoundedBox(
                     width: double.infinity,
                     color: Constant.secondCont4,
@@ -302,7 +249,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                               child: Text(
                                 _time.format(context),
                                 style: TextStyle(
-                                    fontSize: 40, color: Constant.mainCont),
+                                    fontSize: 50, color: Constant.mainCont),
                               ),
                             ),
                           ),
@@ -313,7 +260,60 @@ class _SchedulingPageState extends State<SchedulingPage> {
                 ),
                 SizedBox(height: 10),
                 Expanded(
-                  flex: 3,
+                  flex: 4,
+                  child: MainRoundedBox(
+                    width: double.infinity,
+                    color: Constant.secondCont4,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Se repite cada",
+                            style: TextStyle(
+                              color: Constant.mainCont,
+                              fontSize: 22,
+                            ),
+                          ),
+                          SizedBox(width: 15),
+                          RoundTextButton(
+                              radius: 15,
+                              width: 50,
+                              color: Constant.secondCont3,
+                              child: Padding(
+                                padding: EdgeInsets.all(0),
+                                child: NumberPicker(
+                                  selectedTextStyle: TextStyle(
+                                      color: Constant.mainCont, fontSize: 20),
+                                  itemCount: 1,
+                                  itemHeight: 30,
+                                  minValue: 0,
+                                  maxValue: 23,
+                                  value: selectedNum,
+                                  onChanged: (val) {
+                                    setState(() {
+                                      selectedNum = val;
+                                    });
+                                  },
+                                ),
+                              )),
+                          SizedBox(width: 15),
+                          Text(
+                            "horas",
+                            style: TextStyle(
+                              color: Constant.mainCont,
+                              fontSize: 22,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10),
+                Expanded(
+                  flex: 4,
                   child: MainRoundedBox(
                     width: double.infinity,
                     color: Constant.mainCont,
@@ -323,6 +323,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                         children: [
                           Expanded(
                             child: RoundTextButton(
+                              elevation: 7,
                               radius: 30,
                               color: daysIndex[0] ? enabled : disabled,
                               onPressed: () {
@@ -330,11 +331,12 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                   daysIndex[0] = !daysIndex[0];
                                 });
                               },
-                              child: const Text(
-                                'D',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
+                              child: FittedBox(
+                                child: Text(
+                                  'D',
+                                  style: TextStyle(
+                                    color: Constant.mainCont,
+                                  ),
                                 ),
                               ),
                             ),
@@ -342,6 +344,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                           SizedBox(width: 10),
                           Expanded(
                             child: RoundTextButton(
+                              elevation: 7,
                               radius: 30,
                               color: daysIndex[1] ? enabled : disabled,
                               onPressed: () {
@@ -349,11 +352,10 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                   daysIndex[1] = !daysIndex[1];
                                 });
                               },
-                              child: const Text(
-                                'L',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
+                              child: FittedBox(
+                                child: Text(
+                                  'L',
+                                  style: TextStyle(color: Constant.mainCont),
                                 ),
                               ),
                             ),
@@ -361,6 +363,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                           SizedBox(width: 10),
                           Expanded(
                             child: RoundTextButton(
+                              elevation: 7,
                               radius: 30,
                               color: daysIndex[2] ? enabled : disabled,
                               onPressed: () {
@@ -368,11 +371,10 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                   daysIndex[2] = !daysIndex[2];
                                 });
                               },
-                              child: const Text(
-                                'M',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
+                              child: FittedBox(
+                                child: Text(
+                                  'M',
+                                  style: TextStyle(color: Constant.mainCont),
                                 ),
                               ),
                             ),
@@ -380,6 +382,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                           SizedBox(width: 10),
                           Expanded(
                             child: RoundTextButton(
+                              elevation: 7,
                               radius: 30,
                               color: daysIndex[3] ? enabled : disabled,
                               onPressed: () {
@@ -387,11 +390,10 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                   daysIndex[3] = !daysIndex[3];
                                 });
                               },
-                              child: const Text(
-                                'M',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
+                              child: FittedBox(
+                                child: Text(
+                                  'M',
+                                  style: TextStyle(color: Constant.mainCont),
                                 ),
                               ),
                             ),
@@ -399,6 +401,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                           SizedBox(width: 10),
                           Expanded(
                             child: RoundTextButton(
+                              elevation: 7,
                               radius: 30,
                               color: daysIndex[4] ? enabled : disabled,
                               onPressed: () {
@@ -406,11 +409,10 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                   daysIndex[4] = !daysIndex[4];
                                 });
                               },
-                              child: const Text(
-                                'J',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
+                              child: FittedBox(
+                                child: Text(
+                                  'J',
+                                  style: TextStyle(color: Constant.mainCont),
                                 ),
                               ),
                             ),
@@ -418,6 +420,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                           SizedBox(width: 10),
                           Expanded(
                             child: RoundTextButton(
+                              elevation: 7,
                               radius: 30,
                               color: daysIndex[5] ? enabled : disabled,
                               onPressed: () {
@@ -425,18 +428,16 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                   daysIndex[5] = !daysIndex[5];
                                 });
                               },
-                              child: const Text(
+                              child: Text(
                                 'V',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                ),
+                                style: TextStyle(color: Constant.mainCont),
                               ),
                             ),
                           ),
                           SizedBox(width: 10),
                           Expanded(
                             child: RoundTextButton(
+                              elevation: 7,
                               radius: 30,
                               color: daysIndex[6] ? enabled : disabled,
                               onPressed: () {
@@ -444,11 +445,10 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                   daysIndex[6] = !daysIndex[6];
                                 });
                               },
-                              child: const Text(
-                                'S',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
+                              child: FittedBox(
+                                child: Text(
+                                  'S',
+                                  style: TextStyle(color: Constant.mainCont),
                                 ),
                               ),
                             ),
@@ -460,7 +460,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                 ),
                 SizedBox(height: 10),
                 Expanded(
-                  flex: 13,
+                  flex: 8,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -471,7 +471,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                           child: Padding(
                             padding: EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 15),
-                            child: Column(
+                            child: Row(
                               children: [
                                 Expanded(
                                   flex: 4,
@@ -496,16 +496,19 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                         onPressed: () {
                                           _selectDate(true);
                                         },
-                                        child: Text(
-                                          sDate,
-                                          style: TextStyle(
-                                            color: Constant.title,
-                                            fontSize: 20,
+                                        child: FittedBox(
+                                          child: Text(
+                                            sDate,
+                                            style: TextStyle(
+                                                color: Constant.title),
                                           ),
                                         ),
                                       ),
                                     ],
                                   ),
+                                ),
+                                SizedBox(
+                                  width: 10,
                                 ),
                                 Expanded(
                                   flex: 4,
@@ -532,238 +535,139 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                             : () {
                                                 _selectDate(false);
                                               },
-                                        child: Text(
-                                          eDate,
-                                          style: const TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 20,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Row(
-                                    children: [
-                                      Checkbox(
-                                        value: isChecked,
-                                        shape: CircleBorder(),
-                                        onChanged: (bool? value) {
-                                          setState(() {
-                                            isChecked = value!;
-                                          });
-                                        },
-                                      ),
-                                      Text("Nunca")
-                                    ],
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: 10),
-                      Expanded(
-                        child: Column(
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: MainRoundedBox(
-                                width: double.infinity,
-                                color: Constant.secondCont4,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    children: [
-                                      Expanded(
-                                        child: Align(
-                                          alignment: Alignment.centerLeft,
+                                        child: FittedBox(
                                           child: Text(
-                                            "Se repite",
-                                            style: TextStyle(
-                                              color: Constant.mainCont,
-                                              fontSize: 22,
-                                            ),
+                                            eDate,
+                                            style: const TextStyle(
+                                                color: Colors.white),
                                           ),
                                         ),
                                       ),
                                       Expanded(
+                                        flex: 1,
                                         child: Row(
                                           children: [
-                                            Expanded(
-                                              child: RoundTextButton(
-                                                  radius: 15,
-                                                  width: 100,
-                                                  color: Constant.secondCont3,
-                                                  child: Padding(
-                                                    padding: EdgeInsets.all(0),
-                                                    child: NumberPicker(
-                                                      selectedTextStyle:
-                                                          TextStyle(
-                                                              color: Constant
-                                                                  .mainCont,
-                                                              fontSize: 20),
-                                                      itemCount: 1,
-                                                      itemHeight: 30,
-                                                      minValue: 0,
-                                                      maxValue: 23,
-                                                      value: selectedNum,
-                                                      onChanged: (val) {
-                                                        setState(() {
-                                                          selectedNum = val;
-                                                        });
-                                                      },
-                                                    ),
-                                                  )),
+                                            Checkbox(
+                                              value: isChecked,
+                                              shape: CircleBorder(),
+                                              onChanged: (bool? value) {
+                                                setState(() {
+                                                  isChecked = value!;
+                                                });
+                                              },
                                             ),
-                                            SizedBox(width: 10),
-                                            Expanded(
-                                              child: Align(
-                                                alignment: Alignment.center,
-                                                child: Text(
-                                                  'Horas',
-                                                  style: TextStyle(
-                                                      color: Constant.mainCont,
-                                                      fontSize: 20),
-                                                ),
-                                              ),
-                                            )
+                                            Text("Nunca")
                                           ],
                                         ),
                                       )
                                     ],
                                   ),
                                 ),
-                              ),
+                              ],
                             ),
-                            SizedBox(height: 10),
-                            Expanded(
-                              flex: 2,
-                              child: MainRoundedBox(
-                                width: double.infinity,
-                                color: Constant.mainCont,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    children: [
-                                      const Expanded(
-                                        child: Align(
-                                          alignment: Alignment.centerLeft,
-                                          child: Text(
-                                            "Dosis",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 20),
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Row(
-                                          children: [
-                                            const Expanded(
-                                                flex: 2,
-                                                child: Align(
-                                                  alignment:
-                                                      Alignment.centerLeft,
-                                                  child: Text(
-                                                    "cantidad",
-                                                    style: TextStyle(
-                                                        color: Colors.white,
-                                                        fontSize: 20),
-                                                  ),
-                                                )),
-                                            Expanded(
-                                              child: RoundTextInput(
-                                                textController:
-                                                    quantityTextController,
-                                                color: Constant.inCont,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Row(
-                                          children: [
-                                            Expanded(
-                                              child: RoundTextInput(
-                                                textController:
-                                                    doseTextController,
-                                                color: Constant.inCont,
-                                              ),
-                                            ),
-                                            const Expanded(
-                                                child: Align(
-                                              alignment: Alignment.centerLeft,
-                                              child: FittedBox(
-                                                child: Text(
-                                                  "Mg",
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontSize: 20),
-                                                ),
-                                              ),
-                                            )),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            Expanded(
-                                flex: 1,
-                                child: RoundTextButton(
-                                  width: double.infinity,
-                                  color: Constant.mainCont2,
-                                  onPressed: () {
-                                    showDialog<String>(
-                                        context: context,
-                                        builder: (BuildContext context) =>
-                                            Dialog(
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          25.0)),
-                                              child: Padding(
-                                                  padding: EdgeInsets.all(3.0),
-                                                  child: SaveDialog(
-                                                    onContinueClick: () =>
-                                                        generateAlarm(
-                                                            daysIndex,
-                                                            pillNameTextController,
-                                                            _time,
-                                                            sDate,
-                                                            eDate,
-                                                            selectedNum,
-                                                            quantityTextController,
-                                                            doseTextController),
-                                                  )),
-                                            ));
-
-                                    print(alarmController.alarmList);
-                                  },
-                                  child: const Text(
-                                    "Guardar",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Color.fromARGB(255, 255, 255, 255),
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                )),
-                          ],
+                          ),
                         ),
                       ),
                     ],
                   ),
-                )
+                ),
+                SizedBox(height: 10),
+                Expanded(
+                  flex: 6,
+                  child: MainRoundedBox(
+                    color: Constant.secondCont3,
+                    height: double.infinity,
+                    child: Column(children: [
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Center(
+                                child: Text("Tono",
+                                    style: TextStyle(
+                                        fontSize: 15, color: Constant.title)),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: RoundTextInput(
+                                color: Constant.title,
+                              ),
+                            ),
+                          ]),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: Center(
+                                child: Text("Volumen",
+                                    style: TextStyle(
+                                        fontSize: 15, color: Constant.title)),
+                              ),
+                            ),
+                            Expanded(
+                                flex: 5,
+                                child: Slider(
+                                  min: 0.0,
+                                  max: 100.0,
+                                  thumbColor: Constant.mainCont,
+                                  activeColor: Constant.mainCont,
+                                  inactiveColor: Constant.title,
+                                  value: _value,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _value = value;
+                                    });
+                                  },
+                                )),
+                          ]),
+                    ]),
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Expanded(
+                    flex: 3,
+                    child: RoundTextButton(
+                      width: double.infinity,
+                      color: Constant.mainCont2,
+                      elevation: 10,
+                      onPressed: () {
+                        showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => Dialog(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(25.0)),
+                                  child: Padding(
+                                      padding: EdgeInsets.all(3.0),
+                                      child: SaveDialog(
+                                        onContinueClick: () => generateAlarm(
+                                            daysIndex,
+                                            pillNameTextController,
+                                            _time,
+                                            sDate,
+                                            eDate,
+                                            selectedNum,
+                                            quantityTextController,
+                                            doseTextController),
+                                      )),
+                                ));
+
+                        print(alarmController.alarmList);
+                      },
+                      child: const Text(
+                        "Guardar",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          fontSize: 25,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    )),
               ],
             ),
           ),
