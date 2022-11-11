@@ -25,6 +25,21 @@ class Alarm {
       this.tone,
       this.volume});
 
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'pillName': pillName,
+      'days': jsonEncode(days),
+      'startDateTime': startDateTime,
+      'endDateTime': endDateTime,
+      'repeat': repeat,
+      'quantity': quantity,
+      'dose': dose,
+      'tone': tone,
+      'volume': volume
+    };
+  }
+
   String getPillName() {
     return pillName;
   }
