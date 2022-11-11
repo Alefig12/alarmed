@@ -12,5 +12,6 @@ Future<void> main() async {
   Get.put(UserController());
   Get.put(AlarmController());
   Get.put(AuthenticationController());
+
   runApp(const MyApp());
 }

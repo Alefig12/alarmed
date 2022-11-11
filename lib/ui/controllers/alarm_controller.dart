@@ -1,3 +1,4 @@
+import 'package:alarmed/data/db.dart';
 import 'package:alarmed/ui/controllers/user_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -73,6 +74,10 @@ class AlarmController extends GetxController {
   void sortAlarms() {
     var sortedAlarmList = [];
 
+    _alarmList.value = List.from(_alarmList
+      ..sort((item1, item2) =>
+          item1.startDateTime.compareTo(item2.startDateTime)));
+
     DateTime monday = mostRecentWeekday(DateTime.now(), 1);
     DateTime sunday =
         DateTime(monday.year, monday.month, monday.day + 6, 23, 59, 59);
@@ -119,6 +124,7 @@ class AlarmController extends GetxController {
 
   void deleteAlarm(int id) {
     _alarmList.removeWhere((item) => item.id == id);
+    DB.delete(id);
     sortAlarms();
   }
 
@@ -170,6 +176,7 @@ class AlarmController extends GetxController {
     );
     _alarmList.add(alarm);
     userController.addAlarmToLoggedUser(alarm);
+    addAlarmToDB(alarm);
 
     DateTime newDate = DateTime(
         startDateTime.year,
@@ -197,10 +204,36 @@ class AlarmController extends GetxController {
         volume: volume ?? 1,
       );
       _alarmList.add(alarm);
+      userController.addAlarmToLoggedUser(alarm);
+      addAlarmToDB(alarm);
 
       newDate = DateTime(newDate.year, newDate.month, newDate.day,
           newDate.hour + repeat, newDate.minute, newDate.second);
     }
+  }
+
+  Future<void> addAlarmToDB(Alarm alarm) async {
+    await DB.insert(alarm);
+  }
+
+  Future<void> setUserAlarms() async {
+    List<Alarm> alarms = await DB.getAllAlarms();
+    _alarmList.value = alarms;
+    _alarmList.refresh();
+    sortAlarms();
+  }
+
+  Future<void> deleteAllAlarms() async {
+    await DB.deleteAllAlarms();
+    _alarmList.value = [];
+    _morningList.value = [];
+    _afternoonList.value = [];
+    _nightList.value = [];
+
+    _alarmList.refresh();
+    _morningList.refresh();
+    _afternoonList.refresh();
+    _nightList.refresh();
   }
 
   get afternoonList => _afternoonList;

@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
@@ -30,8 +31,8 @@ class Alarm {
       'id': id,
       'pillName': pillName,
       'days': jsonEncode(days),
-      'startDateTime': startDateTime,
-      'endDateTime': endDateTime,
+      'startDateTime': DateFormat('yyyy-MM-dd – kk:mm').format(startDateTime),
+      'endDateTime': DateFormat('yyyy-MM-dd – kk:mm').format(endDateTime),
       'repeat': repeat,
       'quantity': quantity,
       'dose': dose,

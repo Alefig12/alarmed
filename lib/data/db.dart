@@ -1,11 +1,12 @@
 import 'dart:convert';
 
 import 'package:alarmed/domain/entities/alarm.dart';
+import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class DB {
-  Future<Database> _openDB() async {
+  static Future<Database> _openDB() async {
     return openDatabase(join(await getDatabasesPath(), 'alarm.db'),
         onCreate: (db, version) {
       return db.execute(
@@ -13,30 +14,38 @@ class DB {
     }, version: 1);
   }
 
-  Future<void> insert(Alarm alarm) async {
+  static Future<void> insert(Alarm alarm) async {
     Database db = await _openDB();
 
     await db.insert("alarm", alarm.toMap());
   }
 
-  Future<void> delete(Alarm alarm) async {
+  static Future<void> delete(int alarmID) async {
     Database db = await _openDB();
 
-    await db.delete("alarm", where: "id = ?", whereArgs: [alarm.id]);
+    await db.delete("alarm", where: "id = ?", whereArgs: [alarmID]);
   }
 
-  Future<List<Alarm>> getAllAlarms(Alarm alarm) async {
+  static Future<void> deleteAllAlarms() async {
     Database db = await _openDB();
 
-    final List<Map<String, dynamic>> alarmsMap = await db.query("alarms");
+    await db.delete('alarm');
+  }
+
+  static Future<List<Alarm>> getAllAlarms() async {
+    Database db = await _openDB();
+
+    final List<Map<String, dynamic>> alarmsMap = await db.query("alarm");
 
     return List.generate(alarmsMap.length, (i) {
       return Alarm(
           id: alarmsMap[i]['id'],
           pillName: alarmsMap[i]['pillName'],
           days: jsonDecode(alarmsMap[i]['days']) as List<dynamic>,
-          startDateTime: alarmsMap[i]['startDateTime'],
-          endDateTime: alarmsMap[i]['endDateTime'],
+          startDateTime: DateFormat('yyyy-MM-dd – kk:mm')
+              .parse(alarmsMap[i]['startDateTime']),
+          endDateTime: DateFormat('yyyy-MM-dd – kk:mm')
+              .parse(alarmsMap[i]['endDateTime']),
           repeat: alarmsMap[i]['repeat'],
           quantity: alarmsMap[i]['quantity'],
           dose: alarmsMap[i]['dose'],
