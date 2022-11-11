@@ -3,6 +3,7 @@
 
 import 'package:alarmed/ui/Widgets/alarm_card.dart';
 import 'package:alarmed/ui/controllers/alarm_controller.dart';
+import 'package:alarmed/ui/pages/scheduling_page.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:alarmed/ui/assets/constant.dart';
@@ -23,40 +24,50 @@ class _AlarmPageState extends State<AlarmPage> {
     AlarmController alarmController = Get.find();
     return Scaffold(
         key: const Key('AlarmScaffold'),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Constant.mainCont2,
+          child: Icon(
+            Icons.add_circle_outline,
+            size: 55.0,
+            color: Constant.title,
+          ),
+          onPressed: () {
+            Get.to(SchedulingPage());
+          },
+        ),
         body: SafeArea(
             child: SingleChildScrollView(
           child: Container(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.only(top: 10, right: 20, left: 20),
               child: Obx(
                 () => Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Constant.secondCont,
-                            borderRadius: BorderRadius.circular(100)),
-                        child: Padding(
-                          padding: EdgeInsets.all(20.0),
-                          child: Text('CONFIGURACIÓN DE ALARMAS',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 25,
-                                  color: Constant.mainCont)),
-                        ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20, bottom: 0),
+                        child: Text('Mis medicamentos',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'LincolnRoad',
+                                fontSize: 25,
+                                color: Colors.white)),
                       ),
                       const SizedBox(
                         height: 20,
                       ),
                       for (var i in alarmController.alarmList)
                         Padding(
-                          padding: EdgeInsets.only(top: 10),
+                          padding: EdgeInsets.only(top: 10, bottom: 10),
                           child: AlarmCard(
                             id: i.getId(),
                             pillName: i.getPillName(),
                             date: i.getDate(),
                           ),
-                        )
+                        ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                     ]),
               )),
         )));
