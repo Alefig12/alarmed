@@ -1,3 +1,4 @@
+import 'package:alarmed/ui/controllers/alarm_controller.dart';
 import 'package:alarmed/ui/controllers/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -5,6 +6,7 @@ import 'package:get/get.dart';
 
 class AuthenticationController extends GetxController {
   UserController userController = Get.find();
+  AlarmController alarmController = Get.find();
 
   Future<void> login(email, password) async {
     try {
@@ -13,6 +15,8 @@ class AuthenticationController extends GetxController {
 
       // Identificando usuario, id unico en loggedUserID.
       userController.loggedUserId = userCredential.user!.uid;
+      await userController.getLoggedUserAlarms();
+      await alarmController.setUserAlarms();
 
       return Future.value();
     } on FirebaseAuthException catch (e) {
@@ -47,6 +51,7 @@ class AuthenticationController extends GetxController {
       await FirebaseAuth.instance.signOut();
       // Seteando loggedUserId a vacio porque no hay nadie logeado
       userController.loggedUserId = "";
+      alarmController.deleteAllAlarms();
     } catch (e) {
       return Future.error("Logout error");
     }

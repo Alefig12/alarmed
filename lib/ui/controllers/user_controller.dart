@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:alarmed/data/db.dart';
 import 'package:alarmed/domain/entities/alarm.dart';
 import 'package:get/get.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -82,9 +83,24 @@ class UserController extends GetxController {
         .child(_loggedUserId.value)
         .child('alarm');
     var snapshot = await dbRef.get();
-    var a = snapshot.value as Map<dynamic, dynamic>;
-    a.forEach((key, values) {
-      print(values);
+    var alarms = snapshot.value as Map<dynamic, dynamic>;
+
+    alarms.forEach((key, values) {
+      print(values['pillName']);
+      Alarm alarm = Alarm(
+          id: values['id'],
+          pillName: values['pillName'],
+          days: jsonDecode(values['days']) as List<dynamic>,
+          startDateTime:
+              DateFormat('yyyy-MM-dd – kk:mm').parse(values['startDateTime']),
+          endDateTime:
+              DateFormat('yyyy-MM-dd – kk:mm').parse(values['endDateTime']),
+          repeat: values['repeat'],
+          quantity: values['quantity'],
+          dose: values['dose'],
+          tone: values['tone'],
+          volume: values['volume'].toDouble());
+      DB.insert(alarm);
     });
   }
 }
