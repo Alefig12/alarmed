@@ -90,7 +90,7 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
                     MainRoundedBox(
                         padding: 15,
                         width: double.infinity,
-                        height: 320,
+                        height: 280,
                         color: Constant.mainCont,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -99,7 +99,10 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
                               child: Text('Elige tu \ncontraseña',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      fontSize: 50, color: Constant.title)),
+                                      fontSize: 30, color: Constant.title)),
+                            ),
+                            SizedBox(
+                              height: 20,
                             ),
                             Column(children: [
                               Align(
