@@ -2,21 +2,23 @@ import 'package:alarmed/ui/assets/constant.dart';
 import 'package:flutter/material.dart';
 
 class MainRoundedBox extends StatelessWidget {
-  const MainRoundedBox({
-    Key? key,
-    required this.child,
-    required this.color,
-    this.width,
-    this.height,
-    this.radius,
-    this.padding,
-  }) : super(key: key);
+  const MainRoundedBox(
+      {Key? key,
+      required this.child,
+      required this.color,
+      this.width,
+      this.height,
+      this.radius,
+      this.padding,
+      this.shadowColor})
+      : super(key: key);
   final double? width;
   final double? height;
   final Color color;
   final Widget child;
   final double? radius;
   final double? padding;
+  final Color? shadowColor;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,7 +28,7 @@ class MainRoundedBox extends StatelessWidget {
         borderRadius: BorderRadius.circular(radius ?? 25),
         boxShadow: [
           BoxShadow(
-            color: Color.fromARGB(68, 33, 29, 42),
+            color: shadowColor ?? Color.fromARGB(0, 33, 29, 42),
             blurRadius: 5,
             offset: Offset(0, 0), // Shadow position
           ),

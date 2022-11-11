@@ -26,37 +26,51 @@ class _AlarmPageState extends State<AlarmPage> {
         body: SafeArea(
             child: SingleChildScrollView(
           child: Container(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.only(top: 10, right: 20, left: 20),
               child: Obx(
                 () => Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Constant.secondCont,
-                            borderRadius: BorderRadius.circular(100)),
-                        child: Padding(
-                          padding: EdgeInsets.all(20.0),
-                          child: Text('CONFIGURACIÓN DE ALARMAS',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 25,
-                                  color: Constant.mainCont)),
-                        ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 20, bottom: 0),
+                        child: Text('Mis medicamentos',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'LincolnRoad',
+                                fontSize: 25,
+                                color: Colors.white)),
                       ),
                       const SizedBox(
                         height: 20,
                       ),
                       for (var i in alarmController.alarmList)
                         Padding(
-                          padding: EdgeInsets.only(top: 10),
+                          padding: EdgeInsets.only(top: 10, bottom: 10),
                           child: AlarmCard(
                             id: i.getId(),
                             pillName: i.getPillName(),
                             date: i.getDate(),
                           ),
-                        )
+                        ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Align(
+                          alignment: Alignment.bottomRight,
+                          child: RawMaterialButton(
+                            clipBehavior: Clip.none,
+                            onPressed: () {},
+                            elevation: 0.5,
+                            fillColor: Constant.thirdRed,
+                            child: Icon(
+                              Icons.add_circle_outline,
+                              size: 55.0,
+                              color: Constant.title,
+                            ),
+                            padding: EdgeInsets.all(15.0),
+                            shape: CircleBorder(),
+                          )),
                     ]),
               )),
         )));

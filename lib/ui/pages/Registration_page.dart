@@ -20,151 +20,170 @@ class _RegistrationPageState extends State<RegistrationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       key: Key('RegistrationScaffold'),
       body: SafeArea(
         child: Center(
           child: Container(
             padding: EdgeInsets.all(15),
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              SizedBox(height: 10),
-              MainRoundedBox(
-                  padding: 8,
-                  width: double.infinity,
-                  height: 250,
-                  color: Constant.mainCont,
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: FittedBox(
-                          child: Text('Información \nPersonal',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 25, color: Constant.title)),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                            padding: const EdgeInsets.all(1),
-                            width: double.infinity,
-                            child: Column(children: [
-                              Text('Nombre:',
+            child: SingleChildScrollView(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    SizedBox(height: 10),
+                    MainRoundedBox(
+                        padding: 12,
+                        width: double.infinity,
+                        height: 300,
+                        color: Constant.mainCont,
+                        child: Column(
+                          children: [
+                            FittedBox(
+                              child: Text('Información \nPersonal',
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
-                                      color: Constant.title, fontSize: 20)),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Expanded(
-                                child: RoundTextInput(
-                                  color: Constant.mainCont,
-                                ),
-                              ),
-                              Text('Edad:',
-                                  style: TextStyle(
-                                      color: Constant.title, fontSize: 20)),
-                              SizedBox(
-                                width: 8,
-                              ),
-                              Expanded(
-                                child: RoundTextInput(color: Constant.mainCont),
-                              ),
-                              Text('Enfermedades:',
-                                  style: TextStyle(
-                                      color: Constant.title, fontSize: 20)),
-                              SizedBox(
-                                width: 8,
-                              ),
-                              Expanded(
-                                child: RoundTextInput(color: Constant.mainCont),
-                              ),
-                            ]),
-                            decoration: BoxDecoration(
-                              color: Constant.inCont,
-                              borderRadius: BorderRadius.circular(16),
-                            )),
-                      )
-                    ],
-                  )),
-              SizedBox(height: 10),
-              MainRoundedBox(
-                  padding: 8,
-                  width: double.infinity,
-                  height: 250,
-                  color: Constant.mainCont,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: FittedBox(
-                          child: Text('Contacto de \nemergencia',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 40, color: Constant.title)),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                            padding: const EdgeInsets.all(1),
-                            width: double.infinity,
-                            child: SizedBox(
+                                      fontSize: 32, color: Constant.title)),
+                            ),
+                            Container(
+                                padding: const EdgeInsets.all(10),
                                 width: double.infinity,
+                                height: 214,
                                 child: Column(children: [
-                                  Text('Nombre:',
-                                      style: TextStyle(
-                                          color: Constant.title, fontSize: 20)),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text('Nombre:',
+                                        style: TextStyle(
+                                            color: Constant.title,
+                                            fontSize: 20)),
+                                  ),
                                   SizedBox(
                                     width: 20,
                                   ),
-                                  Expanded(
-                                    child: RoundTextInput(
-                                        color: Constant.mainCont),
+                                  RoundTextInput(
+                                    width: double.infinity,
+                                    radius: 10,
+                                    height: 35,
+                                    color: Constant.mainCont,
                                   ),
-                                  Text('Celular:',
-                                      style: TextStyle(
-                                          color: Constant.title, fontSize: 20)),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text('Edad:',
+                                        style: TextStyle(
+                                            color: Constant.title,
+                                            fontSize: 20)),
+                                  ),
                                   SizedBox(
                                     width: 8,
                                   ),
-                                  Expanded(
-                                    child: RoundTextInput(
-                                        color: Constant.mainCont),
-                                  )
-                                ])),
-                            decoration: BoxDecoration(
-                              color: Constant.inCont,
-                              borderRadius: BorderRadius.circular(16),
-                            )),
-                      ),
-                    ],
-                  )),
-              SizedBox(height: 10),
-              Expanded(
-                child: Align(
-                  alignment: Alignment.center,
-                  child: RoundTextButton(
-                    onPressed: () {
-                      Get.to(UserPasswordPage());
-                    },
-                    child: Row(children: [
-                      Expanded(
-                        flex: 3,
-                        child: Text(
-                          'Siguiente',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Constant.title,
-                              fontWeight: FontWeight.w400),
+                                  RoundTextInput(
+                                      width: double.infinity,
+                                      radius: 10,
+                                      height: 35,
+                                      color: Constant.mainCont),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text('Enfermedades:',
+                                        style: TextStyle(
+                                            color: Constant.title,
+                                            fontSize: 20)),
+                                  ),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  RoundTextInput(
+                                      radius: 10,
+                                      width: double.infinity,
+                                      height: 35,
+                                      color: Constant.mainCont),
+                                ]),
+                                decoration: BoxDecoration(
+                                  color: Constant.secondCont3,
+                                  borderRadius: BorderRadius.circular(16),
+                                ))
+                          ],
+                        )),
+                    SizedBox(height: 10),
+                    MainRoundedBox(
+                        padding: 8,
+                        width: double.infinity,
+                        height: 230,
+                        color: Constant.mainCont,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            FittedBox(
+                              child: Text('Contacto de \nemergencia',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 30, color: Constant.title)),
+                            ),
+                            Container(
+                                padding: const EdgeInsets.all(10),
+                                width: double.infinity,
+                                child: SizedBox(
+                                    width: double.infinity,
+                                    child: Column(children: [
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text('Nombre:',
+                                            style: TextStyle(
+                                                color: Constant.title,
+                                                fontSize: 20)),
+                                      ),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      RoundTextInput(
+                                        color: Constant.mainCont,
+                                        radius: 10,
+                                        height: 35,
+                                        width: double.infinity,
+                                      ),
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text('Celular:',
+                                            style: TextStyle(
+                                                color: Constant.title,
+                                                fontSize: 20)),
+                                      ),
+                                      SizedBox(
+                                        width: 8,
+                                      ),
+                                      RoundTextInput(
+                                          color: Constant.mainCont,
+                                          radius: 10,
+                                          height: 35,
+                                          width: double.infinity)
+                                    ])),
+                                decoration: BoxDecoration(
+                                  color: Constant.secondCont3,
+                                  borderRadius: BorderRadius.circular(16),
+                                )),
+                          ],
+                        )),
+                    SizedBox(height: 10),
+                    Align(
+                      alignment: Alignment.center,
+                      child: RoundTextButton(
+                        onPressed: () {
+                          Get.to(UserPasswordPage());
+                        },
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'Siguiente',
+                            style:
+                                TextStyle(color: Constant.title, fontSize: 40),
+                          ),
                         ),
+                        color: Constant.mainCont2,
+                        width: 520,
+                        height: 70,
+                        elevation: 5,
                       ),
-                    ]),
-                    color: Constant.mainCont,
-                    width: 520,
-                    height: 70,
-                  ),
-                ),
-              )
-            ]),
+                    )
+                  ]),
+            ),
           ),
         ),
       ),
