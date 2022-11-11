@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           fontFamily: 'LincolnRoad',
           scaffoldBackgroundColor: Constant.secondCont3),
-      home: SchedulingPage(),
+      home: FirebaseCentral(),
     );
   }
 }

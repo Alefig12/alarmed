@@ -30,42 +30,61 @@ class UserController extends GetxController {
   Future<void> addAlarmToLoggedUser(Alarm alarm) async {
     try {
       String json = jsonEncode(alarm.days);
+
+      // var alo = jsonDecode(json) as List<dynamic>; //these next lines are for decoding (for db instances)
+      //
+      // alo.forEach((element) {
+      //   print(element);
+      // });
       String startDate =
           DateFormat('yyyy-MM-dd – kk:mm').format(alarm.startDateTime);
       String endDate =
           DateFormat('yyyy-MM-dd – kk:mm').format(alarm.endDateTime);
 
-      var dbRef = FirebaseDatabase.instance
-          .ref()
-          .child("userList")
-          .child(_loggedUserId.value)
-          .child('alarm');
-      var snapshot = await dbRef.get(); // 👈 Use await here
-      var a = snapshot.value as Map<dynamic, dynamic>;
-      a.forEach((key, values) {
-        print(values);
-      });
-
-      // await databaseRef
-      //     .child('userList')
+      // var dbRef = FirebaseDatabase.instance
+      //     .ref()
+      //     .child("userList")
       //     .child(_loggedUserId.value)
-      //     .child('alarm')
-      //     .push()
-      //     .set({
-      //   'id': alarm.id,
-      //   'pillName': alarm.pillName,
-      //   'days': json,
-      //   'startDateTime': startDate,
-      //   'endDateTime': endDate,
-      //   'repeat': alarm.repeat,
-      //   'quantity': alarm.quantity,
-      //   'dose': alarm.dose,
-      //   'tone': alarm.tone,
-      //   'volume': alarm.volume
-      // }); // tambien buscar que se pone en el id, porque ahora solo genera 1 sola. Buscar como se recorreria las alarmas si las hago con el id.
+      //     .child('alarm');
+      // var snapshot = await dbRef.get();
+      // var a = snapshot.value as Map<dynamic, dynamic>;
+      // a.forEach((key, values) {
+      //   print(values);
+      // });
+
+      await databaseRef
+          .child('userList')
+          .child(_loggedUserId.value)
+          .child('alarm')
+          .push()
+          .set({
+        'id': alarm.id,
+        'pillName': alarm.pillName,
+        'days': json,
+        'startDateTime': startDate,
+        'endDateTime': endDate,
+        'repeat': alarm.repeat,
+        'quantity': alarm.quantity,
+        'dose': alarm.dose,
+        'tone': alarm.tone,
+        'volume': alarm.volume
+      });
     } catch (error) {
       print(error);
       return Future.error(error);
     }
+  }
+
+  Future<void> getLoggedUserAlarms() async {
+    var dbRef = FirebaseDatabase.instance
+        .ref()
+        .child("userList")
+        .child(_loggedUserId.value)
+        .child('alarm');
+    var snapshot = await dbRef.get();
+    var a = snapshot.value as Map<dynamic, dynamic>;
+    a.forEach((key, values) {
+      print(values);
+    });
   }
 }
