@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
+import 'package:alarmed/ui/controllers/authentication_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:alarmed/ui/assets/constant.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:alarmed/ui/widgets/roundedbox_widget.dart';
+import 'package:get/get.dart';
 
 class HelpPage extends StatefulWidget {
   const HelpPage({
@@ -15,9 +17,13 @@ class HelpPage extends StatefulWidget {
 }
 
 class _HelpPageState extends State<HelpPage> {
+  AuthenticationController authenticationController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        authenticationController.logout();
+      }),
       key: Key('HelpScaffold'),
       body: SafeArea(
         child: SingleChildScrollView(

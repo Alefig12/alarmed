@@ -116,33 +116,38 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
                               ),
                               Row(
                                 children: [
-                                  RoundTextInput(
-                                    textController: _passwordController,
-                                    color: Constant.secondCont3,
-                                    width: 280,
-                                    height: 35,
-                                    isPassword: _isPassword,
+                                  Expanded(
+                                    flex: 7,
+                                    child: RoundTextInput(
+                                      textController: _passwordController,
+                                      color: Constant.secondCont3,
+                                      width: 280,
+                                      height: 35,
+                                      isPassword: _isPassword,
+                                    ),
                                   ),
                                   SizedBox(
                                     width: 12,
                                   ),
-                                  RoundTextButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        _isPassword = !_isPassword;
-                                      });
-                                    },
-                                    child: Icon(
-                                      _isPassword
-                                          ? Icons.visibility
-                                          : Icons.visibility_off,
-                                      color: Colors.white,
-                                      size: 20.0,
+                                  Expanded(
+                                    child: RoundTextButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          _isPassword = !_isPassword;
+                                        });
+                                      },
+                                      child: Icon(
+                                        _isPassword
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                        color: Colors.white,
+                                        size: 20.0,
+                                      ),
+                                      color: Constant.mainCont2,
+                                      width: 35,
+                                      height: 35,
+                                      elevation: 10,
                                     ),
-                                    color: Constant.mainCont2,
-                                    width: 35,
-                                    height: 35,
-                                    elevation: 10,
                                   )
                                 ],
                               ),
@@ -169,33 +174,40 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
                               ),
                               Row(
                                 children: [
-                                  RoundTextInput(
-                                    textController: _confirmPasswordController,
-                                    color: Constant.secondCont3,
-                                    width: 280,
-                                    height: 35,
-                                    isPassword: _isPassword,
+                                  Expanded(
+                                    flex: 7,
+                                    child: RoundTextInput(
+                                      textController:
+                                          _confirmPasswordController,
+                                      color: Constant.secondCont3,
+                                      width: 280,
+                                      height: 35,
+                                      isPassword: _isPassword,
+                                    ),
                                   ),
                                   SizedBox(
                                     width: 12,
                                   ),
-                                  RoundTextButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        _isPassword = !_isPassword;
-                                      });
-                                    },
-                                    child: Icon(
-                                      _isPassword
-                                          ? Icons.visibility
-                                          : Icons.visibility_off,
-                                      color: Colors.white,
-                                      size: 20.0,
+                                  Expanded(
+                                    flex: 1,
+                                    child: RoundTextButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          _isPassword = !_isPassword;
+                                        });
+                                      },
+                                      child: Icon(
+                                        _isPassword
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                        color: Colors.white,
+                                        size: 20.0,
+                                      ),
+                                      color: Constant.mainCont2,
+                                      width: 35,
+                                      height: 35,
+                                      elevation: 10,
                                     ),
-                                    color: Constant.mainCont2,
-                                    width: 35,
-                                    height: 35,
-                                    elevation: 10,
                                   )
                                 ],
                               ),

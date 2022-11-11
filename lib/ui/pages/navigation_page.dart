@@ -29,7 +29,6 @@ class _NavigationPageState extends State<NavigationPage> {
     HelpPage(),
     LocationPage(),
     AlarmPage(),
-    SchedulingPage(),
     CalendarPage(),
   ];
 
@@ -136,26 +135,6 @@ class _NavigationPageState extends State<NavigationPage> {
                 ),
                 backgroundColor: Constant.mainCont,
                 label: 'Programación',
-              ),
-              BottomNavigationBarItem(
-                icon: MainRoundedBox(
-                  radius: 30,
-                  width: 60,
-                  height: 60,
-                  color: Constant.secondCont4,
-                  child: Center(
-                    child: Transform.rotate(
-                      angle: -math.pi / 1.65,
-                      child: Icon(
-                        CustomIcons.pill,
-                        color: Constant.secondCont,
-                        size: 40,
-                      ),
-                    ),
-                  ),
-                ),
-                backgroundColor: Constant.mainCont,
-                label: 'Alarmas',
               ),
               BottomNavigationBarItem(
                 icon: MainRoundedBox(

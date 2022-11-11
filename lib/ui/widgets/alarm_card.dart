@@ -112,7 +112,7 @@ class AlarmCard extends StatelessWidget {
                             bottomRight: Radius.circular(35)))),
                   ),
                   onPressed: () {
-                    //       alarmController.deleteAlarm(id);
+                    alarmController.deleteAlarm(id);
                   },
                   child: Text(
                     'Editar',
