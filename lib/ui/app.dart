@@ -2,6 +2,7 @@
 
 import 'package:alarmed/ui/assets/constant.dart';
 import 'package:alarmed/ui/pages/Registration_page.dart';
+import 'package:alarmed/ui/pages/User_Password_Page.dart';
 import 'package:alarmed/ui/pages/calendar_page.dart';
 import 'package:alarmed/ui/pages/scheduling_page.dart';
 import 'package:alarmed/ui/pages/alarms_page.dart';
@@ -10,7 +11,6 @@ import 'package:alarmed/ui/pages/navigation_page.dart';
 import 'package:alarmed/ui/pages/change_foto_page.dart';
 import 'package:flutter/material.dart';
 import 'pages/Registration_page.dart';
-import 'pages/User_Password_page.dart';
 import 'pages/login_page.dart';
 import 'package:get/get.dart';
 import 'package:alarmed/ui/pages/firebase_central.dart';
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           fontFamily: 'LincolnRoad',
           scaffoldBackgroundColor: Constant.secondCont3),
-      home: FirebaseCentral(),
+      home: ChangeFotoPage(),
     );
   }
 }

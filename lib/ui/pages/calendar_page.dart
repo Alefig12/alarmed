@@ -55,7 +55,7 @@ class _CalendarPageState extends State<CalendarPage> {
                               child: FittedBox(
                                 child: Icon(
                                   FontAwesomeIcons.cloudSun,
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   size: 50.0,
                                 ),
                               ),
@@ -69,7 +69,8 @@ class _CalendarPageState extends State<CalendarPage> {
                                     ' Buenos días!',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 200),
+                                        fontSize: 200,
+                                        color: Constant.title),
                                   ),
                                 ),
                               ),
@@ -92,7 +93,7 @@ class _CalendarPageState extends State<CalendarPage> {
                   )),
             ),
             Expanded(
-              flex: 4,
+              flex: 3,
               child: Container(
                 padding: EdgeInsets.only(left: 30),
                 child: Column(
@@ -104,7 +105,9 @@ class _CalendarPageState extends State<CalendarPage> {
                           child: Text(
                             'este es tu',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 20),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: Constant.title),
                           ),
                         ),
                       ),
@@ -116,7 +119,9 @@ class _CalendarPageState extends State<CalendarPage> {
                           child: Text(
                             'Horario',
                             style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 30),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30,
+                                color: Constant.title),
                           ),
                         ),
                       ),
@@ -176,7 +181,7 @@ class _CalendarPageState extends State<CalendarPage> {
                                     alignment: Alignment.center,
                                     child: Text('Lunes',
                                         style: TextStyle(
-                                            color: Colors.black,
+                                            color: Constant.title,
                                             fontWeight: FontWeight.bold)),
                                   ),
                                   decoration: BoxDecoration(
@@ -193,7 +198,7 @@ class _CalendarPageState extends State<CalendarPage> {
                                     alignment: Alignment.center,
                                     child: Text('Martes',
                                         style: TextStyle(
-                                            color: Colors.black,
+                                            color: Constant.title,
                                             fontWeight: FontWeight.bold)),
                                   ),
                                   decoration: BoxDecoration(
@@ -210,7 +215,7 @@ class _CalendarPageState extends State<CalendarPage> {
                                     alignment: Alignment.center,
                                     child: Text('Miércoles',
                                         style: TextStyle(
-                                            color: Colors.black,
+                                            color: Constant.title,
                                             fontWeight: FontWeight.bold)),
                                   ),
                                   decoration: BoxDecoration(
@@ -227,7 +232,7 @@ class _CalendarPageState extends State<CalendarPage> {
                                     alignment: Alignment.center,
                                     child: Text('Jueves',
                                         style: TextStyle(
-                                            color: Colors.black,
+                                            color: Constant.title,
                                             fontWeight: FontWeight.bold)),
                                   ),
                                   decoration: BoxDecoration(
@@ -245,7 +250,7 @@ class _CalendarPageState extends State<CalendarPage> {
                                     child: Container(
                                       child: Text('Viernes',
                                           style: TextStyle(
-                                              color: Colors.black,
+                                              color: Constant.title,
                                               fontWeight: FontWeight.bold)),
                                     ),
                                   ),
@@ -263,7 +268,7 @@ class _CalendarPageState extends State<CalendarPage> {
                                     alignment: Alignment.center,
                                     child: Text('Sábado',
                                         style: TextStyle(
-                                            color: Colors.black,
+                                            color: Constant.title,
                                             fontWeight: FontWeight.bold)),
                                   ),
                                   decoration: BoxDecoration(
@@ -571,7 +576,7 @@ class itemCalendar extends StatelessWidget {
           ),
         ]),
         decoration: BoxDecoration(
-          color: Constant.secondCont,
+          color: Constant.mainCont,
           borderRadius: BorderRadius.circular(12),
         ));
   }
