@@ -42,12 +42,16 @@ class _NavigationPageState extends State<NavigationPage> {
 
   @override
   void initState() {
+    print(_selectedIndex);
+
     super.initState();
   }
 
   @override
   void dispose() {
-    _pageController!.dispose();
+    print(_selectedIndex);
+
+    _pageController.dispose();
     super.dispose();
   }
 

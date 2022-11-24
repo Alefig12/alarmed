@@ -2,12 +2,16 @@ import 'dart:convert';
 
 import 'package:alarmed/cnts.dart';
 import 'package:alarmed/domain/entities/pharmacy.dart';
+import 'package:alarmed/ui/controllers/user_controller.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 
 class LocationService {
   String _apiKey = APIKEY.apiKey;
+  UserController userController = Get.find();
 
   Future<Position> getCurrentLocation() async {
     bool serviceEnabled;
@@ -33,13 +37,15 @@ class LocationService {
     }
 
     Position position = await Geolocator.getCurrentPosition();
+
+    userController.loggedUserCurrentLocation = position;
     return position;
   }
 
   Future<List<dynamic>> getNearbyPharmacies() async {
     Position location = await getCurrentLocation();
     final String url =
-        "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.latitude}%2C${location.longitude}&radius=1500&type=pharmacy&key=${_apiKey}";
+        "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.latitude}%2C${location.longitude}&radius=700&type=pharmacy&key=${_apiKey}";
     var response = await http.get(Uri.parse(url));
     var json = jsonDecode(response.body);
     var results = json["results"] as List<dynamic>;
@@ -66,14 +72,18 @@ class LocationService {
     List<Pharmacy> pharmacies = [];
     List<dynamic> placesid = await getNearbyPharmacies();
 
-    Map<String, dynamic> info = await getPharmacyInfo(placesid[0]);
-    pharmacies.add(Pharmacy(
-        info['opening_hours']['open_now'],
-        info['name'],
-        info['vicinity'],
-        info['formatted_phone_number'],
-        info['geometry']['location']['lat'].toDouble(),
-        info['geometry']['location']['lng'].toDouble()));
+    for (int i = 0; i < 5; i++) {
+      Map<String, dynamic> info = await getPharmacyInfo(placesid[i]);
+      pharmacies.add(Pharmacy.fromJson(info));
+    }
+
+    // pharmacies.add(Pharmacy(
+    //     info['opening_hours']['open_now'],
+    //     info['name'],
+    //     info['vicinity'],
+    //     info['formatted_phone_number'],
+    //     info['geometry']['location']['lat'].toDouble(),
+    //     info['geometry']['location']['lng'].toDouble()));
 
     // Map<String, dynamic> info = await getPharmacyInfo();
     // return List.generate(info.length, (i) {
@@ -85,6 +95,7 @@ class LocationService {
     //       info['geometry']['location']['lng']);
     // });
     print(pharmacies.length);
+    userController.loggedUserNearbyPharmacies = pharmacies;
     return pharmacies;
   }
 }
