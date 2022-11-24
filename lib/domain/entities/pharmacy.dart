@@ -1,5 +1,5 @@
 class Pharmacy {
-  bool isOpen;
+  bool? isOpen;
   String name;
   String address;
   String phoneNo;
@@ -14,4 +14,12 @@ class Pharmacy {
     this.latitude,
     this.longitude,
   );
+
+  Pharmacy.fromJson(Map<String, dynamic> json)
+      : isOpen = json['opening_hours']?['open_now'],
+        name = json['name'] ?? 'N/A',
+        address = json['vicinity'] ?? 'No disponible',
+        phoneNo = json['formatted_phone_number'] ?? 'No disponible',
+        latitude = json['geometry']['location']['lat'],
+        longitude = json['geometry']['location']['lng'];
 }
