@@ -1,5 +1,6 @@
 // ignore_for_file: sort_child_properties_last, prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:alarmed/ui/Widgets/roundedbox_widget.dart';
 import 'package:alarmed/ui/controllers/alarm_controller.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -35,13 +36,14 @@ class _CalendarPageState extends State<CalendarPage> {
     AlarmController alarmController = Get.find();
     return Scaffold(
         key: Key('CalendarScaffold'),
+        backgroundColor: Constant.secondCont4,
         body: SafeArea(
             child: Center(
                 child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              flex: 4,
+              flex: 2,
               child: Container(
                   padding: EdgeInsets.all(15),
                   child: Row(
@@ -55,22 +57,24 @@ class _CalendarPageState extends State<CalendarPage> {
                               child: FittedBox(
                                 child: Icon(
                                   FontAwesomeIcons.cloudSun,
-                                  color: Colors.white,
+                                  color: Constant.thirdOrange,
                                   size: 50.0,
                                 ),
                               ),
                             ),
+                            SizedBox(
+                              width: 10,
+                            ),
                             Expanded(
-                              flex: 5,
+                              flex: 6,
                               child: FittedBox(
                                 child: Align(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    ' Buenos días!',
+                                    ' Buenos días, María!',
                                     style: TextStyle(
-                                        fontWeight: FontWeight.bold,
                                         fontSize: 200,
-                                        color: Constant.title),
+                                        color: Constant.mainCont),
                                   ),
                                 ),
                               ),
@@ -84,7 +88,7 @@ class _CalendarPageState extends State<CalendarPage> {
                           alignment: Alignment.centerRight,
                           child: Icon(
                             FontAwesomeIcons.userAstronaut,
-                            color: Colors.black,
+                            color: Constant.mainCont,
                             size: 50.0,
                           ),
                         ),
@@ -93,467 +97,281 @@ class _CalendarPageState extends State<CalendarPage> {
                   )),
             ),
             Expanded(
-              flex: 3,
+              flex: 2,
               child: Container(
                 padding: EdgeInsets.only(left: 30),
                 child: Column(
                   children: [
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.topLeft,
-                        child: FittedBox(
-                          child: Text(
-                            'este es tu',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                                color: Constant.title),
-                          ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: FittedBox(
+                        child: Text(
+                          'Este es tu \nHorario',
+                          style:
+                              TextStyle(fontSize: 30, color: Constant.mainCont),
                         ),
                       ),
                     ),
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: FittedBox(
-                          child: Text(
-                            'Horario',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30,
-                                color: Constant.title),
-                          ),
-                        ),
-                      ),
-                    )
                   ],
                 ),
               ),
             ),
             Expanded(
-              flex: 3,
-              child: Container(
-                padding: EdgeInsets.only(right: 10),
-                child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: Container(
-                      padding: EdgeInsets.all(8),
-                      child: DropDownMenu(),
-                      decoration: BoxDecoration(
-                          color: Constant.mainCont,
-                          borderRadius: BorderRadius.circular(30)),
-                    )),
-              ),
-            ),
-            Expanded(
-              flex: 20,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  Column(children: [
-                    Expanded(
-                      flex: 2,
-                      child: Container(
-                          padding: EdgeInsets.all(10),
-                          child: Row(
-                            children: [
-                              Container(
-                                  width: 80,
-                                  height: 45,
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text('Hora',
-                                        style: TextStyle(
+                flex: 10,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: Column(
+                          children: [
+                            Expanded(
+                                flex: 1,
+                                child: MainRoundedBox(
+                                  width: double.infinity,
+                                  color: Constant.mainCont,
+                                  radius: 10,
+                                  child: FittedBox(
+                                      child: Text(
+                                    'Hora',
+                                    style: TextStyle(color: Constant.title),
+                                  )),
+                                )),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Expanded(
+                                flex: 3,
+                                child: MainRoundedBox(
+                                  width: double.infinity,
+                                  color: Constant.mainCont,
+                                  radius: 14,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(6.0),
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                            child: FittedBox(
+                                                child: Text(
+                                          '12:00 am',
+                                          style: TextStyle(
+                                            color: Constant.title,
+                                            fontFamily: 'Poppins',
+                                          ),
+                                        ))),
+                                        Expanded(
+                                          child: Icon(
+                                            FontAwesomeIcons.cloudSun,
+                                            color: Constant.thirdOrange,
+                                            size: 30.0,
+                                          ),
+                                        ),
+                                        Expanded(
+                                            child: FittedBox(
+                                                child: Text('1:00 pm',
+                                                    style: TextStyle(
+                                                      color: Constant.title,
+                                                      fontFamily: 'Poppins',
+                                                    ))))
+                                      ],
+                                    ),
+                                  ),
+                                )),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Expanded(
+                                flex: 3,
+                                child: MainRoundedBox(
+                                  width: double.infinity,
+                                  color: Constant.mainCont,
+                                  radius: 14,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(6.0),
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                            child: FittedBox(
+                                                child: Text(
+                                          '1:00 pm',
+                                          style: TextStyle(
+                                            color: Constant.title,
+                                            fontFamily: 'Poppins',
+                                          ),
+                                        ))),
+                                        Expanded(
+                                          child: Icon(
+                                            Icons.sunny,
+                                            color: Constant.thirdOrange,
+                                            size: 30.0,
+                                          ),
+                                        ),
+                                        Expanded(
+                                            child: FittedBox(
+                                                child: Text('6:00 pm',
+                                                    style: TextStyle(
+                                                      color: Constant.title,
+                                                      fontFamily: 'Poppins',
+                                                    ))))
+                                      ],
+                                    ),
+                                  ),
+                                )),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Expanded(
+                                flex: 3,
+                                child: MainRoundedBox(
+                                  width: double.infinity,
+                                  color: Constant.mainCont,
+                                  radius: 14,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(6.0),
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                            child: FittedBox(
+                                                child: Text(
+                                          '6:00 pm',
+                                          style: TextStyle(
+                                            color: Constant.title,
+                                            fontFamily: 'Poppins',
+                                          ),
+                                        ))),
+                                        Expanded(
+                                          child: Icon(
+                                            Icons.nightlight_round,
                                             color: Colors.white,
-                                            fontWeight: FontWeight.bold)),
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Constant.mainCont,
-                                    borderRadius: BorderRadius.circular(20),
-                                  )),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Container(
-                                  width: 80,
-                                  height: 45,
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text('Lunes',
-                                        style: TextStyle(
-                                            color: Constant.title,
-                                            fontWeight: FontWeight.bold)),
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Constant.secondCont,
-                                    borderRadius: BorderRadius.circular(20),
-                                  )),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Container(
-                                  width: 80,
-                                  height: 45,
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text('Martes',
-                                        style: TextStyle(
-                                            color: Constant.title,
-                                            fontWeight: FontWeight.bold)),
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Constant.secondCont,
-                                    borderRadius: BorderRadius.circular(20),
-                                  )),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Container(
-                                  width: 80,
-                                  height: 45,
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text('Miércoles',
-                                        style: TextStyle(
-                                            color: Constant.title,
-                                            fontWeight: FontWeight.bold)),
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Constant.secondCont,
-                                    borderRadius: BorderRadius.circular(20),
-                                  )),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Container(
-                                  width: 80,
-                                  height: 45,
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text('Jueves',
-                                        style: TextStyle(
-                                            color: Constant.title,
-                                            fontWeight: FontWeight.bold)),
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Constant.secondCont,
-                                    borderRadius: BorderRadius.circular(20),
-                                  )),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Container(
-                                  width: 80,
-                                  height: 45,
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Container(
-                                      child: Text('Viernes',
-                                          style: TextStyle(
-                                              color: Constant.title,
-                                              fontWeight: FontWeight.bold)),
+                                            size: 30.0,
+                                          ),
+                                        ),
+                                        Expanded(
+                                            child: FittedBox(
+                                                child: Text('12:00 am',
+                                                    style: TextStyle(
+                                                      color: Constant.title,
+                                                      fontFamily: 'Poppins',
+                                                    ))))
+                                      ],
                                     ),
                                   ),
-                                  decoration: BoxDecoration(
-                                    color: Constant.secondCont,
-                                    borderRadius: BorderRadius.circular(20),
-                                  )),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Container(
-                                  width: 80,
-                                  height: 45,
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text('Sábado',
-                                        style: TextStyle(
-                                            color: Constant.title,
-                                            fontWeight: FontWeight.bold)),
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Constant.secondCont,
-                                    borderRadius: BorderRadius.circular(20),
-                                  )),
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Container(
-                                  width: 80,
-                                  height: 45,
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Container(
-                                      child: Text('Domingo',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold)),
-                                    ),
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: Constant.secondCont,
-                                    borderRadius: BorderRadius.circular(20),
-                                  )),
-                            ],
-                          )),
-                    ),
-                    Expanded(
-                      flex: 5,
-                      child: Container(
-                        padding: EdgeInsets.only(top: 10),
-                        child: Row(children: [
-                          SizedBox(width: 17),
-                          Container(
-                              padding: EdgeInsets.all(10),
-                              width: 80,
-                              child: Column(
-                                children: [
-                                  Expanded(
-                                      child:
-                                          FittedBox(child: Text('12:00 am'))),
-                                  Expanded(
-                                    child: Icon(
-                                      FontAwesomeIcons.cloudSun,
-                                      color: Colors.white,
-                                      size: 30.0,
-                                    ),
-                                  ),
-                                  Expanded(
-                                      child: FittedBox(child: Text('12:00 pm')))
-                                ],
-                              ),
-                              decoration: BoxDecoration(
-                                color: Constant.mainCont,
-                                borderRadius: BorderRadius.circular(12),
-                              )),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Row(
-                            children: List.generate(
-                              weekDays.length,
-                              (index) => Row(
-                                children: [
-                                  itemCalendar(
-                                    listPill: () {
-                                      List<Widget> texts = [];
-
-                                      String day = '';
-                                      for (var i
-                                          in alarmController.morningList) {
-                                        day = DateFormat.EEEE('es-ES')
-                                            .format(i.getDate());
-                                        print(day.toLowerCase());
-                                        print('---');
-                                        print(weekDays[index].toLowerCase());
-                                        print('-_-_-_-_');
-
-                                        if (day.toLowerCase() ==
-                                            weekDays[index].toLowerCase()) {
-                                          print('sienre');
-                                          texts.add(Text(i.getPillName()));
-                                        }
-                                      }
-
-                                      print(texts);
-                                      return texts;
-                                    }(),
-                                  ),
-                                  SizedBox(
-                                    width: 20,
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ]),
+                                ))
+                          ],
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      flex: 5,
-                      child: Container(
-                        padding: EdgeInsets.only(top: 10),
-                        child: Row(children: [
-                          SizedBox(width: 17),
-                          Container(
-                              padding: EdgeInsets.all(10),
-                              width: 80,
-                              child: Column(
-                                children: [
-                                  Expanded(
-                                      child:
-                                          FittedBox(child: Text('12:00 pm'))),
-                                  Expanded(
-                                    child: Icon(
-                                      Icons.light_mode,
-                                      color: Colors.white,
-                                      size: 30.0,
-                                    ),
-                                  ),
-                                  Expanded(
-                                      child: FittedBox(child: Text('6:00 pm')))
-                                ],
-                              ),
-                              decoration: BoxDecoration(
-                                color: Constant.mainCont,
-                                borderRadius: BorderRadius.circular(12),
-                              )),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Row(
-                            children: List.generate(
-                              weekDays.length,
-                              (index) => Row(
-                                children: [
-                                  itemCalendar(
-                                    listPill: () {
-                                      List<Widget> texts = [];
-
-                                      String day = '';
-                                      for (var i
-                                          in alarmController.afternoonList) {
-                                        day = DateFormat.EEEE('es-ES')
-                                            .format(i.getDate());
-                                        print(day.toLowerCase());
-                                        print('---');
-                                        print(weekDays[index].toLowerCase());
-                                        print('-_-_-_-_');
-
-                                        if (day.toLowerCase() ==
-                                            weekDays[index].toLowerCase()) {
-                                          print('sienre');
-                                          texts.add(Text(i.getPillName()));
-                                        }
-                                      }
-
-                                      print(texts);
-                                      return texts;
-                                    }(),
-                                  ),
-                                  SizedBox(
-                                    width: 20,
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ]),
+                      SizedBox(
+                        width: 15,
                       ),
-                    ),
-                    Expanded(
-                      flex: 5,
-                      child: Container(
-                        padding: EdgeInsets.only(top: 10),
-                        child: Row(children: [
-                          SizedBox(width: 17),
-                          Container(
-                              padding: EdgeInsets.all(10),
-                              width: 80,
-                              child: Column(
-                                children: [
-                                  Expanded(
-                                      child: FittedBox(child: Text('6:00 pm'))),
-                                  Expanded(
-                                    child: Icon(
-                                      Icons.nightlight_round,
-                                      color: Colors.white,
-                                      size: 30.0,
+                      Expanded(
+                          flex: 6,
+                          child: PageView.builder(
+                              //aquí se puede dejar el 7 porque siempre son 7 días de la semana
+                              itemCount: 7,
+                              itemBuilder: (context, index) {
+                                return Column(
+                                  children: [
+                                    Expanded(
+                                        flex: 1,
+                                        child: MainRoundedBox(
+                                          width: double.infinity,
+                                          color: Constant.mainCont,
+                                          radius: 10,
+                                          child: FittedBox(
+                                              child: Text(
+                                            'Lunes',
+                                            style: TextStyle(
+                                                color: Constant.title),
+                                          )),
+                                        )),
+                                    SizedBox(
+                                      height: 10,
                                     ),
-                                  ),
-                                  Expanded(
-                                      child: FittedBox(child: Text('12:00 am')))
-                                ],
-                              ),
-                              decoration: BoxDecoration(
-                                color: Constant.mainCont,
-                                borderRadius: BorderRadius.circular(12),
-                              )),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Row(
-                            children: List.generate(
-                              weekDays.length,
-                              (index) => Row(
-                                children: [
-                                  itemCalendar(
-                                    listPill: () {
-                                      List<Widget> texts = [];
-
-                                      String day = '';
-                                      for (var i in alarmController.nightList) {
-                                        day = DateFormat.EEEE('es-ES')
-                                            .format(i.getDate());
-                                        print(day.toLowerCase());
-                                        print('---');
-                                        print(weekDays[index].toLowerCase());
-                                        print('-_-_-_-_');
-
-                                        if (day.toLowerCase() ==
-                                            weekDays[index].toLowerCase()) {
-                                          print('sienre');
-                                          texts.add(Text(i.getPillName()));
-                                        }
-                                      }
-
-                                      print(texts);
-                                      return texts;
-                                    }(),
-                                  ),
-                                  SizedBox(
-                                    width: 20,
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ]),
-                      ),
-                    )
-                  ])
-                ],
-              ),
-            ),
+                                    Expanded(flex: 3, child: Text('')),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Expanded(
+                                        flex: 3,
+                                        child: MainRoundedBox(
+                                          color: Constant.secondCont3,
+                                          width: double.infinity,
+                                          radius: 14,
+                                          child: Text(""),
+                                        )),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Expanded(
+                                        flex: 3,
+                                        child: MainRoundedBox(
+                                          color: Constant.secondCont3,
+                                          width: double.infinity,
+                                          radius: 14,
+                                          child: Text(""),
+                                        )),
+                                  ],
+                                );
+                              }))
+                    ],
+                  ),
+                ))
           ],
         ))));
   }
 }
 
-const List<String> list = <String>['3días', '5días', 'Todos'];
-
-class DropDownMenu extends StatefulWidget {
-  const DropDownMenu({
+class alarmWidget extends StatelessWidget {
+  const alarmWidget({
     Key? key,
+    required this.listPill,
   }) : super(key: key);
 
-  @override
-  State<DropDownMenu> createState() => _DropDownMenuState();
-}
+  final List<Alarm> listPill;
 
-class _DropDownMenuState extends State<DropDownMenu> {
-  String dropdownValue = list.first;
   @override
   Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      value: dropdownValue,
-      icon: const Icon(
-        Icons.expand_more,
-        color: Colors.white,
+    return MainRoundedBox(
+      color: Constant.secondCont3,
+      width: double.infinity,
+      radius: 14,
+      child: ListView.builder(
+        itemCount: listPill.length,
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Icon(
+                    FontAwesomeIcons.pills,
+                    color: Constant.thirdPink,
+                    size: 30.0,
+                  ),
+                  Column(children: [
+                    Text(
+                      listPill[index].pillName,
+                      style: TextStyle(
+                          fontFamily: 'Poppins', color: Constant.title),
+                    ),
+                    Text(listPill[index].dose.toString(),
+                        style: TextStyle(
+                            fontFamily: 'Poppins', color: Constant.title)),
+                  ]),
+                  Text(listPill[index].startDateTime.toString(),
+                      style: TextStyle(
+                          fontFamily: 'Poppins', color: Constant.title))
+                ],
+              ),
+              Divider(
+                color: Constant.secondCont4,
+                thickness: 2,
+              )
+            ],
+          );
+        },
       ),
-      elevation: 16,
-      onChanged: (String? value) {
-        // This is called when the user selects an item.
-        setState(() {
-          dropdownValue = value!;
-        });
-      },
-      items: list.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value, style: TextStyle(fontWeight: FontWeight.bold)),
-        );
-      }).toList(),
     );
   }
 }

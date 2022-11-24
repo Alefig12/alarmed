@@ -1,5 +1,6 @@
 import 'dart:convert';
-
+import 'package:alarmed/domain/entities/pharmacy.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:alarmed/data/db.dart';
 import 'package:alarmed/domain/entities/alarm.dart';
 import 'package:get/get.dart';
@@ -8,12 +9,43 @@ import 'package:intl/intl.dart';
 
 class UserController extends GetxController {
   final _loggedUserId = "".obs;
+  final Rx<Position> _loggedUserCurrentLocation = Position(
+    latitude: 0,
+    longitude: 0,
+    timestamp: DateTime.now(),
+    accuracy: 0,
+    altitude: 0,
+    heading: 0,
+    speed: 0,
+    speedAccuracy: 0,
+  ).obs;
+  final Rx<Position> _loggedUserLastUpdatedLocation = Position(
+    latitude: 0,
+    longitude: 0,
+    timestamp: DateTime.now(),
+    accuracy: 0,
+    altitude: 0,
+    heading: 0,
+    speed: 0,
+    speedAccuracy: 0,
+  ).obs;
 
-  get loggedUserId => _loggedUserId;
+  final _loggedUserNearbyPharmacies = [].obs;
+
+  get loggedUserId => _loggedUserId.value;
+  get loggedUserCurrentLocation => _loggedUserCurrentLocation.value;
+  get loggedUserNearbyPharmacies => _loggedUserNearbyPharmacies.value;
+
+  set loggedUserNearbyPharmacies(value) =>
+      _loggedUserNearbyPharmacies.value = value;
 
   set loggedUserId(value) {
     print("Setting logged user to $value");
     _loggedUserId.value = value;
+  }
+
+  set loggedUserCurrentLocation(value) {
+    _loggedUserCurrentLocation.value = value;
   }
 
   final databaseRef = FirebaseDatabase.instance.ref();
