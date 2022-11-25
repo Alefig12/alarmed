@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: MainRoundedBox(
                     padding: 10,
                     child: Column(
@@ -48,48 +48,43 @@ class _LoginPageState extends State<LoginPage> {
                         Text('Alarmed',
                             textAlign: TextAlign.center,
                             style:
-                                TextStyle(fontSize: 35, color: Colors.white)),
+                                TextStyle(fontSize: 40, color: Colors.white)),
                         Padding(
                           padding: const EdgeInsets.all(10),
                           child: MainRoundedBox(
-                            padding: 10,
-                            radius: 10,
+                            padding: 15,
+                            radius: 20,
                             color: Constant.secondCont3,
                             child: Column(children: [
-                              Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Expanded(
-                                      flex: 1,
-                                      child: Text('Usuario:',
-                                          style:
-                                              TextStyle(color: Colors.white)),
-                                    ),
-                                    Expanded(
-                                        flex: 4,
-                                        child: RoundTextInput(
-                                            textController: _emailController,
-                                            color: Constant.mainCont)),
-                                  ]),
+                              Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Text('Usuario:',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 20)),
+                              ),
+                              RoundTextInput(
+                                  width: double.infinity,
+                                  height: 40,
+                                  radius: 10,
+                                  textController: _emailController,
+                                  color: Constant.mainCont),
                               SizedBox(
                                 height: 8,
                               ),
-                              Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Expanded(
-                                      child: Text(
-                                        'Contraseña:',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                    Expanded(
-                                        child: RoundTextInput(
-                                            textController: _passwordController,
-                                            color: Constant.mainCont))
-                                  ])
+                              Align(
+                                alignment: Alignment.bottomLeft,
+                                child: Text(
+                                  'Contraseña:',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 20),
+                                ),
+                              ),
+                              RoundTextInput(
+                                  width: double.infinity,
+                                  height: 40,
+                                  radius: 10,
+                                  textController: _passwordController,
+                                  color: Constant.mainCont)
                             ]),
                           ),
                         ),
@@ -104,9 +99,10 @@ class _LoginPageState extends State<LoginPage> {
                             color: Constant.mainCont),
                         RoundTextButton(
                           width: 200,
-                          radius: 10,
+                          radius: 30,
                           child: Text('Iniciar sesión',
-                              style: TextStyle(color: Constant.title)),
+                              style: TextStyle(
+                                  color: Constant.title, fontSize: 25)),
                           color: Constant.mainCont2,
                           onPressed: login,
                         ),
@@ -117,13 +113,15 @@ class _LoginPageState extends State<LoginPage> {
                             child: Text('Crear Cuenta',
                                 style: TextStyle(
                                     color: Constant.title,
-                                    decoration: TextDecoration.underline)),
+                                    decoration: TextDecoration.underline,
+                                    fontSize: 20)),
                             color: Constant.mainCont),
                         Container(
                           padding: EdgeInsets.only(top: 15),
                           child: Text(
                             "Vincular",
-                            style: TextStyle(color: Constant.title),
+                            style:
+                                TextStyle(color: Constant.title, fontSize: 20),
                           ),
                         ),
                         Row(
