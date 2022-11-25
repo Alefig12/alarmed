@@ -63,11 +63,13 @@ class _LoginPageState extends State<LoginPage> {
                                         color: Colors.white, fontSize: 20)),
                               ),
                               RoundTextInput(
-                                  width: double.infinity,
-                                  height: 40,
-                                  radius: 10,
-                                  textController: _emailController,
-                                  color: Constant.mainCont),
+                                width: double.infinity,
+                                height: 40,
+                                radius: 10,
+                                textController: _emailController,
+                                color: Constant.mainCont,
+                                textColor: Constant.secondCont4,
+                              ),
                               SizedBox(
                                 height: 8,
                               ),

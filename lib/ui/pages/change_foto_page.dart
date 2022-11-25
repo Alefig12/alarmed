@@ -27,15 +27,11 @@ class _ChangeFotoPageState extends State<ChangeFotoPage> {
   }
 
   _openCamera() async {
-    try {
-      final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
-      this.setState(() {
-        imageFile = photo;
-      });
-      Navigator.of(context).pop();
-    } catch (e) {
-      // TODO
-    }
+    final XFile? photo = await _picker.pickImage(source: ImageSource.camera);
+    this.setState(() {
+      imageFile = photo;
+    });
+    Navigator.of(context).pop();
   }
 
   Widget _decideImageView() {

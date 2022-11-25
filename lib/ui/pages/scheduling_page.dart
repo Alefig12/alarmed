@@ -9,6 +9,7 @@ import 'package:alarmed/ui/pages/save_dialog.dart';
 import 'package:alarmed/ui/pages/turn_alarm_off.dart';
 import 'package:flutter/material.dart';
 import 'package:alarmed/ui/assets/constant.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:intl/intl.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'dart:math' as math;
@@ -72,6 +73,8 @@ class _SchedulingPageState extends State<SchedulingPage> {
   final doseTextController = TextEditingController();
   Color enabled = Constant.mainCont2;
   Color disabled = Constant.secondCont4;
+  Color pickerColor = Color(0xff443a49);
+  Color currentColor = Constant.mainCont2;
 
   late final LocalNotificationService service;
 
@@ -84,6 +87,35 @@ class _SchedulingPageState extends State<SchedulingPage> {
     super.initState();
   }
 
+  void changeColor(Color color) {
+    setState(() => pickerColor = color);
+  }
+
+  Future<void> _dialogBuilder(BuildContext context) {
+    return showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Pick a color!'),
+            content: SingleChildScrollView(
+              child: BlockPicker(
+                pickerColor: pickerColor,
+                onColorChanged: changeColor,
+              ),
+            ),
+            actions: <Widget>[
+              ElevatedButton(
+                child: const Text('Got it'),
+                onPressed: () {
+                  setState(() => currentColor = pickerColor);
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     AlarmController alarmController = Get.find<AlarmController>();
@@ -91,6 +123,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       key: const Key('SchedulingScaffold'),
+      backgroundColor: pickerColor,
       body: SafeArea(
         child: Center(
           child: Container(
@@ -132,7 +165,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                 Expanded(
                                   flex: 1,
                                   child: Center(
-                                    child: MainRoundedBox(
+                                    child: RoundTextButton(
                                       radius: 50,
                                       width: 90,
                                       height: 90,
@@ -142,11 +175,14 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                           angle: -math.pi / 1.65,
                                           child: Icon(
                                             CustomIcons.pill,
-                                            color: Constant.mainCont2,
+                                            color: pickerColor,
                                             size: 60,
                                           ),
                                         ),
                                       ),
+                                      onPressed: () {
+                                        _dialogBuilder(context);
+                                      },
                                     ),
                                   ),
                                 ),

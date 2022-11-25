@@ -97,6 +97,7 @@ class RoundTextInput extends StatelessWidget {
   const RoundTextInput(
       {Key? key,
       required this.color,
+      this.textColor,
       this.width,
       this.height,
       this.radius,
@@ -109,6 +110,7 @@ class RoundTextInput extends StatelessWidget {
   final double? width;
   final double? height;
   final Color color;
+  final Color? textColor;
   final double? radius;
   final bool? isPassword;
   final String? label;
@@ -121,6 +123,7 @@ class RoundTextInput extends StatelessWidget {
       width: width ?? 100,
       height: height ?? 20,
       child: TextField(
+        style: TextStyle(color: textColor ?? Colors.black),
         controller: textController,
         textAlign: TextAlign.left,
         obscureText: isPassword ?? false,
