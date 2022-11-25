@@ -82,11 +82,13 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                               ),
                               RoundTextInput(
-                                  width: double.infinity,
-                                  height: 40,
-                                  radius: 10,
-                                  textController: _passwordController,
-                                  color: Constant.mainCont)
+                                width: double.infinity,
+                                height: 40,
+                                radius: 10,
+                                textController: _passwordController,
+                                color: Constant.mainCont,
+                                textColor: Constant.secondCont4,
+                              )
                             ]),
                           ),
                         ),
