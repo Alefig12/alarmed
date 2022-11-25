@@ -50,6 +50,7 @@ dependencies:
   http: ^0.13.5
 
 dev_dependencies:
+  image_picker:
   flutter_test:
     sdk: flutter
 
