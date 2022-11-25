@@ -72,7 +72,10 @@ class _CalendarPageState extends State<CalendarPage> {
                                 child: Align(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    ' Buenos días, María!',
+                                    6 < DateTime.now().hour &&
+                                            DateTime.now().hour < 18
+                                        ? 'Buenos días!'
+                                        : 'Buenas noches!',
                                     style: TextStyle(
                                         fontSize: 200,
                                         color: Constant.mainCont),

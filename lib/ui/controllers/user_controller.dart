@@ -144,14 +144,17 @@ class UserController extends GetxController {
             pillName: values['pillName'],
             days: jsonDecode(values['days']) as List<dynamic>,
             startDateTime:
-                DateFormat('yyyy-MM-dd – kk:mm').parse(values['startDateTime']),
+                DateFormat('yyyy-MM-dd – HH:mm').parse(values['startDateTime']),
             endDateTime:
-                DateFormat('yyyy-MM-dd – kk:mm').parse(values['endDateTime']),
+                DateFormat('yyyy-MM-dd – HH:mm').parse(values['endDateTime']),
             repeat: values['repeat'],
             quantity: values['quantity'],
             dose: values['dose'],
             tone: values['tone'],
             volume: values['volume'].toDouble());
+
+        print(alarm.startDateTime);
+        print(values['startDateTime']);
         DB.insert(alarm);
       });
     }

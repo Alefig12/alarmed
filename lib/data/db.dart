@@ -42,9 +42,9 @@ class DB {
           id: alarmsMap[i]['id'],
           pillName: alarmsMap[i]['pillName'],
           days: jsonDecode(alarmsMap[i]['days']) as List<dynamic>,
-          startDateTime: DateFormat('yyyy-MM-dd – kk:mm')
+          startDateTime: DateFormat('yyyy-MM-dd – HH:mm')
               .parse(alarmsMap[i]['startDateTime']),
-          endDateTime: DateFormat('yyyy-MM-dd – kk:mm')
+          endDateTime: DateFormat('yyyy-MM-dd – HH:mm')
               .parse(alarmsMap[i]['endDateTime']),
           repeat: alarmsMap[i]['repeat'],
           quantity: alarmsMap[i]['quantity'],

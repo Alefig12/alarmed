@@ -70,18 +70,21 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
                             Column(children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Text('Iniciaras sesión con este correo:',
-                                    style: TextStyle(
-                                        color: Constant.title,
-                                        fontSize: 18,
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w100)),
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text('Email:',
+                                      style: TextStyle(
+                                          color: Constant.title,
+                                          fontSize: 18,
+                                          fontFamily: 'Poppins',
+                                          fontWeight: FontWeight.w100)),
+                                ),
                               ),
                               RoundTextInput(
                                 textController: _emailController,
                                 color: Constant.secondCont3,
                                 width: double.infinity,
-                                height: 35,
+                                height: 30,
                               ),
                             ])
                           ],

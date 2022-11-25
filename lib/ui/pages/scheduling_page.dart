@@ -719,8 +719,8 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                             BorderRadius.circular(25.0)),
                                     child: Padding(
                                         padding: EdgeInsets.all(3.0),
-                                        child: SaveDialog(
-                                          onContinueClick: () => generateAlarm(
+                                        child: SaveDialog(onContinueClick: () {
+                                          generateAlarm(
                                               daysIndex,
                                               pillNameTextController,
                                               _time,
@@ -728,8 +728,9 @@ class _SchedulingPageState extends State<SchedulingPage> {
                                               eDate,
                                               selectedNum,
                                               quantityTextController,
-                                              doseTextController),
-                                        )),
+                                              doseTextController);
+                                          Get.back();
+                                        })),
                                   ));
                           print(alarmController.alarmList);
                         }

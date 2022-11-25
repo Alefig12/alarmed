@@ -9,23 +9,15 @@ class AuthenticationController extends GetxController {
   AlarmController alarmController = Get.find();
 
   Future<void> login(email, password) async {
-    try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
+    UserCredential userCredential = await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: password);
 
-      // Identificando usuario, id unico en loggedUserID.
-      userController.loggedUserId = userCredential.user!.uid;
-      await userController.getLoggedUserAlarms();
-      await alarmController.setUserAlarms();
+    // Identificando usuario, id unico en loggedUserID.
+    userController.loggedUserId = userCredential.user!.uid;
+    await userController.getLoggedUserAlarms();
+    await alarmController.setUserAlarms();
 
-      return Future.value();
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        return Future.error("User not found");
-      } else if (e.code == 'wrong-password') {
-        return Future.error("Wrong password");
-      }
-    }
+    return Future.value();
   }
 
   Future<void> signup(email, password) async {

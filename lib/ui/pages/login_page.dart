@@ -3,6 +3,7 @@
 import 'package:alarmed/ui/Widgets/roundedbox_widget.dart';
 import 'package:alarmed/ui/controllers/authentication_controller.dart';
 import 'package:alarmed/ui/pages/Registration_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:alarmed/ui/assets/constant.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -24,8 +25,22 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordController = TextEditingController();
 
   void login() async {
-    await authenticationController.login(
-        _emailController.text, _passwordController.text);
+    try {
+      await authenticationController.login(
+          _emailController.text, _passwordController.text);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        const snackBar = SnackBar(
+          content: Text('Usuario no encontrado'),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      } else if (e.code == 'wrong-password') {
+        const snackBar = SnackBar(
+          content: Text('Contraseña incorrecta'),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      }
+    }
   }
 
   @override
@@ -109,7 +124,9 @@ class _LoginPageState extends State<LoginPage> {
                               style: TextStyle(
                                   color: Constant.title, fontSize: 25)),
                           color: Constant.mainCont2,
-                          onPressed: login,
+                          onPressed: () {
+                            login();
+                          },
                         ),
                         RoundTextButton(
                             onPressed: () {
