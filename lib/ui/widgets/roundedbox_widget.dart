@@ -94,26 +94,30 @@ class RoundTextButton extends StatelessWidget {
 }
 
 class RoundTextInput extends StatelessWidget {
-  const RoundTextInput(
-      {Key? key,
-      required this.color,
-      this.width,
-      this.height,
-      this.radius,
-      this.isPassword,
-      this.label,
-      this.hintStyle,
-      this.textController})
-      : super(key: key);
+  const RoundTextInput({
+    Key? key,
+    required this.color,
+    this.textColor,
+    this.width,
+    this.height,
+    this.radius,
+    this.isPassword,
+    this.label,
+    this.hintStyle,
+    this.textController,
+    this.keyboardType,
+  }) : super(key: key);
 
   final double? width;
   final double? height;
   final Color color;
+  final Color? textColor;
   final double? radius;
   final bool? isPassword;
   final String? label;
   final TextStyle? hintStyle;
   final TextEditingController? textController;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +125,9 @@ class RoundTextInput extends StatelessWidget {
       width: width ?? 100,
       height: height ?? 20,
       child: TextField(
+        style: TextStyle(color: textColor ?? Colors.black),
         controller: textController,
+        keyboardType: keyboardType ?? TextInputType.text,
         textAlign: TextAlign.left,
         obscureText: isPassword ?? false,
         decoration: InputDecoration(
