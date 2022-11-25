@@ -89,7 +89,7 @@ class UserController extends GetxController {
           .child('userList')
           .child(_loggedUserId.value)
           .child('alarm')
-          .push()
+          .child(alarm.id.toString())
           .set({
         'id': alarm.id,
         'pillName': alarm.pillName,
@@ -108,6 +108,20 @@ class UserController extends GetxController {
     }
   }
 
+  Future<void> deleteAlarmFromLoggedUser(int id) async {
+    try {
+      await databaseRef
+          .child('userList')
+          .child(_loggedUserId.value)
+          .child('alarm')
+          .child(id.toString())
+          .remove();
+    } catch (error) {
+      print(error);
+      return Future.error(error);
+    }
+  }
+
   Future<void> getLoggedUserAlarms() async {
     var dbRef = FirebaseDatabase.instance
         .ref()
@@ -115,24 +129,26 @@ class UserController extends GetxController {
         .child(_loggedUserId.value)
         .child('alarm');
     var snapshot = await dbRef.get();
-    var alarms = snapshot.value as Map<dynamic, dynamic>;
 
-    alarms.forEach((key, values) {
-      print(values['pillName']);
-      Alarm alarm = Alarm(
-          id: values['id'],
-          pillName: values['pillName'],
-          days: jsonDecode(values['days']) as List<dynamic>,
-          startDateTime:
-              DateFormat('yyyy-MM-dd – kk:mm').parse(values['startDateTime']),
-          endDateTime:
-              DateFormat('yyyy-MM-dd – kk:mm').parse(values['endDateTime']),
-          repeat: values['repeat'],
-          quantity: values['quantity'],
-          dose: values['dose'],
-          tone: values['tone'],
-          volume: values['volume'].toDouble());
-      DB.insert(alarm);
-    });
+    if (snapshot.value != null) {
+      var alarms = snapshot.value as Map<dynamic, dynamic>;
+      alarms.forEach((key, values) {
+        print(values['pillName']);
+        Alarm alarm = Alarm(
+            id: values['id'],
+            pillName: values['pillName'],
+            days: jsonDecode(values['days']) as List<dynamic>,
+            startDateTime:
+                DateFormat('yyyy-MM-dd – kk:mm').parse(values['startDateTime']),
+            endDateTime:
+                DateFormat('yyyy-MM-dd – kk:mm').parse(values['endDateTime']),
+            repeat: values['repeat'],
+            quantity: values['quantity'],
+            dose: values['dose'],
+            tone: values['tone'],
+            volume: values['volume'].toDouble());
+        DB.insert(alarm);
+      });
+    }
   }
 }

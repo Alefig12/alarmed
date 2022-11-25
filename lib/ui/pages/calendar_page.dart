@@ -2,6 +2,7 @@
 
 import 'package:alarmed/ui/Widgets/roundedbox_widget.dart';
 import 'package:alarmed/ui/controllers/alarm_controller.dart';
+import 'package:alarmed/ui/pages/menu_page.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:alarmed/ui/assets/constant.dart';
@@ -86,10 +87,13 @@ class _CalendarPageState extends State<CalendarPage> {
                         flex: 2,
                         child: Align(
                           alignment: Alignment.centerRight,
-                          child: Icon(
-                            FontAwesomeIcons.userAstronaut,
+                          child: IconButton(
+                            icon:
+                                Icon(FontAwesomeIcons.userAstronaut, size: 50),
                             color: Constant.mainCont,
-                            size: 50.0,
+                            onPressed: () {
+                              Get.to(() => const MenuPage());
+                            },
                           ),
                         ),
                       ),
@@ -169,7 +173,7 @@ class _CalendarPageState extends State<CalendarPage> {
                                         ),
                                         Expanded(
                                             child: FittedBox(
-                                                child: Text('1:00 pm',
+                                                child: Text('12:00 pm',
                                                     style: TextStyle(
                                                       color: Constant.title,
                                                       fontFamily: 'Poppins',
@@ -194,7 +198,7 @@ class _CalendarPageState extends State<CalendarPage> {
                                         Expanded(
                                             child: FittedBox(
                                                 child: Text(
-                                          '1:00 pm',
+                                          '12:00 pm',
                                           style: TextStyle(
                                             color: Constant.title,
                                             fontFamily: 'Poppins',
@@ -267,51 +271,57 @@ class _CalendarPageState extends State<CalendarPage> {
                       Expanded(
                           flex: 6,
                           child: PageView.builder(
-                              //aquí se puede dejar el 7 porque siempre son 7 días de la semana
-                              itemCount: 7,
+                              controller: PageController(viewportFraction: 1.1),
+                              itemCount: weekDays.length,
                               itemBuilder: (context, index) {
-                                return Column(
-                                  children: [
-                                    Expanded(
-                                        flex: 1,
-                                        child: MainRoundedBox(
-                                          width: double.infinity,
-                                          color: Constant.mainCont,
-                                          radius: 10,
-                                          child: FittedBox(
-                                              child: Text(
-                                            'Lunes',
-                                            style: TextStyle(
-                                                color: Constant.title),
+                                return FractionallySizedBox(
+                                  widthFactor: 1 / 1.1,
+                                  child: Column(
+                                    children: [
+                                      Expanded(
+                                          flex: 1,
+                                          child: MainRoundedBox(
+                                            width: double.infinity,
+                                            color: Constant.mainCont,
+                                            radius: 10,
+                                            child: FittedBox(
+                                                child: Text(
+                                              weekDays[index],
+                                              style: TextStyle(
+                                                  color: Constant.title),
+                                            )),
                                           )),
-                                        )),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Expanded(flex: 3, child: Text('')),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Expanded(
-                                        flex: 3,
-                                        child: MainRoundedBox(
-                                          color: Constant.secondCont3,
-                                          width: double.infinity,
-                                          radius: 14,
-                                          child: Text(""),
-                                        )),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Expanded(
-                                        flex: 3,
-                                        child: MainRoundedBox(
-                                          color: Constant.secondCont3,
-                                          width: double.infinity,
-                                          radius: 14,
-                                          child: Text(""),
-                                        )),
-                                  ],
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Expanded(
+                                          flex: 3,
+                                          child: alarmWidget(
+                                              listPill: getListPill(
+                                                  weekDays[index],
+                                                  alarmController
+                                                      .morningList))),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Expanded(
+                                          flex: 3,
+                                          child: alarmWidget(
+                                              listPill: getListPill(
+                                                  weekDays[index],
+                                                  alarmController
+                                                      .afternoonList))),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      Expanded(
+                                          flex: 3,
+                                          child: alarmWidget(
+                                              listPill: getListPill(
+                                                  weekDays[index],
+                                                  alarmController.nightList))),
+                                    ],
+                                  ),
                                 );
                               }))
                     ],
@@ -319,6 +329,18 @@ class _CalendarPageState extends State<CalendarPage> {
                 ))
           ],
         ))));
+  }
+
+  List<Alarm> getListPill(String weekDay, listPill) {
+    List<Alarm> list = [];
+
+    listPill.forEach((element) {
+      String dayName = DateFormat.EEEE('es-ES').format(element.getDate());
+      if (dayName.toLowerCase() == weekDay.toLowerCase()) {
+        list.add(element);
+      }
+    });
+    return list;
   }
 }
 
@@ -359,7 +381,9 @@ class alarmWidget extends StatelessWidget {
                         style: TextStyle(
                             fontFamily: 'Poppins', color: Constant.title)),
                   ]),
-                  Text(listPill[index].startDateTime.toString(),
+                  Text(
+                      DateFormat('hh:mm a')
+                          .format(listPill[index].startDateTime),
                       style: TextStyle(
                           fontFamily: 'Poppins', color: Constant.title))
                 ],

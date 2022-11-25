@@ -87,7 +87,7 @@ class AlarmCard extends StatelessWidget {
                               color: Constant.mainCont,
                               fontFamily: 'poppins',
                             )),
-                        Text("Hora ${DateFormat('kk:mm a').format(date)}",
+                        Text("Hora ${DateFormat('hh:mm a').format(date)}",
                             style: const TextStyle(
                                 fontSize: 20,
                                 fontFamily: 'poppins',
