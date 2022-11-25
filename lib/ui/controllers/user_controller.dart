@@ -34,6 +34,7 @@ class UserController extends GetxController {
 
   get loggedUserId => _loggedUserId.value;
   get loggedUserCurrentLocation => _loggedUserCurrentLocation.value;
+  get loggedUserLastUpdatedLocation => _loggedUserLastUpdatedLocation.value;
   get loggedUserNearbyPharmacies => _loggedUserNearbyPharmacies.value;
 
   set loggedUserNearbyPharmacies(value) =>
@@ -49,6 +50,10 @@ class UserController extends GetxController {
   }
 
   final databaseRef = FirebaseDatabase.instance.ref();
+
+  void updateLoggedUserLastUpdatedLocation(Position position) {
+    _loggedUserLastUpdatedLocation.value = position;
+  }
 
   Future<void> createUser(email, uid) async {
     print("Creating user in realTime for $email and $uid");

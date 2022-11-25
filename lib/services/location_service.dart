@@ -37,8 +37,10 @@ class LocationService {
     }
 
     Position position = await Geolocator.getCurrentPosition();
-
+    userController.updateLoggedUserLastUpdatedLocation(
+        userController.loggedUserCurrentLocation);
     userController.loggedUserCurrentLocation = position;
+
     return position;
   }
 
@@ -107,5 +109,15 @@ class LocationService {
     print(pharmacies.length);
     userController.loggedUserNearbyPharmacies = pharmacies;
     return pharmacies;
+  }
+
+  bool isCurrentLocationFarDistance() {
+    getCurrentLocation();
+    Position latLng1 = userController.loggedUserCurrentLocation;
+    Position latLng2 = userController.loggedUserLastUpdatedLocation;
+    double distanceInMeters = Geolocator.distanceBetween(latLng1.latitude,
+        latLng1.longitude, latLng2.latitude, latLng2.longitude);
+    print(distanceInMeters);
+    return distanceInMeters >= 100;
   }
 }

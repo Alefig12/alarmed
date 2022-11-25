@@ -355,47 +355,79 @@ class alarmWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MainRoundedBox(
+      padding: 8,
       color: Constant.secondCont3,
       width: double.infinity,
       radius: 14,
-      child: ListView.builder(
-        itemCount: listPill.length,
-        itemBuilder: (context, index) {
-          return Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Icon(
-                    FontAwesomeIcons.pills,
-                    color: Constant.thirdPink,
-                    size: 30.0,
-                  ),
-                  Column(children: [
-                    Text(
-                      listPill[index].pillName,
-                      style: TextStyle(
-                          fontFamily: 'Poppins', color: Constant.title),
+      child: listPill.isEmpty
+          ? Center(
+              child: Text(
+              "Libre",
+              style: TextStyle(
+                  letterSpacing: 10, fontSize: 20, color: Constant.title),
+            ))
+          : ListView.builder(
+              itemCount: listPill.length,
+              itemBuilder: (context, index) {
+                return Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Expanded(
+                          child: Icon(
+                            FontAwesomeIcons.pills,
+                            color: Constant.thirdPink,
+                            size: 30.0,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          flex: 3,
+                          child: Column(children: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                listPill[index].pillName,
+                                style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    color: Constant.title,
+                                    fontSize: 25),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                  "${listPill[index].dose.toString()} dosis",
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      color: Constant.title)),
+                            ),
+                          ]),
+                        ),
+                        Expanded(
+                          flex: 3,
+                          child: FittedBox(
+                            child: Text(
+                                DateFormat('hh:mm a')
+                                    .format(listPill[index].startDateTime),
+                                style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    color: Constant.title)),
+                          ),
+                        )
+                      ],
                     ),
-                    Text(listPill[index].dose.toString(),
-                        style: TextStyle(
-                            fontFamily: 'Poppins', color: Constant.title)),
-                  ]),
-                  Text(
-                      DateFormat('hh:mm a')
-                          .format(listPill[index].startDateTime),
-                      style: TextStyle(
-                          fontFamily: 'Poppins', color: Constant.title))
-                ],
-              ),
-              Divider(
-                color: Constant.secondCont4,
-                thickness: 2,
-              )
-            ],
-          );
-        },
-      ),
+                    Divider(
+                      color: Constant.secondCont4,
+                      thickness: 2,
+                    )
+                  ],
+                );
+              },
+            ),
     );
   }
 }

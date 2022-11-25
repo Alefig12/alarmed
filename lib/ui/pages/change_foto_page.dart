@@ -1,8 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 import 'dart:ffi';
 import 'dart:io';
+import 'package:alarmed/ui/pages/User_Password_Page.dart';
 import 'package:alarmed/ui/widgets/roundedbox_widget.dart';
 import "package:flutter/material.dart";
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:alarmed/ui/assets/constant.dart';
 import 'dart:math' as math;
@@ -23,7 +25,6 @@ class _ChangeFotoPageState extends State<ChangeFotoPage> {
     this.setState(() {
       imageFile = image;
     });
-    Navigator.of(context).pop();
   }
 
   _openCamera() async {
@@ -31,7 +32,6 @@ class _ChangeFotoPageState extends State<ChangeFotoPage> {
     this.setState(() {
       imageFile = photo;
     });
-    Navigator.of(context).pop();
   }
 
   Widget _decideImageView() {
@@ -54,110 +54,117 @@ class _ChangeFotoPageState extends State<ChangeFotoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-      child: Expanded(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 40,
-            ),
-            Text(
-              "Alarmed",
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Constant.title, fontSize: 40),
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Expanded(
-              child: Center(
-                child: MainRoundedBox(
-                  width: 320,
-                  color: Constant.secondCont,
-                  child: Column(children: [
-                    Text(
-                      "Escoge tu foto de perfil",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    _decideImageView(),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Row(
+      child: Column(
+        children: [
+          SizedBox(
+            height: 40,
+          ),
+          Text(
+            "Alarmed",
+            textAlign: TextAlign.center,
+            style: TextStyle(color: Constant.title, fontSize: 40),
+          ),
+          SizedBox(
+            height: 40,
+          ),
+          Expanded(
+            child: Center(
+              child: MainRoundedBox(
+                width: 320,
+                color: Constant.secondCont,
+                child: Column(children: [
+                  Text(
+                    "Escoge tu foto de perfil",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  _decideImageView(),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Expanded(
+                    child: Row(
                       // ignore: sort_child_properties_last
                       children: [
-                        Column(children: [
-                          RoundTextButton(
-                            color: Constant.secondCont4,
-                            child: Icon(
-                              Icons.camera_alt_rounded,
-                              color: Constant.secondCont3,
-                              size: 40,
+                        Expanded(
+                          child: Column(children: [
+                            RoundTextButton(
+                              color: Constant.secondCont4,
+                              child: Icon(
+                                Icons.camera_alt_rounded,
+                                color: Constant.secondCont3,
+                                size: 40,
+                              ),
+                              onPressed: () {
+                                _openCamera();
+                              },
                             ),
-                            onPressed: () {
-                              _openCamera();
-                            },
-                          ),
-                          Text("Camara",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold))
-                        ]),
+                            Text("Camara",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold))
+                          ]),
+                        ),
                         SizedBox(
                           width: 20,
                         ),
-                        Column(children: [
-                          RoundTextButton(
-                            color: Constant.secondCont4,
-                            child: Icon(
-                              Icons.photo,
-                              color: Constant.secondCont3,
-                              size: 40,
+                        Expanded(
+                          child: Column(children: [
+                            RoundTextButton(
+                              color: Constant.secondCont4,
+                              child: Icon(
+                                Icons.photo,
+                                color: Constant.secondCont3,
+                                size: 40,
+                              ),
+                              onPressed: () {
+                                _openGallery();
+                              },
                             ),
-                            onPressed: () {
-                              _openGallery();
-                            },
-                          ),
-                          Text("Galeria",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold))
-                        ])
+                            Text("Galeria",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold))
+                          ]),
+                        )
                       ],
                       mainAxisAlignment: MainAxisAlignment.center,
-                    )
-                  ]),
-                ),
+                    ),
+                  )
+                ]),
               ),
             ),
-            SizedBox(
-              height: 60,
-            ),
-            RoundTextButton(
-              child: Text("Siguiente",
+          ),
+          SizedBox(
+            height: 60,
+          ),
+          RoundTextButton(
+            onPressed: (() {
+              Get.to(UserPasswordPage());
+            }),
+            color: Constant.mainCont2,
+            width: 200,
+            child: Text("Siguiente",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold)),
+          ),
+          TextButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text("Omitir",
                   style: TextStyle(
                       color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold)),
-              color: Constant.mainCont2,
-              width: 200,
-            ),
-            TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text("Omitir",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold)))
-          ],
-        ),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold)))
+        ],
       ),
     ));
   }

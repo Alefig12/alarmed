@@ -2,6 +2,7 @@
 
 import 'package:alarmed/ui/Widgets/roundedbox_widget.dart';
 import 'package:alarmed/ui/controllers/alarm_controller.dart';
+import 'package:alarmed/ui/pages/firebase_central.dart';
 import 'package:flutter/material.dart';
 import 'package:alarmed/ui/assets/constant.dart';
 import 'package:flutter_shake_animated/flutter_shake_animated.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_shake_animated/flutter_shake_animated.dart';
 import "dart:math" as math;
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class TurnAlarmOff extends StatelessWidget {
   TurnAlarmOff(
@@ -26,7 +28,8 @@ class TurnAlarmOff extends StatelessWidget {
   final ShakeConstant shakeConstant = ShakeDefaultConstant1();
   final bool autoPlay;
   final Duration? duration;
-  bool dayTime = true; //si es de dia es true, sino es false
+  bool dayTime = 6 < DateTime.now().hour &&
+      DateTime.now().hour < 18; //si es de dia es true, sino es false
 
   @override
   Widget build(BuildContext context) {
@@ -63,11 +66,15 @@ class TurnAlarmOff extends StatelessWidget {
                         radius: 75,
                         width: 150,
                         height: 150,
-                        color: Constant.thirdGreen,
+                        color: Color(
+                                (math.Random().nextDouble() * 0xFFFFFF).toInt())
+                            .withOpacity(1.0),
                         child: Center(
                           child: Icon(
                             iconPill,
-                            color: Colors.white,
+                            color: Color((math.Random().nextDouble() * 0xFFFFFF)
+                                    .toInt())
+                                .withOpacity(1.0),
                             size: 90,
                           ),
                         ),
@@ -92,7 +99,7 @@ class TurnAlarmOff extends StatelessWidget {
                         height: 30,
                       ),
                       Text(
-                        '2:30 PM',
+                        DateFormat('hh:mm a').format(DateTime.now()),
                         // ignore: prefer_const_constructors
                         style: TextStyle(
                             fontSize: 30,
@@ -105,7 +112,7 @@ class TurnAlarmOff extends StatelessWidget {
                 RoundTextButton(
                   width: 200,
                   onPressed: () {
-                    Navigator.of(context, rootNavigator: true).pop();
+                    Get.back();
                     alarmController.deleteAlarm(idAlarm);
                   },
                   child: Text(

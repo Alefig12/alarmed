@@ -2,6 +2,7 @@
 
 import 'package:alarmed/ui/controllers/authentication_controller.dart';
 import 'package:alarmed/ui/pages/User_Password_Page.dart';
+import 'package:alarmed/ui/pages/change_foto_page.dart';
 import 'package:alarmed/ui/pages/login_page.dart';
 import 'package:alarmed/ui/widgets/roundedbox_widget.dart';
 import 'package:alarmed/ui/assets/constant.dart';
@@ -175,7 +176,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       alignment: Alignment.center,
                       child: RoundTextButton(
                         onPressed: () {
-                          Get.to(UserPasswordPage());
+                          Get.to(ChangeFotoPage());
                         },
                         child: Align(
                           alignment: Alignment.center,

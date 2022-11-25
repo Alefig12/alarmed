@@ -23,7 +23,9 @@ class SchedulingPage extends StatefulWidget {
 }
 
 class _SchedulingPageState extends State<SchedulingPage> {
-  TimeOfDay _time = const TimeOfDay(hour: 7, minute: 15);
+  TimeOfDay _time = TimeOfDay(
+      hour: DateTime.now().hour.toInt(),
+      minute: DateTime.now().minute.toInt() + 1);
   double _value = 20;
 
   void _selectTime() async {
@@ -83,8 +85,12 @@ class _SchedulingPageState extends State<SchedulingPage> {
     service = LocalNotificationService();
     service.initialize();
     listenToNotification();
-
     super.initState();
+    AlarmController alarmController = Get.find();
+    if (alarmController.justLoggedin) {
+      alarmController.justLoggedin = false;
+      setAlarms();
+    }
   }
 
   void changeColor(Color color) {
@@ -123,7 +129,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       key: const Key('SchedulingScaffold'),
-      backgroundColor: pickerColor,
+      backgroundColor: Constant.secondCont3,
       body: SafeArea(
         child: Center(
           child: Container(
@@ -676,7 +682,13 @@ class _SchedulingPageState extends State<SchedulingPage> {
 
                         if (doseTextController.text.isEmpty) {
                           const snackBar = SnackBar(
-                            content: Text('Ingrese una dosis correcta'),
+                            content: Text('Ingrese una dosis'),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        } else if (int.tryParse(doseTextController.text) ==
+                            null) {
+                          const snackBar = SnackBar(
+                            content: Text('Ingrese un numero como dosis'),
                           );
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         } else {
@@ -685,7 +697,13 @@ class _SchedulingPageState extends State<SchedulingPage> {
 
                         if (quantityTextController.text.isEmpty) {
                           const snackBar = SnackBar(
-                            content: Text('Ingrese una cantidad correcta'),
+                            content: Text('Ingrese una cantidad'),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        } else if (int.tryParse(quantityTextController.text) ==
+                            null) {
+                          const snackBar = SnackBar(
+                            content: Text('Ingrese un numero como cantidad'),
                           );
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         } else {
@@ -776,6 +794,11 @@ class _SchedulingPageState extends State<SchedulingPage> {
     alarmController.addAlarm(id, pillName, weekDays, startDateTime, endDateTime,
         repeat, quantity, dose, null, null);
 
+    setAlarms();
+  }
+
+  void setAlarms() async {
+    AlarmController alarmController = Get.find();
     await service.deleteAllScheduledAlarms();
 
     for (var e in alarmController.alarmList) {
@@ -788,7 +811,9 @@ class _SchedulingPageState extends State<SchedulingPage> {
           body: "Es hora de tu pastilla!",
           date: e.startDateTime,
           payload: mapString);
+      print("alarms set");
     }
+
     alarmController.sortAlarms();
   }
 
@@ -800,14 +825,11 @@ class _SchedulingPageState extends State<SchedulingPage> {
       print(payload);
       var mapObject = jsonDecode(payload);
 
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => TurnAlarmOff(
-                    pillName: mapObject["pillName"],
-                    iconPill: CustomIcons.pill,
-                    idAlarm: mapObject["id"],
-                  )));
+      Get.to(() => TurnAlarmOff(
+            pillName: mapObject["pillName"],
+            iconPill: CustomIcons.pill,
+            idAlarm: mapObject["id"],
+          ));
     }
   }
 }

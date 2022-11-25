@@ -29,8 +29,36 @@ class _LocationPageState extends State<LocationPage>
   String? pharmaPhone;
   String? pharmaOpen;
 
+  bool keepAlive = false;
+
   static final CameraPosition _kLake = CameraPosition(
       target: LatLng(11.022271431059005, -74.81760770071617), zoom: 15);
+
+  @override
+  void initState() {
+    super.initState();
+    waitForLocationUpdate();
+  }
+
+  Future waitForLocationUpdate() async {
+    keepAlive = true;
+    updateKeepAlive();
+    while (keepAlive) {
+      await Future.delayed(const Duration(minutes: 4), () {
+        if (locationService.isCurrentLocationFarDistance()) {
+          print(locationService.isCurrentLocationFarDistance());
+          setState(() {
+            keepAlive = false;
+            updateKeepAlive();
+          });
+          return;
+        }
+      });
+    }
+  }
+
+  @override
+  bool get wantKeepAlive => keepAlive;
 
   @override
   Widget build(BuildContext context) {
@@ -239,9 +267,6 @@ class _LocationPageState extends State<LocationPage>
       ),
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 
   void changeCameraToPoint(latitude, longitude, name) async {
     final GoogleMapController controller = await _controller.future;

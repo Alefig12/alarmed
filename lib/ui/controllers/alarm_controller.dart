@@ -9,6 +9,7 @@ import 'dart:math';
 import 'package:intl/intl.dart';
 
 class AlarmController extends GetxController {
+  final _justLoggedin = false.obs;
   final _alarmList = [].obs;
   final _volume = 0.0.obs;
   final _morningList = [].obs;
@@ -16,6 +17,8 @@ class AlarmController extends GetxController {
 
   get morningList => _morningList;
   final _nightList = [].obs;
+  get justLoggedin => _justLoggedin.value;
+  set justLoggedin(value) => _justLoggedin.value = value;
 
   UserController userController = Get.find();
 
@@ -222,6 +225,7 @@ class AlarmController extends GetxController {
     _alarmList.value = alarms;
     _alarmList.refresh();
     sortAlarms();
+    justLoggedin = true;
   }
 
   Future<void> deleteAllAlarms() async {

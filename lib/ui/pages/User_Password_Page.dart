@@ -62,7 +62,7 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
                         child: Column(
                           children: [
                             FittedBox(
-                              child: Text('Elige tu nombre \nde usuario',
+                              child: Text('Ingresa tu correo \nelectronico',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize: 25, color: Constant.title)),
@@ -70,7 +70,7 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
                             Column(children: [
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Text('Podrás cambiarlo después:',
+                                child: Text('Iniciaras sesión con este correo:',
                                     style: TextStyle(
                                         color: Constant.title,
                                         fontSize: 18,
