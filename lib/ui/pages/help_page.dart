@@ -21,9 +21,13 @@ class _HelpPageState extends State<HelpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        authenticationController.logout();
-      }),
+      floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.swipe_left, color: Colors.white),
+          hoverColor: Constant.mainCont2,
+          backgroundColor: Constant.mainCont2,
+          onPressed: () {
+            Get.back();
+          }),
       key: Key('HelpScaffold'),
       body: SafeArea(
         child: SingleChildScrollView(

@@ -176,7 +176,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       alignment: Alignment.center,
                       child: RoundTextButton(
                         onPressed: () {
-                          Get.to(ChangeFotoPage());
+                          Get.to(UserPasswordPage());
                         },
                         child: Align(
                           alignment: Alignment.center,

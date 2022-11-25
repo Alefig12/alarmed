@@ -23,6 +23,7 @@ class CalendarPage extends StatefulWidget {
 }
 
 class _CalendarPageState extends State<CalendarPage> {
+  Color iconBut = Constant.mainCont;
   List weekDays = [
     'lunes',
     'martes',
@@ -64,15 +65,15 @@ class _CalendarPageState extends State<CalendarPage> {
                               ),
                             ),
                             SizedBox(
-                              width: 10,
+                              width: 20,
                             ),
                             Expanded(
-                              flex: 6,
+                              flex: 5,
                               child: FittedBox(
                                 child: Align(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    ' Buenos días, María!',
+                                    '¡Saludos hoy!',
                                     style: TextStyle(
                                         fontSize: 200,
                                         color: Constant.mainCont),
@@ -90,7 +91,7 @@ class _CalendarPageState extends State<CalendarPage> {
                           child: IconButton(
                             icon:
                                 Icon(FontAwesomeIcons.userAstronaut, size: 50),
-                            color: Constant.mainCont,
+                            color: iconBut,
                             onPressed: () {
                               Get.to(() => const MenuPage());
                             },

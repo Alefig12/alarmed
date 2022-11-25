@@ -26,10 +26,10 @@ class _NavigationPageState extends State<NavigationPage> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   // ignore: prefer_final_fields
   static List<Widget> _widgetOptions = <Widget>[
-    ActivePausesPage(),
+    CalendarPage(),
     LocationPage(),
     AlarmPage(),
-    CalendarPage(),
+    ActivePausesPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -93,14 +93,14 @@ class _NavigationPageState extends State<NavigationPage> {
                   color: Constant.secondCont4,
                   child: Center(
                     child: Icon(
-                      Icons.accessibility_new,
+                      FontAwesomeIcons.calendar,
                       color: Constant.secondCont,
                       size: 40,
                     ),
                   ),
                 ),
                 backgroundColor: Constant.mainCont,
-                label: 'Ayuda',
+                label: 'Calendario',
               ),
               BottomNavigationBarItem(
                 icon: MainRoundedBox(
@@ -144,14 +144,14 @@ class _NavigationPageState extends State<NavigationPage> {
                   color: Constant.secondCont4,
                   child: Center(
                     child: Icon(
-                      FontAwesomeIcons.calendar,
+                      Icons.accessibility_new,
                       color: Constant.secondCont,
                       size: 40,
                     ),
                   ),
                 ),
                 backgroundColor: Constant.mainCont,
-                label: 'Calendario',
+                label: 'Pausas',
               ),
             ],
             currentIndex: _selectedIndex,
