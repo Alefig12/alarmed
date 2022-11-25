@@ -42,15 +42,11 @@ class _NavigationPageState extends State<NavigationPage> {
 
   @override
   void initState() {
-    print(_selectedIndex);
-
     super.initState();
   }
 
   @override
   void dispose() {
-    print(_selectedIndex);
-
     _pageController.dispose();
     super.dispose();
   }
@@ -76,7 +72,7 @@ class _NavigationPageState extends State<NavigationPage> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(30), topLeft: Radius.circular(30)),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
           ],
         ),
