@@ -696,12 +696,17 @@ class _SchedulingPageState extends State<SchedulingPage> {
     }
     var pillName = pillNameTextController.text;
     var days = weekDays;
+
+    print("time de _time: $_time");
+
     var timeDT = DateFormat.jm().parse(_time.format(context));
+    print("time de timeDT: $timeDT");
 
     String timeS = DateFormat("HH:mm").format(timeDT);
+    print("time de timeS: $timeS");
     DateTime startDateTime =
-        new DateFormat("yyyy-MM-dd hh:mm").parse('$sDate $timeS');
-
+        new DateFormat("yyyy-MM-dd HH:mm").parse('$sDate $timeS');
+    print("time de startd: $startDateTime");
     DateTime endDateTime = new DateFormat("yyyy-MM-dd").parse('$eDate ');
 
     int repeat = selectedNum;

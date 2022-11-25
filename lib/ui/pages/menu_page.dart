@@ -42,50 +42,51 @@ class _MenuPageState extends State<MenuPage> {
                           fontSize: 40,
                           color: Constant.title,
                           fontWeight: FontWeight.w600))),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               RoundTextButton(
                 width: double.infinity,
+                color: Constant.mainCont,
+                onPressed: () {
+                  Get.to(() => const ChangeFotoPage());
+                },
                 child: Text("Mi perfil",
                     style: TextStyle(
                         fontSize: 40,
                         color: Constant.title,
                         fontWeight: FontWeight.w600)),
-                color: Constant.mainCont,
-                onPressed: () {
-                  Get.to(ChangeFotoPage());
-                },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               RoundTextButton(
                 width: double.infinity,
+                color: Constant.mainCont,
+                onPressed: () {
+                  Get.to(const HelpPage());
+                },
                 child: Text("Ayuda",
                     style: TextStyle(
                         fontSize: 40,
                         color: Constant.title,
                         fontWeight: FontWeight.w600)),
-                color: Constant.mainCont,
-                onPressed: () {
-                  Get.to(HelpPage());
-                },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               RoundTextButton(
                 width: double.infinity,
+                color: Constant.mainCont,
+                onPressed: () {
+                  authenticationController.logout();
+                  Get.back();
+                },
                 child: Text("Logout",
                     style: TextStyle(
                         fontSize: 40,
                         color: Constant.title,
                         fontWeight: FontWeight.w600)),
-                color: Constant.mainCont,
-                onPressed: () {
-                  authenticationController.logout();
-                },
               )
             ]),
           ),

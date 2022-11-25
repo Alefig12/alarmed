@@ -125,6 +125,7 @@ class AlarmController extends GetxController {
   void deleteAlarm(int id) {
     _alarmList.removeWhere((item) => item.id == id);
     DB.delete(id);
+    userController.deleteAlarmFromLoggedUser(id);
     sortAlarms();
   }
 
