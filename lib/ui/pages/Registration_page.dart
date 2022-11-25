@@ -64,6 +64,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                     radius: 10,
                                     height: 35,
                                     color: Constant.mainCont,
+                                    textColor: Constant.secondCont4,
                                   ),
                                   Align(
                                     alignment: Alignment.centerLeft,
@@ -79,7 +80,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                       width: double.infinity,
                                       radius: 10,
                                       height: 35,
-                                      color: Constant.mainCont),
+                                      color: Constant.mainCont,
+                                      keyboardType: TextInputType.number,
+                                      textColor: Constant.secondCont4),
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Text('Enfermedades:',
@@ -94,7 +97,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                       radius: 10,
                                       width: double.infinity,
                                       height: 35,
-                                      color: Constant.mainCont),
+                                      color: Constant.mainCont,
+                                      keyboardType: TextInputType.text,
+                                      textColor: Constant.secondCont4),
                                 ]),
                                 decoration: BoxDecoration(
                                   color: Constant.secondCont3,
@@ -138,6 +143,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         radius: 10,
                                         height: 35,
                                         width: double.infinity,
+                                        textColor: Constant.secondCont4,
                                       ),
                                       Align(
                                         alignment: Alignment.centerLeft,
@@ -150,10 +156,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         width: 8,
                                       ),
                                       RoundTextInput(
-                                          color: Constant.mainCont,
-                                          radius: 10,
-                                          height: 35,
-                                          width: double.infinity)
+                                        color: Constant.mainCont,
+                                        radius: 10,
+                                        height: 35,
+                                        width: double.infinity,
+                                        textColor: Constant.secondCont4,
+                                        keyboardType: TextInputType.number,
+                                      )
                                     ])),
                                 decoration: BoxDecoration(
                                   color: Constant.secondCont3,
