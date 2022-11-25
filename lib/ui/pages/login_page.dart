@@ -88,6 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                                 textController: _passwordController,
                                 color: Constant.mainCont,
                                 textColor: Constant.secondCont4,
+                                isPassword: true,
                               )
                             ]),
                           ),
