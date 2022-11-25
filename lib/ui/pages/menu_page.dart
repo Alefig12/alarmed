@@ -6,6 +6,7 @@ import 'package:alarmed/ui/widgets/roundedbox_widget.dart';
 import 'package:alarmed/ui/pages/help_page.dart';
 import 'package:alarmed/ui/pages/change_foto_page.dart';
 import 'package:get/get.dart';
+import 'package:flutter/src/rendering/box.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({
@@ -41,52 +42,50 @@ class _MenuPageState extends State<MenuPage> {
                           fontSize: 40,
                           color: Constant.title,
                           fontWeight: FontWeight.w600))),
-              ButtonBar(
-                alignment: MainAxisAlignment.center,
-                buttonPadding:
-                    EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-                overflowButtonSpacing: 50,
-                children: [
-                  ElevatedButton(
-                    child: Text("Mi perfil",
-                        style: TextStyle(
-                            fontSize: 40,
-                            color: Constant.title,
-                            fontWeight: FontWeight.w600)),
-                    onPressed: () {
-                      Get.to(ChangeFotoPage());
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Constant.mainCont,
-                    ),
-                  ),
-                  ElevatedButton(
-                    child: Text("Ayuda",
-                        style: TextStyle(
-                            fontSize: 40,
-                            color: Constant.title,
-                            fontWeight: FontWeight.w600)),
-                    onPressed: () {
-                      Get.to(HelpPage());
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Constant.mainCont,
-                    ),
-                  ),
-                  ElevatedButton(
-                    child: Text("Logout",
-                        style: TextStyle(
-                            fontSize: 40,
-                            color: Constant.title,
-                            fontWeight: FontWeight.w600)),
-                    onPressed: () {
-                      authenticationController.logout();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Constant.mainCont,
-                    ),
-                  )
-                ],
+              SizedBox(
+                height: 20,
+              ),
+              RoundTextButton(
+                width: double.infinity,
+                child: Text("Mi perfil",
+                    style: TextStyle(
+                        fontSize: 40,
+                        color: Constant.title,
+                        fontWeight: FontWeight.w600)),
+                color: Constant.mainCont,
+                onPressed: () {
+                  Get.to(ChangeFotoPage());
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              RoundTextButton(
+                width: double.infinity,
+                child: Text("Ayuda",
+                    style: TextStyle(
+                        fontSize: 40,
+                        color: Constant.title,
+                        fontWeight: FontWeight.w600)),
+                color: Constant.mainCont,
+                onPressed: () {
+                  Get.to(HelpPage());
+                },
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              RoundTextButton(
+                width: double.infinity,
+                child: Text("Logout",
+                    style: TextStyle(
+                        fontSize: 40,
+                        color: Constant.title,
+                        fontWeight: FontWeight.w600)),
+                color: Constant.mainCont,
+                onPressed: () {
+                  authenticationController.logout();
+                },
               )
             ]),
           ),
