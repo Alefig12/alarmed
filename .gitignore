@@ -48,3 +48,4 @@ app.*.map.json
 /android/app/google-services.json
 android/app/src/main/AndroidManifest.xml
 /lib/cnts.dart
+android/app/src/main/AndroidManifest.xml
