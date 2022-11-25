@@ -42,10 +42,10 @@ class LocationService {
     return position;
   }
 
-  Future<List<dynamic>> getNearbyPharmacies() async {
+  Future<List<dynamic>> getNearbyPharmacies({int radius = 700}) async {
     Position location = await getCurrentLocation();
     final String url =
-        "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.latitude}%2C${location.longitude}&radius=700&type=pharmacy&key=${_apiKey}";
+        "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${location.latitude}%2C${location.longitude}&radius=$radius&type=pharmacy&key=${_apiKey}";
     var response = await http.get(Uri.parse(url));
     var json = jsonDecode(response.body);
     var results = json["results"] as List<dynamic>;
@@ -72,9 +72,19 @@ class LocationService {
     List<Pharmacy> pharmacies = [];
     List<dynamic> placesid = await getNearbyPharmacies();
 
-    for (int i = 0; i < 5; i++) {
-      Map<String, dynamic> info = await getPharmacyInfo(placesid[i]);
+    if (placesid.isEmpty) {
+      placesid = await getNearbyPharmacies(radius: 2000);
+    }
+
+    int i = 0;
+
+    placesid = placesid.reversed.toList();
+
+    while (placesid.isNotEmpty && i < 5) {
+      var placeid = placesid.removeLast();
+      var info = await getPharmacyInfo(placeid);
       pharmacies.add(Pharmacy.fromJson(info));
+      i++;
     }
 
     // pharmacies.add(Pharmacy(

@@ -72,12 +72,23 @@ class _LocationPageState extends State<LocationPage>
                               zoom: 15)));
                       List<Pharmacy> pharmacies =
                           await locationService.getPharmacies();
-                      setState(() {
-                        pharmaPhone = pharmacies[0].phoneNo;
-                        pharmaAddress = pharmacies[0].address;
-                        pharmaOpen = pharmacies[0].isOpen.toString();
-                        pharmaName = pharmacies[0].name;
-                      });
+
+                      if (!pharmacies.isEmpty) {
+                        controller.animateCamera(CameraUpdate.newCameraPosition(
+                            CameraPosition(
+                                target: LatLng(pharmacies[0].latitude,
+                                    pharmacies[0].longitude),
+                                zoom: 17)));
+
+                        setState(() {
+                          marker = Marker(
+                              markerId: MarkerId('marker'),
+                              position: LatLng(pharmacies[0].latitude,
+                                  pharmacies[0].longitude),
+                              infoWindow:
+                                  InfoWindow(title: pharmacies[0].name));
+                        });
+                      }
                     },
                   ),
                 ),
@@ -86,112 +97,136 @@ class _LocationPageState extends State<LocationPage>
                 flex: 1,
                 child: Container(
                   padding: EdgeInsets.all(30),
-                  child: PageView.builder(
-                    controller: PageController(viewportFraction: 1.1),
-                    itemCount:
-                        userController.loggedUserNearbyPharmacies.length ?? 1,
-                    onPageChanged: (value) {
-                      changeCameraToPoint(
-                          userController
-                              .loggedUserNearbyPharmacies[value].latitude,
-                          userController
-                              .loggedUserNearbyPharmacies[value].longitude,
-                          userController
-                              .loggedUserNearbyPharmacies[value].name);
-                    },
-                    itemBuilder: (context, index) {
-                      return FractionallySizedBox(
-                        widthFactor: 1 / 1.1,
-                        child: Column(children: [
-                          Container(
-                            padding: EdgeInsets.only(bottom: 18),
-                            child: FittedBox(
-                              child: Text(
-                                userController.loggedUserNearbyPharmacies[index]
-                                        .name ??
-                                    'Farmacia mis cositas',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 28,
-                                    color: Constant.title),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(
-                                  Icons.schedule,
-                                  color: Constant.title,
-                                  size: 40,
-                                ),
-                                Expanded(
-                                  child: FittedBox(
-                                    child: Text(handleOpenClose(index),
-                                        style: TextStyle(
-                                            fontSize: 22,
-                                            color: Constant.title)),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 15),
-                          Expanded(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(
-                                  Icons.location_on_outlined,
-                                  color: Constant.title,
-                                  size: 40,
-                                ),
-                                Expanded(
-                                  child: FittedBox(
-                                    child: Text(
+                  child: Obx(
+                    () => PageView.builder(
+                      controller: PageController(viewportFraction: 1.1),
+                      itemCount: userController
+                              .loggedUserNearbyPharmacies.isEmpty
+                          ? 1
+                          : userController.loggedUserNearbyPharmacies.length,
+                      onPageChanged: (value) {
+                        changeCameraToPoint(
+                            userController
+                                .loggedUserNearbyPharmacies[value].latitude,
+                            userController
+                                .loggedUserNearbyPharmacies[value].longitude,
+                            userController
+                                .loggedUserNearbyPharmacies[value].name);
+                      },
+                      itemBuilder: (context, index) {
+                        return userController.loggedUserNearbyPharmacies.isEmpty
+                            ? Center(
+                                child: CircularProgressIndicator(
+                                strokeWidth: 6,
+                                color: Colors.white,
+                              ))
+                            : FractionallySizedBox(
+                                widthFactor: 1 / 1.1,
+                                child: Column(children: [
+                                  Container(
+                                    padding: EdgeInsets.only(bottom: 18),
+                                    child: FittedBox(
+                                      child: Text(
                                         userController
+                                                .loggedUserNearbyPharmacies
+                                                .isEmpty
+                                            ? 'No hay farmacias cercanas'
+                                            : userController
                                                 .loggedUserNearbyPharmacies[
                                                     index]
-                                                .address ??
-                                            'N/A',
+                                                .name,
                                         style: TextStyle(
-                                            fontSize: 22,
-                                            color: Constant.title)),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 28,
+                                            color: Constant.title),
+                                      ),
+                                    ),
                                   ),
-                                )
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 15),
-                          Expanded(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Icon(
-                                  Icons.phone_outlined,
-                                  color: Constant.title,
-                                  size: 40,
-                                ),
-                                Expanded(
-                                  child: FittedBox(
-                                    child: Text(
-                                        userController
-                                                .loggedUserNearbyPharmacies[
-                                                    index]
-                                                .phoneNo ??
-                                            'N/A',
-                                        style: TextStyle(
-                                            fontSize: 22,
-                                            color: Constant.title)),
+                                  Expanded(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Icon(
+                                          Icons.schedule,
+                                          color: Constant.title,
+                                          size: 40,
+                                        ),
+                                        Expanded(
+                                          child: FittedBox(
+                                            child: Text(handleOpenClose(index),
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    color: Constant.title)),
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                )
-                              ],
-                            ),
-                          )
-                        ]),
-                      );
-                    },
+                                  SizedBox(height: 15),
+                                  Expanded(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Icon(
+                                          Icons.location_on_outlined,
+                                          color: Constant.title,
+                                          size: 40,
+                                        ),
+                                        Expanded(
+                                          child: FittedBox(
+                                            child: Text(
+                                                userController
+                                                        .loggedUserNearbyPharmacies
+                                                        .isEmpty
+                                                    ? 'No hay farmacias cercanas'
+                                                    : userController
+                                                        .loggedUserNearbyPharmacies[
+                                                            index]
+                                                        .address,
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    color: Constant.title)),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 15),
+                                  Expanded(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Icon(
+                                          Icons.phone_outlined,
+                                          color: Constant.title,
+                                          size: 40,
+                                        ),
+                                        Expanded(
+                                          child: FittedBox(
+                                            child: Text(
+                                                userController
+                                                        .loggedUserNearbyPharmacies
+                                                        .isEmpty
+                                                    ? 'No hay farmacias cercanas'
+                                                    : userController
+                                                        .loggedUserNearbyPharmacies[
+                                                            index]
+                                                        .phoneNo,
+                                                style: TextStyle(
+                                                    fontSize: 22,
+                                                    color: Constant.title)),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                ]),
+                              );
+                      },
+                    ),
                   ),
                   decoration: BoxDecoration(
                       color: Constant.secondCont,
@@ -223,7 +258,9 @@ class _LocationPageState extends State<LocationPage>
 
   String handleOpenClose(index) {
     UserController userController = Get.find();
-    bool? pharmaOpen = userController.loggedUserNearbyPharmacies[index].isOpen;
+    bool? pharmaOpen = userController.loggedUserNearbyPharmacies.isEmpty
+        ? null
+        : userController.loggedUserNearbyPharmacies[index].isOpen;
 
     if (pharmaOpen == null) {
       return 'Horario no disponible';
