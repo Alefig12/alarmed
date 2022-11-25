@@ -671,28 +671,50 @@ class _SchedulingPageState extends State<SchedulingPage> {
                       color: Constant.mainCont2,
                       elevation: 10,
                       onPressed: () {
-                        showDialog<String>(
-                            context: context,
-                            builder: (BuildContext context) => Dialog(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(25.0)),
-                                  child: Padding(
-                                      padding: EdgeInsets.all(3.0),
-                                      child: SaveDialog(
-                                        onContinueClick: () => generateAlarm(
-                                            daysIndex,
-                                            pillNameTextController,
-                                            _time,
-                                            sDate,
-                                            eDate,
-                                            selectedNum,
-                                            quantityTextController,
-                                            doseTextController),
-                                      )),
-                                ));
+                        bool check1 = false;
+                        bool check2 = false;
 
-                        print(alarmController.alarmList);
+                        if (doseTextController.text.isEmpty) {
+                          const snackBar = SnackBar(
+                            content: Text('Ingrese una dosis correcta'),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        } else {
+                          check1 = true;
+                        }
+
+                        if (quantityTextController.text.isEmpty) {
+                          const snackBar = SnackBar(
+                            content: Text('Ingrese una cantidad correcta'),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        } else {
+                          check2 = true;
+                        }
+
+                        if (check1 && check2) {
+                          showDialog<String>(
+                              context: context,
+                              builder: (BuildContext context) => Dialog(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(25.0)),
+                                    child: Padding(
+                                        padding: EdgeInsets.all(3.0),
+                                        child: SaveDialog(
+                                          onContinueClick: () => generateAlarm(
+                                              daysIndex,
+                                              pillNameTextController,
+                                              _time,
+                                              sDate,
+                                              eDate,
+                                              selectedNum,
+                                              quantityTextController,
+                                              doseTextController),
+                                        )),
+                                  ));
+                          print(alarmController.alarmList);
+                        }
                       },
                       child: const Text(
                         "Guardar",

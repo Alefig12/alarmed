@@ -226,8 +226,32 @@ class _UserPasswordPageState extends State<UserPasswordPage> {
                     SizedBox(height: 10),
                     RoundTextButton(
                       onPressed: () {
-                        signUp();
-                        Get.offAll(() => FirebaseCentral());
+                        bool check1 = false;
+                        bool check2 = false;
+
+                        if (_confirmPasswordController.text ==
+                            _passwordController.text) {
+                          check1 = true;
+                        } else {
+                          const snackBar = SnackBar(
+                            content: Text('No coinciden las contraseñas'),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        }
+
+                        if (_emailController.text.isEmpty) {
+                          const snackBar = SnackBar(
+                            content: Text('Escriba un nombre de usuario'),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        } else {
+                          check2 = true;
+                        }
+
+                        if (check1 && check2) {
+                          signUp();
+                          Get.offAll(() => FirebaseCentral());
+                        }
                       },
                       child: Row(children: [
                         Expanded(
