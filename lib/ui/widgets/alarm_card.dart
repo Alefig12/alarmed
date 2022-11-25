@@ -115,7 +115,7 @@ class AlarmCard extends StatelessWidget {
                     alarmController.deleteAlarm(id);
                   },
                   child: Text(
-                    'Editar',
+                    'Eliminar',
                     style: TextStyle(fontSize: 40, color: Constant.secondCont4),
                   )),
             )

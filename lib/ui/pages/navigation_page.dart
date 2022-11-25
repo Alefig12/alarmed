@@ -7,7 +7,7 @@ import 'package:alarmed/ui/pages/location_page.dart';
 import 'package:alarmed/ui/pages/calendar_page.dart';
 import 'package:alarmed/ui/pages/scheduling_page.dart';
 import 'package:alarmed/ui/pages/alarms_page.dart';
-import 'package:alarmed/ui/pages/help_page.dart';
+import 'package:alarmed/ui/pages/active_pauses.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:math' as math;
 
@@ -26,7 +26,7 @@ class _NavigationPageState extends State<NavigationPage> {
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   // ignore: prefer_final_fields
   static List<Widget> _widgetOptions = <Widget>[
-    HelpPage(),
+    ActivePausesPage(),
     LocationPage(),
     AlarmPage(),
     CalendarPage(),
@@ -97,7 +97,7 @@ class _NavigationPageState extends State<NavigationPage> {
                   color: Constant.secondCont4,
                   child: Center(
                     child: Icon(
-                      FontAwesomeIcons.question,
+                      Icons.accessibility_new,
                       color: Constant.secondCont,
                       size: 40,
                     ),
