@@ -159,7 +159,7 @@ class _ChangeFotoPageState extends State<ChangeFotoPage> {
               onPressed: () {
                 Get.back();
               },
-              child: Text("Omitir",
+              child: Text("Volver",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 16,
